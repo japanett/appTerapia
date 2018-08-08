@@ -1,0 +1,7 @@
+{
+  "name": "appTerapia",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
