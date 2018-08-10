@@ -13,13 +13,13 @@ export class UsersProvider {
 
   constructor(public http: Http) { }
 
-  createAccount(name: string, login: string, email: string, password: string) {
+  createAccount(name: string, login: string, password: string, email: string) {
     return new Promise((resolve, reject) => {
       var data = {
         name: name,
         login: login,
-        email: email,
-        password: password
+        password: password,
+        email: email
       };
 
       this.http.post(this.apiURL + 'user/create', data)

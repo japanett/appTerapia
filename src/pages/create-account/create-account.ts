@@ -13,25 +13,29 @@ export class CreateAccountPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new User();
-    this.model.email = '';
-    this.model.password = '';
     this.model.name = '';
     this.model.login = '';
+    this.model.email = '';
+    this.model.password = '';
   }
 
   createAccount() {
-    this.userProvider.createAccount(this.model.email, this.model.password, this.model.login, this.model.name)
+    this.userProvider.createAccount(this.model.name, this.model.login, this.model.password, this.model.email)
       .then((result: any) => {
-        this.toast.create({ message: 'Usuario criado com sucesso', position: 'botton', duration: 3000 }).present();
+        // alert(result);
+        if (result.success) {
+          this.toast.create({ message: 'Usuario cadastrado com sucesso', position: 'botton', duration: 15000 }).present();
+          this.navCtrl.push('LoginPage'); //mudar de tela
+        } else {
+          this.toast.create({ message: 'Erro ao cadastrar usuário', position: 'botton', duration: 15000 }).present();
+        }
         //Salvar o token no ionic storage para futura requisições, pegar isso no login
-        // this.navCtrl.setRoot(); //mudar de tela
-        this.navCtrl.pop();
+        // this.navCtrl.pop();
       })
       .catch((error: any) => {
-        this.toast.create({ message: 'Erro ao criar usuário. Erro: ' + error, position: 'botton', duration: 3000 }).present();
+        this.toast.create({ message: 'Erro ao cadastrar usuário.', position: 'botton', duration: 15000 }).present();
       })
   }
-
 }
 
 export class User {
