@@ -1,17 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Storage } from '@ionic/storage';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { resolveDefinition } from '../../../node_modules/@angular/core/src/view/util';
+//Taquebrando o    storage qnd tento rodar no celular, acho te tenqe fazer sqlite pro cel
 /*
-  Generated class for the UsersProvider provider.
+  constructor(private userService: UserService) {
+    this.getAuthUser();
+  }
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
+  private getAuthUser() {
+    this.userService.getOnStorage().then(
+      (user) => {
+        this.user = user;
+
+        if (!this.user.token) {
+          this.navCtrl.push(LoginPage)
+        }
+      }
+    );
+  }
 */
 @Injectable()
 export class UsersProvider {
+  // public token: any;
+
   private apiURL = 'http://localhost:3000/api/';
 
-  constructor(public http: Http) { }
+  constructor(public http: HttpClient, public storage: Storage) { }
 
   createAccount(name: string, login: string, password: string, email: string) {
     return new Promise((resolve, reject) => {
@@ -24,10 +40,10 @@ export class UsersProvider {
 
       this.http.post(this.apiURL + 'user/create', data)
         .subscribe((result: any) => {
-          resolve(result.json());
+          resolve(result);
         },
           (error) => {
-            reject(error.json());
+            reject(error);
           });
     });
   }
@@ -41,10 +57,10 @@ export class UsersProvider {
 
       this.http.post(this.apiURL + 'auth', data)
         .subscribe((result: any) => {
-          resolve(result.json());
+          resolve(result);
         },
           (error) => {
-            reject(error.json());
+            reject(error);
           });
     });
   }
@@ -56,25 +72,30 @@ export class UsersProvider {
 
       this.http.get(url)
         .subscribe((result: any) => {
-          resolve(result.json());
+          resolve(result);
         },
           (error) => {
-            reject(error.json());
+            reject(error);
           });
     });
   }
 
-  get(id: number) {
+  getUser() {
     return new Promise((resolve, reject) => {
-      let url = this.apiURL + 'users/' + id;
+      let url = this.apiURL + 'user';
+      this.storage.get('token').then((token) => {
 
-      this.http.get(url)
-        .subscribe((result: any) => {
-          resolve(result.json());
-        },
-          (error) => {
-            reject(error.json());
-          });
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.get(url, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
+        // return headers;
+        // });
+      });
     });
   }
 
@@ -84,10 +105,10 @@ export class UsersProvider {
 
       this.http.post(url, user)
         .subscribe((result: any) => {
-          resolve(result.json());
+          resolve(result);
         },
           (error) => {
-            reject(error.json());
+            reject(error);
           });
     });
   }
@@ -102,10 +123,10 @@ export class UsersProvider {
 
       this.http.put(url, user)
         .subscribe((result: any) => {
-          resolve(result.json());
+          resolve(result);
         },
           (error) => {
-            reject(error.json());
+            reject(error);
           });
     });
   }
@@ -116,10 +137,10 @@ export class UsersProvider {
 
       this.http.delete(url)
         .subscribe((result: any) => {
-          resolve(result.json());
+          resolve(result);
         },
           (error) => {
-            reject(error.json());
+            reject(error);
           });
     });
   }
