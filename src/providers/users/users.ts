@@ -26,6 +26,7 @@ export class UsersProvider {
   // public token: any;
 
   private apiURL = 'http://localhost:3000/api/';
+  // private apiURL = 'https://terapiaic.herokuapp.com/api/';
 
   constructor(public http: HttpClient, public storage: Storage) { }
 

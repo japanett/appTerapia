@@ -2,8 +2,11 @@ import { PacientListPage } from './../pacient-list/pacient-list';
 import { UserDetailPage } from './../user-detail/user-detail';
 import { CreatePacientPage } from './../create-pacient/create-pacient';
 import { TabsPage } from './../tabs/tabs';
+import { HomePage } from './../home/home';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Nav } from 'ionic-angular';
+import {App} from 'ionic-angular';
+
 
 export interface PageInterface {
   title: string;
@@ -19,7 +22,7 @@ export interface PageInterface {
   templateUrl: 'menu.html',
 })
 export class MenuPage {
-  // Basic root for our content view
+  // Basic root for our  content view
   rootPage = 'TabsPage';
 
   // Reference to the app's root nav
@@ -29,10 +32,10 @@ export class MenuPage {
     { title: 'Perfil', pageName: 'TabsPage', tabComponent: 'UserDetailPage', index: 0, icon: 'contact' },
     { title: 'Pacientes', pageName: 'TabsPage', tabComponent: 'PacientListPage', index: 1, icon: 'contacts' },
     { title: 'Criar paciente', pageName: 'CreatePacientPage', icon: 'person-add' },
-    // { title: 'Logout', pageName: 'HomePage', icon: 'log-out' }
+    { title: 'Logout', pageName: 'HomePage', icon: 'log-out' }
   ];
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl: NavController, public app: App) { }
 
   openPage(page: PageInterface) {
     let params = {};
@@ -45,7 +48,17 @@ export class MenuPage {
     // The active child nav is our Tabs Navigation
     if (this.nav.getActiveChildNav() && page.index != undefined) {
       this.nav.getActiveChildNav().select(page.index);
-    } else {
+    }
+    else if(page.pageName == 'HomePage') {
+      console.log('hhehe2');
+      
+      // this.rootPage = 'HomePage'
+      // this.nav.pop();
+      this.app.getRootNav().setRoot(HomePage);
+      // this.nav.popToRoot();
+      
+    } 
+    else {
       // Tabs are not active, so reset the root page 
       // In this case: moving to or from SpecialPage
       this.nav.setRoot(page.pageName, params);

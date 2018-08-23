@@ -21,23 +21,29 @@ export class LoginPage {
   }
 
   login() {
-    this.userProvider.login(this.model.login, this.model.password)
-      .then((result: any) => {
-        this.token = result.token;
-        this.storage.ready().then(() => {
-          this.storage.set('token', result.token);
-        });
-        this.toast.create({ message: 'Usuário logado com sucesso. Token: ' + result.token, position: 'botton', duration: 15000 }).present();
-        this.navCtrl.setRoot('MenuPage'); 
+    this.storage.clear().then(() => {
+      this.userProvider.login(this.model.login, this.model.password)
+        .then((result: any) => {
+          this.token = result.token;
+          this.storage.ready().then(() => {
+            this.storage.set('token', result.token);
+          });
+          this.toast.create({ message: 'Usuário logado com sucesso. Token: ' + result.token, position: 'botton', duration: 15000 }).present();
+          this.navCtrl.setRoot('MenuPage');
 
-        //Salvar o token no Ionic Storage para usar em futuras requisições.
-        //Redirecionar o usuario para outra tela usando o navCtrl
-        //this.navCtrl.pop();
-        //this.navCtrl.setRoot()
-      })
-      .catch((error: any) => {
-        this.toast.create({ message: 'Erro ao efetuar login. Erro: ' + error.error, position: 'botton', duration: 15000 }).present();
-      });
+          //Salvar o token no Ionic Storage para usar em futuras requisições.
+          //Redirecionar o usuario para outra tela usando o navCtrl
+          //this.navCtrl.pop();
+          //this.navCtrl.setRoot()
+        })
+        .catch((error: any) => {
+          if (error.status === 401) {
+            this.toast.create({ message: 'Usuário ou senha incorretos', position: 'botton', duration: 7000 }).present();
+          } else {
+            this.toast.create({ message: 'Erro ao efetuar login. Erro: ' + error.error, position: 'botton', duration: 7000 }).present();
+          }
+        });
+    })
   }
 }
 
