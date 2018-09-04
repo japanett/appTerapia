@@ -25,7 +25,7 @@ export class CreateAccountPage {
         // alert(result);
         if (result.success) {
           this.toast.create({ message: 'Usuario cadastrado com sucesso', position: 'botton', duration: 5000 }).present();
-          this.navCtrl.push('LoginPage'); //mudar de tela
+          this.navCtrl.push('LoginPage');
         } else {
           this.toast.create({ message: 'Erro ao cadastrar usuário', position: 'botton', duration: 5000 }).present();
         }

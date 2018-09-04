@@ -1,17 +1,49 @@
 <ion-header>
 
-    <ion-navbar>
-      <ion-buttons start>
-        <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
-      </ion-buttons>
-      <ion-title>Create pacient</ion-title>
-    </ion-navbar>
-  
-  </ion-header>
-  
-  
-  <ion-content padding>
-    Create pacient page
-  </ion-content>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Cadastro Paciente</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h1 text-center>Informações</h1>
+
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input type="text" name="name" [(ngModel)]="model.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Idade</ion-label>
+      <ion-input type="text" name="age" [(ngModel)]="model.age"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Sexo</ion-label>
+      <ion-input type="text" name="sexo" [(ngModel)]="model.sexo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Patologia</ion-label>
+      <ion-input type="text" name="patologia" [(ngModel)]="model.patologia"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Objetivo</ion-label>
+      <ion-input type="text" name="objetivo" [(ngModel)]="model.objetivo"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button block (click)="createPacient()" color="primary">
+    <ion-icon name="checkmark-circle-outline" item-start></ion-icon>
+  </button>
+
+</ion-content>

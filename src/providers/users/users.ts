@@ -23,7 +23,6 @@ import { resolveDefinition } from '../../../node_modules/@angular/core/src/view/
 */
 @Injectable()
 export class UsersProvider {
-  // public token: any;
 
   private apiURL = 'http://localhost:3000/api/';
   // private apiURL = 'https://terapiaic.herokuapp.com/api/';
@@ -46,6 +45,31 @@ export class UsersProvider {
           (error) => {
             reject(error);
           });
+    });
+  }
+
+
+  createPacient(name: string, age: number, sexo: string, patologia: string, objetivo: string) {
+    return new Promise((resolve, reject) => {
+      let data = {
+        name: name,
+        age: age,
+        sexo: sexo,
+        patologia: patologia,
+        objetivo: objetivo
+      };
+      this.storage.get('token').then((token) => {
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.put(this.apiURL + 'user/pacients', data,{headers})
+        .subscribe((result: any) => {
+          resolve(result);
+        },
+          (error) => {
+            reject(error);
+          });
+      });
+
+     
     });
   }
 
@@ -100,21 +124,7 @@ export class UsersProvider {
     });
   }
 
-  insert(user: any) {
-    return new Promise((resolve, reject) => {
-      let url = this.apiURL + 'users/';
-
-      this.http.post(url, user)
-        .subscribe((result: any) => {
-          resolve(result);
-        },
-          (error) => {
-            reject(error);
-          });
-    });
-  }
-
-  updateUser(name: string, email:string) {
+  updateUser(name: string, email: string) {
     return new Promise((resolve, reject) => {
       let url = this.apiURL + 'user';
       let data = {
