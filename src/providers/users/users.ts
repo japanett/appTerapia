@@ -114,21 +114,24 @@ export class UsersProvider {
     });
   }
 
-  update(user: any) {
+  updateUser(name: string, email:string) {
     return new Promise((resolve, reject) => {
-      let url = this.apiURL + 'users/' + user.id;
+      let url = this.apiURL + 'user';
       let data = {
-        "first_name": user.first_name,
-        "last_name": user.last_name
+        "name": name,
+        "email": email
       }
+      this.storage.get('token').then((token) => {
 
-      this.http.put(url, user)
-        .subscribe((result: any) => {
-          resolve(result);
-        },
-          (error) => {
-            reject(error);
-          });
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.put(url, data, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
+      });
     });
   }
 

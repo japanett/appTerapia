@@ -24,16 +24,14 @@ export class CreateAccountPage {
       .then((result: any) => {
         // alert(result);
         if (result.success) {
-          this.toast.create({ message: 'Usuario cadastrado com sucesso', position: 'botton', duration: 15000 }).present();
+          this.toast.create({ message: 'Usuario cadastrado com sucesso', position: 'botton', duration: 5000 }).present();
           this.navCtrl.push('LoginPage'); //mudar de tela
         } else {
-          this.toast.create({ message: 'Erro ao cadastrar usuário', position: 'botton', duration: 15000 }).present();
+          this.toast.create({ message: 'Erro ao cadastrar usuário', position: 'botton', duration: 5000 }).present();
         }
-        //Salvar o token no ionic storage para futura requisições, pegar isso no login
-        // this.navCtrl.pop();
       })
       .catch((error: any) => {
-        this.toast.create({ message: 'Erro ao cadastrar usuário.', position: 'botton', duration: 15000 }).present();
+        this.toast.create({ message: 'Erro ao cadastrar usuário.', position: 'botton', duration: 5000 }).present();
       })
   }
 }

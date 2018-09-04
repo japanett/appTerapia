@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>user-edit</ion-title>
+    <ion-title>Editar</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,4 +15,19 @@
 
 <ion-content padding>
 
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input type="text" name="name" [(ngModel)]="model.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="text" name="email" [(ngModel)]="model.email"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button block (click)="updateUser()" color="primary">
+    <ion-icon name="checkmark-circle-outline" item-start> OK</ion-icon>
+  </button>
 </ion-content>

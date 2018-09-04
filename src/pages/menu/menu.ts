@@ -49,13 +49,9 @@ export class MenuPage {
     if (this.nav.getActiveChildNav() && page.index != undefined) {
       this.nav.getActiveChildNav().select(page.index);
     }
+    // Logout
     else if(page.pageName == 'HomePage') {
-      console.log('hhehe2');
-      
-      // this.rootPage = 'HomePage'
-      // this.nav.pop();
       this.app.getRootNav().setRoot(HomePage);
-      // this.nav.popToRoot();
       
     } 
     else {

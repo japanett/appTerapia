@@ -6,14 +6,31 @@
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>user-detail</ion-title>
+    <ion-title>Perfil</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-  User detail page
-  <button ion-button block (click)="getAuthUser()">teste</button>
-  <!-- <button ion-button block (click)="logout()">Sair</button> -->
+  <h3 text-center>Bem vindo, {{model.firstname}}</h3>
+  <ion-item>
+    <ion-icon name="body" item-start></ion-icon>
+    <h4 color="danger">Nome:</h4>
+    <h3>{{model.name}}</h3>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="at" item-start></ion-icon>
+    <h4 color="danger">Email:</h4>
+    <h3>{{model.email}}</h3>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="contacts" item-start></ion-icon>
+    <h4 color="danger">Numero de pacientes:</h4>
+    <h3>{{model.pacientsNum}}</h3>
+  </ion-item>
+
+  <!-- https://ionicframework.com/docs/api/components/label/Label/ -->
+  <button ion-button block (click)="updateUser()">Editar informacoes</button>
 </ion-content>

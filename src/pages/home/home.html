@@ -7,11 +7,15 @@
 </ion-header>
 
 <ion-content padding>
+  <div class="logo">
+    <img src="./assets/imgs/mack.png">
+    <h1 text-center margin-bottom>APP Terapeuta</h1>
+  </div>
 
-  <h1 text-center margin-bottom>APP Terapeuta</h1>
-
-  <button ion-button block (click)="openCreateAccount()">Criar conta</button>
-  <button ion-button block (click)="openLogin()">Login</button>
+  <div class="body">
+    <button ion-button block (click)="openCreateAccount()">Criar conta</button>
+    <button ion-button block (click)="openLogin()">Login</button>
+  </div>
   <!-- <button ion-button block (click)="openListUsers()">CRUD de usuários</button> -->
 
 </ion-content>
