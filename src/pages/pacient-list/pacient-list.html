@@ -12,12 +12,35 @@
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>pacient-list</ion-title>
+    <ion-title>Lista de pacientes</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    Pacient list page
+  <ion-list>
+    <ion-item-sliding>
+      <button ion-item *ngFor="let pacient of data" (click)="getPacient()">
+        <h2>{{pacient.name}}</h2>
+        <h4>{{pacient.identifier}}</h4>
+      </button>
+      <ion-item-options side="left">
+        <button ion-button color="primary">
+          <ion-icon name="text"></ion-icon>
+          Text
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="call"></ion-icon>
+          Call
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="primary">
+          <ion-icon name="mail"></ion-icon>
+          Email
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

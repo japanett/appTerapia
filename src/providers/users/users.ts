@@ -60,16 +60,16 @@ export class UsersProvider {
       };
       this.storage.get('token').then((token) => {
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.put(this.apiURL + 'user/pacients', data,{headers})
-        .subscribe((result: any) => {
-          resolve(result);
-        },
-          (error) => {
-            reject(error);
-          });
+        this.http.put(this.apiURL + 'user/pacients', data, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
       });
 
-     
+
     });
   }
 
@@ -90,18 +90,21 @@ export class UsersProvider {
     });
   }
 
-  getAll(page: number) {
+  getPacients() {
     return new Promise((resolve, reject) => {
+      this.storage.get('token').then((token) => {
+        let url = this.apiURL + 'user/pacients';
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.get(url, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
 
-      let url = this.apiURL + 'users/?per_page=10&page=' + page;
 
-      this.http.get(url)
-        .subscribe((result: any) => {
-          resolve(result);
-        },
-          (error) => {
-            reject(error);
-          });
+      });
     });
   }
 

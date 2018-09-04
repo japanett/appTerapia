@@ -17,8 +17,8 @@ export class UserDetailPage {
   }
 
   getUser() {
-    this.userProvider.getUser().then(
-      (result: any) => {
+    this.userProvider.getUser()
+    .then((result: any) => {
         this.model = result.data;
         this.model.firstname = result.data.name.split(' ')[0];
         this.model.pacientsNum = result.data.pacients.length;
