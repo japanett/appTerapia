@@ -25,6 +25,7 @@ import { resolveDefinition } from '../../../node_modules/@angular/core/src/view/
 export class UsersProvider {
 
   private apiURL = 'http://localhost:3000/api/';
+  // private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
   // private apiURL = 'https://terapiaic.herokuapp.com/api/';
 
   constructor(public http: HttpClient, public storage: Storage) { }
@@ -94,6 +95,24 @@ export class UsersProvider {
     return new Promise((resolve, reject) => {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients';
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.get(url, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
+
+
+      });
+    });
+  }
+
+  getPacient(identifier:string) {
+    return new Promise((resolve, reject) => {
+      this.storage.get('token').then((token) => {
+        let url = this.apiURL + 'user/pacients/' + identifier;
         let headers = new HttpHeaders().set('x-access-token', token);
         this.http.get(url, { headers })
           .subscribe((result: any) => {

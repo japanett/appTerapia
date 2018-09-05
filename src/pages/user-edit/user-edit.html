@@ -26,8 +26,9 @@
       <ion-input type="text" name="email" [(ngModel)]="model.email"></ion-input>
     </ion-item>
   </ion-list>
-
-  <button ion-button block (click)="updateUser()" color="primary">
-    <ion-icon name="checkmark-circle-outline" item-start></ion-icon>
-  </button>
+  <ion-fab bottom right>
+    <button ion-fab (click)="updateUser()">
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

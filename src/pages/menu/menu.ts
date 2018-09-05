@@ -5,7 +5,7 @@ import { TabsPage } from './../tabs/tabs';
 import { HomePage } from './../home/home';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Nav } from 'ionic-angular';
-import {App} from 'ionic-angular';
+import { App } from 'ionic-angular';
 
 
 export interface PageInterface {
@@ -44,16 +44,14 @@ export class MenuPage {
     if (page.index) {
       params = { tabIndex: page.index };
     }
-
     // The active child nav is our Tabs Navigation
     if (this.nav.getActiveChildNav() && page.index != undefined) {
       this.nav.getActiveChildNav().select(page.index);
     }
     // Logout
-    else if(page.pageName == 'HomePage') {
+    else if (page.pageName == 'HomePage') {
       this.app.getRootNav().setRoot(HomePage);
-      
-    } 
+    }
     else {
       // Tabs are not active, so reset the root page 
       // In this case: moving to or from SpecialPage

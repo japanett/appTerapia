@@ -3,8 +3,6 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { UsersProvider } from './../../providers/users/users';
 import { Storage } from '@ionic/storage';
 
-
-
 @IonicPage()
 @Component({
   selector: 'page-user-edit',

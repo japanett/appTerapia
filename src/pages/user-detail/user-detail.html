@@ -6,13 +6,13 @@
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>Perfil</ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-  <h3 text-center>Bem vindo, {{model.firstname}}</h3>
+  <h3 text-center>Olá, {{model.firstname}}</h3>
   <ion-item>
     <ion-icon name="body" item-start></ion-icon>
     <h4 class="nam">Nome:</h4>
@@ -32,5 +32,8 @@
   </ion-item>
 
   <!-- https://ionicframework.com/docs/api/components/label/Label/ -->
-  <button ion-button block (click)="updateUser()">Editar informacoes</button>
+  <div style="text-align: center;">
+    <button ion-button medium round (click)="updateUser()">Editar informacoes</button>
+  </div>
+
 </ion-content>

@@ -9,6 +9,7 @@ import { UsersProvider } from './../../providers/users/users';
 })
 export class CreatePacientPage {
   model: Pacient;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new Pacient();
     this.model.name = '';
@@ -27,7 +28,10 @@ export class CreatePacientPage {
       .then((result: any) => {
         if (result.success) {
           this.toast.create({ message: 'Paciente cadastrado com sucesso', position: 'botton', duration: 5000 }).present();
-          this.navCtrl.push('UserDetailPage');
+          this.navCtrl.popToRoot()
+            .then(() => {
+              this.navCtrl.setRoot('MenuPage');
+            });
         } else {
           this.toast.create({ message: 'Nao foi possivel cadastrar um paciente...', position: 'botton', duration: 5000 }).present();
         }
