@@ -1,13 +1,12 @@
-<!--
-  Generated template for the PacientDetailPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>pacient-detail</ion-title>
+  <ion-navbar color="primary">
+    <ion-title></ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -15,9 +14,62 @@
 
 <ion-content padding>
   <ion-item>
-    <button ion-button color="primary" medium round icon-only (click)="teste()">
-      teste
-    </button>
+    <ion-avatar item-start>
+      <img src={{model.avatar}}>
+    </ion-avatar>
+    <ion-label>
+      <h2>
+        {{model.name}}
+      </h2>
+      <p>
+        {{model.identifier}}
+      </p>
+    </ion-label>
   </ion-item>
-
+  <ion-item>
+    <ion-label>
+      Idade:
+    </ion-label>
+    <ion-note item-end>
+      <b>{{model.age}}</b>
+    </ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Sexo:
+    </ion-label>
+    <ion-note item-end>
+      <b>{{model.sexo}}</b>
+    </ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Patologia:
+    </ion-label>
+    <ion-note item-end>
+      <b>{{model.patologia}}</b>
+    </ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Objetivo:
+    </ion-label>
+    <ion-note item-end>
+      <b>{{model.objetivo}}</b>
+    </ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Jogos pendentes:
+    </ion-label>
+    <ion-note item-end>
+      <b>{{model.gamesNum}}</b>
+    </ion-note>
+  </ion-item>
+  <div style="text-align: center;">
+    <button ion-button medium round (click)="updatePacient()">Editar informacoes</button>
+  </div>
+  <!-- <ion-fab bottom right>
+    <button ion-fab (click)="createPacient()"><ion-icon name="person-add"></ion-icon></button>
+  </ion-fab> -->
 </ion-content>

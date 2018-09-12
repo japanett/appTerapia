@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/map';
-import { resolveDefinition } from '../../../node_modules/@angular/core/src/view/util';
+// import 'rxjs/add/operator/map';
+// import { resolveDefinition } from '../../../node_modules/@angular/core/src/view/util';
 //Taquebrando o    storage qnd tento rodar no celular, acho te tenqe fazer sqlite pro cel
 /*
   constructor(private userService: UserService) {
@@ -167,17 +167,21 @@ export class UsersProvider {
     });
   }
 
-  remove(id: number) {
+  deletePacient(identifier:string) {
     return new Promise((resolve, reject) => {
-      let url = this.apiURL + 'users/' + id;
+      this.storage.get('token').then((token) => {
+        let url = this.apiURL + 'user/pacients/' + identifier;
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.delete(url, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
 
-      this.http.delete(url)
-        .subscribe((result: any) => {
-          resolve(result);
-        },
-          (error) => {
-            reject(error);
-          });
+
+      });
     });
   }
 }

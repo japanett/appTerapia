@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-buttons end>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
@@ -14,40 +14,26 @@
 <!-- https://github.com/ionic-team/ionic-preview-app/blob/master/src/pages/modals/basic/pages.ts -->
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let pacient of data" (click)="selectPacient(pacient.identifier)">
-      <ion-avatar item-start>
-        <img src={{pacient.avatar}}>
-      </ion-avatar>
-      <h2 style="color:#eb2d2d;"><b>{{pacient.name}}</b></h2>
-      <p>
-        {{pacient.identifier}}
-      </p>
-    </button>
+    <ion-item-sliding *ngFor="let pacient of data" (click)="selectPacient(pacient.identifier)" #slidingItem>
+      <ion-item>
+        <ion-avatar item-start><img src={{pacient.avatar}}></ion-avatar>
+        <h2 style="color:#eb2d2d;"><b>{{pacient.name}}</b></h2>
+        <p>{{pacient.identifier}}</p>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button color="light" icon-only outline (click)="editPacient(pacient.identifier);$event.stopPropagation();">
+          <ion-icon color="dark" name="hammer"></ion-icon>
+        </button>
+        <button ion-button color="light" icon-only outline (click)="deletePacient(pacient.identifier, pacient.name,slidingItem);$event.stopPropagation();">
+          <ion-icon color="danger" name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
   <ion-fab bottom right>
-    <button ion-fab (click)="createPacient()"><ion-icon name="person-add"></ion-icon></button>
+    <button ion-fab (click)="createPacient()">
+      <ion-icon name="person-add"></ion-icon>
+    </button>
   </ion-fab>
 </ion-content>
-
-<!-- <ion-list>
-    <ion-item *ngFor="let pacient of data">
-      <ion-avatar item-start>
-        <img src={{pacient.avatar}} style="margin-bottom: 55px;">
-      </ion-avatar>
-      <h2>
-        <b style="color:#eb2d2d;">Nome:</b>
-        <h3>
-          {{pacient.name}}
-        </h3>
-        <p>
-          {{pacient.identifier}}
-        </p>
-        <ion-buttons end>
-          <button ion-button color="primary" medium round icon-only (click)="getPacient(pacient.identifier)">
-            <ion-icon name="ios-arrow-dropright"></ion-icon>
-          </button>
-        </ion-buttons>
-      </h2>
-
-    </ion-item>
-  </ion-list> -->

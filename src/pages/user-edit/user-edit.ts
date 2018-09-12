@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
-import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -11,7 +10,7 @@ import { Storage } from '@ionic/storage';
 export class UserEditPage {
   model: User;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, private toast: ToastController, private userProvider: UsersProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new User();
     this.model = navParams.get('user');
   }
@@ -26,7 +25,6 @@ export class UserEditPage {
           this.toast.create({ message: 'Erro ao atualizar...', position: 'botton', duration: 5000 }).present();
         }
       })
-
   }
 
 }

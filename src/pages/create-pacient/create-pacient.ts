@@ -28,16 +28,13 @@ export class CreatePacientPage {
       .then((result: any) => {
         if (result.success) {
           this.toast.create({ message: 'Paciente cadastrado com sucesso', position: 'botton', duration: 5000 }).present();
-          this.navCtrl.popToRoot()
-            .then(() => {
-              this.navCtrl.setRoot('MenuPage');
-            });
+          this.navCtrl.setRoot('PacientListPage');
         } else {
-          this.toast.create({ message: 'Nao foi possivel cadastrar um paciente...', position: 'botton', duration: 5000 }).present();
+          this.toast.create({ message: 'Preencha todos os campos corretamente', position: 'botton', duration: 5000 }).present();
         }
       })
       .catch((error: any) => {
-        this.toast.create({ message: 'Erro ao cadastrar paciente', position: 'botton', duration: 5000 }).present();
+        this.toast.create({ message: 'Preencha todos os campos corretamente', position: 'botton', duration: 5000 }).present();
       })
   }
 }

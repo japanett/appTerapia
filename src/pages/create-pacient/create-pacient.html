@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-buttons start>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
@@ -28,7 +28,10 @@
 
     <ion-item>
       <ion-label stacked>Sexo:</ion-label>
-      <ion-input type="text" name="sexo" [(ngModel)]="model.sexo"></ion-input>
+      <ion-select name="sexo" [(ngModel)]="model.sexo">
+        <ion-option value="masculino">Masculino</ion-option>
+        <ion-option value="feminino">Feminino</ion-option>
+      </ion-select>
     </ion-item>
 
     <ion-item>

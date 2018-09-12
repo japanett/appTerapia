@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Modal, ModalController, ModalOptions, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { ModalController, ItemSliding, AlertController, ModalOptions, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
 import { Storage } from '@ionic/storage';
+import { PacientDetailPage } from './../pacient-detail/pacient-detail';
 
 @IonicPage()
 @Component({
@@ -13,7 +14,7 @@ export class PacientListPage {
   public man = './assets/imgs/man.png';
   public woman = './assets/imgs/woman.png';
   model: Pacient;
-  constructor(public navCtrl: NavController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
+  constructor(public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new Pacient();
     this.getPacients();
   }
@@ -60,32 +61,80 @@ export class PacientListPage {
           reject(error);
           this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
         });
-      // this.navCtrl.push('PacientDetailPage', { identifier: identifier });
     });
   }
+  deletePacient(identifier: string, name: string, slidingItem: ItemSliding) {
+    const confirm = this.alertCtrl.create({
+      title: 'Remover paciente ?',
+      message: 'Você realmente quer remover o paciente ' + name + ' ?',
+      buttons: [
+        {
+          text: 'Não',
+          handler: () => {
+            slidingItem.close();
+          }
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            return new Promise((resolve, reject) => {
+              this.userProvider.deletePacient(identifier)
+                .then((result: any) => {
+                  if (result.success === true) {
+                    this.navCtrl.setRoot(this.navCtrl.getActive().component);
+                    this.toast.create({ message: name + ' removido !!', position: 'botton', duration: 5000 }).present();
+                  }
+                })
+                .catch((error: any) => {
+                  reject(error);
+                  this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
+                });
+            });
+          }
+        }
+      ]
+    });
+    confirm.present();
+    // this.toast.create({ message: 'Deseja realmente deletar este paciente ?', position: 'botton', duration: 5000 }).present();
+    // 
+  }
 
+  editPacient(identifier: string, name: string) {
+    this.toast.create({ message: 'A fazer', position: 'botton', duration: 5000 }).present();
+  }
   createPacient() {
     this.navCtrl.push('CreatePacientPage');
   }
 
   selectPacient(identifier: string) {
-    this.getPacient(identifier)
-      .then((result) => {
-        if (result) {
-          console.log('=== result ===');
-          console.log(result);
-          this.model = result[0];
-          console.log('=== model ===');
-          console.log(this.model);
-          // this.model = result;
-        }
-      });
+    var pacientModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier }, { enableBackdropDismiss: false });
+    pacientModal.present();
+
+    // pacientModal.onDidDismiss((data) => {
+    //   console.log("I have dismissed.");
+    //   console.log(data);
+    // });
+
+    // pacientModal.onWillDismiss((data) => {
+    //   console.log("I'm about to dismiss");
+    //   console.log(data);
+    // });
+    // this.getPacient(identifier)
+    //   .then((result) => {
+    //     if (result) {
+    //       console.log('=== result ===');
+    //       console.log(result);
+    //       this.model = result[0];
+    //       console.log('=== model ===');
+    //       console.log(this.model);
+    // this.model = result;
+    // }
+    // });
     // this.toast.create({ message: this.model.name, position: 'botton', duration: 5000 }).present();
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PacientListPage');
-  }
-
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad PacientListPage');
+  // }
 }
 export class Pacient {
   active: boolean;

@@ -1,7 +1,6 @@
 import { PacientListPage } from './../pacient-list/pacient-list';
 import { UserDetailPage } from './../user-detail/user-detail';
 import { CreatePacientPage } from './../create-pacient/create-pacient';
-import { TabsPage } from './../tabs/tabs';
 import { HomePage } from './../home/home';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Nav } from 'ionic-angular';
@@ -23,15 +22,15 @@ export interface PageInterface {
 })
 export class MenuPage {
   // Basic root for our  content view
-  rootPage = 'TabsPage';
+  rootPage = 'UserDetailPage';
 
   // Reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
 
   pages: PageInterface[] = [
-    { title: 'Perfil', pageName: 'TabsPage', tabComponent: 'UserDetailPage', index: 0, icon: 'contact' },
-    { title: 'Pacientes', pageName: 'TabsPage', tabComponent: 'PacientListPage', index: 1, icon: 'contacts' },
-    { title: 'Criar paciente', pageName: 'CreatePacientPage', icon: 'person-add' },
+    { title: 'Perfil', pageName: 'UserDetailPage',  index: 0, icon: 'contact' },
+    { title: 'Pacientes', pageName: 'PacientListPage', index: 1, icon: 'contacts' },
+    // { title: 'Criar paciente', pageName: 'CreatePacientPage', icon: 'person-add' },
     { title: 'Logout', pageName: 'HomePage', icon: 'log-out' }
   ];
 
@@ -40,12 +39,7 @@ export class MenuPage {
   openPage(page: PageInterface) {
     let params = {};
 
-    // The index is equal to the order of our tabs inside tabs.ts
-    if (page.index) {
-      params = { tabIndex: page.index };
-    }
-    // The active child nav is our Tabs Navigation
-    if (this.nav.getActiveChildNav() && page.index != undefined) {
+    if (this.nav.getActiveChildNav() != undefined) {
       this.nav.getActiveChildNav().select(page.index);
     }
     // Logout
@@ -53,24 +47,12 @@ export class MenuPage {
       this.app.getRootNav().setRoot(HomePage);
     }
     else {
-      // Tabs are not active, so reset the root page 
-      // In this case: moving to or from SpecialPage
       this.nav.setRoot(page.pageName, params);
     }
   }
 
   isActive(page: PageInterface) {
-    // Again the Tabs Navigation
-    let childNav = this.nav.getActiveChildNav();
 
-    if (childNav) {
-      if (childNav.getSelected() && childNav.getSelected().root === page.tabComponent) {
-        return 'primary';
-      }
-      return;
-    }
-
-    // Fallback needed when there is no active childnav (tabs not active)
     if (this.nav.getActive() && this.nav.getActive().name === page.pageName) {
       return 'primary';
     }

@@ -9,5 +9,8 @@ import { PacientDetailPage } from './pacient-detail';
   imports: [
     IonicPageModule.forChild(PacientDetailPage),
   ],
+  exports: [
+    PacientDetailPage
+  ]
 })
-export class PacientDetailPageModule {}
+export class PacientDetailPageModule { }
