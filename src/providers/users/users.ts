@@ -91,7 +91,7 @@ export class UsersProvider {
     });
   }
 
-  getPacients() {
+  getPacients(identifier?:string) { //update this
     return new Promise((resolve, reject) => {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients';
@@ -140,8 +140,6 @@ export class UsersProvider {
             (error) => {
               reject(error);
             });
-        // return headers;
-        // });
       });
     });
   }
@@ -173,6 +171,24 @@ export class UsersProvider {
         let url = this.apiURL + 'user/pacients/' + identifier;
         let headers = new HttpHeaders().set('x-access-token', token);
         this.http.delete(url, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
+
+
+      });
+    });
+  }
+
+  getGames(identifier:string) {
+    return new Promise((resolve, reject) => {
+      this.storage.get('token').then((token) => {
+        let url = this.apiURL + 'user/games/'+identifier;
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.get(url, { headers })
           .subscribe((result: any) => {
             resolve(result);
           },

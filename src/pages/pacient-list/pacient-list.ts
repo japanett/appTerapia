@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController, ItemSliding, AlertController, ModalOptions, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { ModalController, ItemSliding, AlertController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
 import { Storage } from '@ionic/storage';
 import { PacientDetailPage } from './../pacient-detail/pacient-detail';
@@ -95,8 +95,6 @@ export class PacientListPage {
       ]
     });
     confirm.present();
-    // this.toast.create({ message: 'Deseja realmente deletar este paciente ?', position: 'botton', duration: 5000 }).present();
-    // 
   }
 
   editPacient(identifier: string, name: string) {

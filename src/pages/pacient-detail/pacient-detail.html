@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar color="secondary">
     <ion-title></ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
@@ -11,14 +11,13 @@
 
 </ion-header>
 
-
 <ion-content padding>
   <ion-item>
     <ion-avatar item-start>
       <img src={{model.avatar}}>
     </ion-avatar>
     <ion-label>
-      <h2>
+      <h2 class="nam">
         {{model.name}}
       </h2>
       <p>
@@ -28,46 +27,37 @@
   </ion-item>
   <ion-item>
     <ion-label>
-      Idade:
+      <h4 class="nam">Idade:</h4>
+      <h3 class="sub">{{model.age}}</h3>
     </ion-label>
-    <ion-note item-end>
-      <b>{{model.age}}</b>
-    </ion-note>
   </ion-item>
   <ion-item>
     <ion-label>
-      Sexo:
+      <h4 class="nam">Sexo:</h4>
+      <h3 class="sub">{{model.sexo}}</h3>
     </ion-label>
-    <ion-note item-end>
-      <b>{{model.sexo}}</b>
-    </ion-note>
   </ion-item>
   <ion-item>
     <ion-label>
-      Patologia:
+      <h4 class="nam">Patologia:</h4>
+      <h3 class="sub">{{model.patologia}}</h3>
     </ion-label>
-    <ion-note item-end>
-      <b>{{model.patologia}}</b>
-    </ion-note>
   </ion-item>
   <ion-item>
     <ion-label>
-      Objetivo:
+      <h4 class="nam">Objetivo:</h4>
+      <h3 class="sub">{{model.objetivo}}</h3>
     </ion-label>
-    <ion-note item-end>
-      <b>{{model.objetivo}}</b>
-    </ion-note>
   </ion-item>
   <ion-item>
     <ion-label>
-      Jogos pendentes:
+      <h4 class="nam">Jogos Pendentes:</h4>
+      <h3 class="sub">{{model.gamesNum}}</h3>
     </ion-label>
-    <ion-note item-end>
-      <b>{{model.gamesNum}}</b>
-    </ion-note>
   </ion-item>
   <div style="text-align: center;">
-    <button ion-button medium round (click)="updatePacient()">Editar informacoes</button>
+    <button ion-button icon-start block outline round color="dark" (click)="getGames(model.identifier, model.name)"><ion-icon name="jet"></ion-icon>Jogos</button>
+    <!-- <button ion-button medium round class="butt" (click)="addGame()"><ion-icon name="add"></ion-icon>Adicionar Jogos</button> -->
   </div>
   <!-- <ion-fab bottom right>
     <button ion-fab (click)="createPacient()"><ion-icon name="person-add"></ion-icon></button>

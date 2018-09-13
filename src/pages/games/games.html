@@ -1,0 +1,50 @@
+<!--
+  Generated template for the GamesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>{{pacient}}</ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngFor="let game of data" (click)="selectGame(game.id)">
+    <ion-item>
+      <ion-icon name="checkmark" color="green" item-left *ngIf="game.played"></ion-icon>
+      <ion-icon name="close" color="dark" item-left *ngIf="!game.played"></ion-icon>
+      <h2 style="color:#eb2d2d;"><b>{{game.title}}</b></h2>
+      <!-- <p>{{game.title}}</p> -->
+      <ion-note item-end>
+        {{game.date | date: "dd/MM/yyyy HH:mm"}}
+        <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime> -->
+      </ion-note>
+    </ion-item>
+
+
+  </ion-list>
+  <ion-fab bottom right>
+    <button ion-fab color="secondary" (click)="addGame()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+
+
+
+  <!-- <ion-buttons left>
+    <button ion-button outline icon-only (click)="teste()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+  </ion-buttons> -->
+</ion-content>

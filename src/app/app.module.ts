@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PacientDetailPage } from '../pages/pacient-detail/pacient-detail';
+import { GamesPage } from '../pages/games/games';
 import { UsersProvider } from '../providers/users/users';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     MyApp,
     HomePage,
-    PacientDetailPage
+    PacientDetailPage,
+    GamesPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
   entryComponents: [
     MyApp,
     HomePage,
-    PacientDetailPage
+    PacientDetailPage,
+    GamesPage
   ],
   providers: [
     StatusBar,

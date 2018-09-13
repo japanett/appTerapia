@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, ViewController, NavController, NavParams, ToastController } from 'ionic-angular';
+import { ModalController,ViewController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
 import { Storage } from '@ionic/storage';
+import { GamesPage } from './../games/games';
 
 @IonicPage()
 @Component({
@@ -11,7 +12,7 @@ import { Storage } from '@ionic/storage';
 export class PacientDetailPage {
   model: Pacient;
   // public avatar = '';
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController, public viewCtrl: ViewController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new Pacient();
     this.getPacient(navParams.get('identifier'));
   }
@@ -32,6 +33,11 @@ export class PacientDetailPage {
       });
   }
 
+  getGames(identifier:string, name:string) {
+    var gamesModal = this.modalCtrl.create(GamesPage, { identifier:identifier,name:name }, { enableBackdropDismiss: false });
+    gamesModal.present();
+  }
+
   dismiss() {
     this.viewCtrl.dismiss();
   }
@@ -41,11 +47,12 @@ export class PacientDetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PacientDetailPage');
+    // console.log('ionViewDidLoad PacientDetailPage');
   }
 }
 
 export class Pacient {
+  id: string;
   active: boolean;
   name: string;
   age: number;
