@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ViewController, NavParams, ToastController } from 'ionic-angular';
+import { ModalController, ItemSliding, AlertController, IonicPage, ViewController, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
 import { Storage } from '@ionic/storage';
 
@@ -11,11 +11,13 @@ import { Storage } from '@ionic/storage';
 export class GamesPage {
   public data: any = [];
   model: Game;
-  public pacient: string;
+  public pacientName: string;
+  public identifier: string;
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public storage: Storage, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new Game();
-    this.pacient = navParams.get('name');
-    this.getGames(navParams.get('identifier'));
+    this.pacientName = navParams.get('name');
+    this.identifier = navParams.get('identifier');
+    this.getGames(this.identifier);
   }
 
 
@@ -24,13 +26,27 @@ export class GamesPage {
       .then((result: any) => {
         if (result.success === true) {
           for (let i = 0; i < result.data.length; i++) {
-            console.log('data['+i+']');
+            console.log('data[' + i + ']');
             console.log(result.data[i]);
             this.data.push({
+              pacientName: this.pacientName,
               title: result.data[i].title,
               played: result.data[i].played,
               id: result.data[i].id,
-              date: result.data[i].date
+              date: result.data[i].date,
+              score: {
+                esquerda: result.data[i].score.esquerda,
+                direita: result.data[i].score.direita,
+                cruzada: result.data[i].score.cruzada
+              },
+              error: {
+                esquerda: result.data[i].error.esquerda,
+                direita: result.data[i].error.direita,
+                cruzada: result.data[i].error.cruzada
+              },
+              time: result.data[i].time,
+              config: result.data[i].config,
+              identifier: result.data[i].pacient
             });
           }
         }
@@ -45,6 +61,12 @@ export class GamesPage {
   }
   teste() {
     console.log('this.data: ' + this.data[0]);
+  }
+
+  addGame(identifier: string) {
+    // var gameModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier }, { enableBackdropDismiss: false });
+    // gameModal.present();
+
   }
   dismiss() {
     this.viewCtrl.dismiss();

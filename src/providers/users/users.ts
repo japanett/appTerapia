@@ -24,7 +24,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class UsersProvider {
 
-  private apiURL = 'http://localhost:3000/api/';
+  private apiURL = 'http://localhost:3000/api/'; 
   // private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
   // private apiURL = 'https://terapiaic.herokuapp.com/api/';
 
@@ -91,7 +91,7 @@ export class UsersProvider {
     });
   }
 
-  getPacients(identifier?:string) { //update this
+  getPacients(identifier?: string) { //update this
     return new Promise((resolve, reject) => {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients';
@@ -109,7 +109,7 @@ export class UsersProvider {
     });
   }
 
-  getPacient(identifier:string) {
+  getPacient(identifier: string) {
     return new Promise((resolve, reject) => {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients/' + identifier;
@@ -165,7 +165,7 @@ export class UsersProvider {
     });
   }
 
-  deletePacient(identifier:string) {
+  deletePacient(identifier: string) {
     return new Promise((resolve, reject) => {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients/' + identifier;
@@ -183,10 +183,10 @@ export class UsersProvider {
     });
   }
 
-  getGames(identifier:string) {
+  getGames(identifier: string) {
     return new Promise((resolve, reject) => {
       this.storage.get('token').then((token) => {
-        let url = this.apiURL + 'user/games/'+identifier;
+        let url = this.apiURL + 'user/games/' + identifier;
         let headers = new HttpHeaders().set('x-access-token', token);
         this.http.get(url, { headers })
           .subscribe((result: any) => {
@@ -195,8 +195,26 @@ export class UsersProvider {
             (error) => {
               reject(error);
             });
+      });
+    });
+  }
 
-
+  addGames(identifier: string,config:string, gameID:number) {
+    return new Promise((resolve, reject) => {
+      let data = {
+        "toPlay": gameID,
+        "config": config
+      }
+      this.storage.get('token').then((token) => {
+        let url = this.apiURL + 'user/pacients/games/' + identifier;
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.post(url, data,{ headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
       });
     });
   }
