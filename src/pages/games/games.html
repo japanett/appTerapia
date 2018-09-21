@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="secondary">
-    <ion-title>{{pacient}}</ion-title>
+    <ion-title>{{pacientName}}</ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
         <ion-icon name="arrow-back"></ion-icon>
@@ -19,7 +19,7 @@
 
 
 <ion-content padding>
-  <ion-list *ngFor="let game of data" (click)="selectGame(game.id)">
+  <ion-list *ngFor="let game of data" (click)="selectGame(game)">
     <ion-item>
       <ion-icon name="checkmark" color="green" item-left *ngIf="game.played"></ion-icon>
       <ion-icon name="close" color="dark" item-left *ngIf="!game.played"></ion-icon>

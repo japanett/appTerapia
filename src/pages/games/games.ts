@@ -26,13 +26,12 @@ export class GamesPage {
       .then((result: any) => {
         if (result.success === true) {
           for (let i = 0; i < result.data.length; i++) {
-            console.log('data[' + i + ']');
             console.log(result.data[i]);
             this.data.push({
               pacientName: this.pacientName,
               title: result.data[i].title,
               played: result.data[i].played,
-              id: result.data[i].id,
+              id: result.data[i]._id,
               date: result.data[i].date,
               score: {
                 esquerda: result.data[i].score.esquerda,
@@ -62,10 +61,14 @@ export class GamesPage {
   teste() {
     console.log('this.data: ' + this.data[0]);
   }
+  selectGame(game: any) {
+    console.log(game);
+  }
 
   addGame(identifier: string) {
     // var gameModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier }, { enableBackdropDismiss: false });
     // gameModal.present();
+    console.log('identifier: '+identifier);
 
   }
   dismiss() {

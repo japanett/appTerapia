@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PacientDetailPage } from '../pages/pacient-detail/pacient-detail';
 import { GamesPage } from '../pages/games/games';
+import { GameDetailPage } from '../pages/game-detail/game-detail';
 import { UsersProvider } from '../providers/users/users';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     MyApp,
     HomePage,
     PacientDetailPage,
-    GamesPage
+    GamesPage,
+    GameDetailPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     MyApp,
     HomePage,
     PacientDetailPage,
-    GamesPage
+    GamesPage,
+    GameDetailPage
   ],
   providers: [
     StatusBar,
