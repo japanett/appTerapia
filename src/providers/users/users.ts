@@ -104,7 +104,6 @@ export class UsersProvider {
               reject(error);
             });
 
-
       });
     });
   }
