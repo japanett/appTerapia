@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { ModalController,ViewController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { ModalController, ViewController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
 import { Storage } from '@ionic/storage';
 import { GamesPage } from './../games/games';
+import { GameListPage } from './../game-list/game-list';
 
 @IonicPage()
 @Component({
@@ -12,7 +13,7 @@ import { GamesPage } from './../games/games';
 export class PacientDetailPage {
   model: Pacient;
   // public avatar = '';
-  constructor(public modalCtrl: ModalController,public navCtrl: NavController, public viewCtrl: ViewController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new Pacient();
     this.getPacient(navParams.get('identifier'));
   }
@@ -33,9 +34,16 @@ export class PacientDetailPage {
       });
   }
 
-  getGames(identifier:string, name:string) {
-    var gamesModal = this.modalCtrl.create(GamesPage, { identifier:identifier,name:name }, { enableBackdropDismiss: false });
+  getGames(identifier: string, name: string) {
+    var gamesModal = this.modalCtrl.create(GamesPage, { identifier: identifier, name: name }, { enableBackdropDismiss: false });
     gamesModal.present();
+  }
+
+  addGame(name: string, identifier: string, games: any) {
+    console.log(games);
+    console.log('0');
+    var gameListModal = this.modalCtrl.create(GameListPage, { identifier: identifier, name: name, games: games }, { enableBackdropDismiss: false });
+    gameListModal.present();
   }
 
   dismiss() {

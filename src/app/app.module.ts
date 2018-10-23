@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { PacientDetailPage } from '../pages/pacient-detail/pacient-detail';
 import { GamesPage } from '../pages/games/games';
 import { GameDetailPage } from '../pages/game-detail/game-detail';
+import { GameListPage } from '../pages/game-list/game-list';
 import { UsersProvider } from '../providers/users/users';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomePage,
     PacientDetailPage,
     GamesPage,
-    GameDetailPage
+    GameDetailPage,
+    GameListPage
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomePage,
     PacientDetailPage,
     GamesPage,
+    GameListPage,
     GameDetailPage
   ],
   providers: [

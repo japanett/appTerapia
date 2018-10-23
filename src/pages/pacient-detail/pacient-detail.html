@@ -51,7 +51,7 @@
   </ion-item>
   <ion-item>
     <ion-label>
-      <h4 class="nam">Jogos Pendentes:</h4>
+      <h4 class="nam">Jogos ativos:</h4>
       <h3 class="sub">{{model.gamesNum}}</h3>
     </ion-label>
   </ion-item>
@@ -59,6 +59,11 @@
     <button ion-button icon-start block outline round color="dark" (click)="getGames(model.identifier, model.name)"><ion-icon name="jet"></ion-icon>Jogos</button>
     <!-- <button ion-button medium round class="butt" (click)="addGame()"><ion-icon name="add"></ion-icon>Adicionar Jogos</button> -->
   </div>
+  <ion-fab bottom right>
+    <button ion-fab color="secondary" (click)="addGame(model.name, model.identifier,model.games)">
+      <ion-icon name="cog"></ion-icon>
+    </button>
+  </ion-fab>
   <!-- <ion-fab bottom right>
     <button ion-fab (click)="createPacient()"><ion-icon name="person-add"></ion-icon></button>
   </ion-fab> -->

@@ -13,13 +13,13 @@ export class GamesPage {
   model: Game;
   public pacientName: string;
   public identifier: string;
+  
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public storage: Storage, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new Game();
     this.pacientName = navParams.get('name');
     this.identifier = navParams.get('identifier');
     this.getGames(this.identifier);
   }
-
 
   getGames(identifier?: string) {
     this.userProvider.getGames(identifier)

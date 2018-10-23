@@ -24,8 +24,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class UsersProvider {
 
-  private apiURL = 'http://localhost:3000/api/'; 
-  // private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
+  // private apiURL = 'http://localhost:3000/api/'; 
+  private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
   // private apiURL = 'https://terapiaic.herokuapp.com/api/';
 
   constructor(public http: HttpClient, public storage: Storage) { }
@@ -185,7 +185,7 @@ export class UsersProvider {
   getGames(identifier: string) {
     return new Promise((resolve, reject) => {
       this.storage.get('token').then((token) => {
-        let url = this.apiURL + 'user/games/' + identifier;
+        let url = this.apiURL + 'user/' + identifier + '/games/';
         let headers = new HttpHeaders().set('x-access-token', token);
         this.http.get(url, { headers })
           .subscribe((result: any) => {
@@ -198,7 +198,7 @@ export class UsersProvider {
     });
   }
 
-  addGames(identifier: string,config:string, gameID:number) {
+  addGames(identifier: string, config: string, gameID: number) {
     return new Promise((resolve, reject) => {
       let data = {
         "toPlay": gameID,
@@ -207,7 +207,7 @@ export class UsersProvider {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients/games/' + identifier;
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.post(url, data,{ headers })
+        this.http.post(url, data, { headers })
           .subscribe((result: any) => {
             resolve(result);
           },
