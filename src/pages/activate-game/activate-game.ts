@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { ModalController, Nav, App, ViewController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { ModalController, App, ViewController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
 import { Storage } from '@ionic/storage';
 import { PacientListPage } from '../pacient-list/pacient-list';
@@ -15,12 +15,13 @@ export class ActivateGamePage {
   public firstGame: string = '1';
   public secondGame: string = '2';
   public thirdGame: string = '3';
-  // Reference to the app's root nav
-  @ViewChild(Nav) nav: Nav;
+
+
   constructor(public app: App, public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.identifier = navParams.get('identifier');
     this.game = navParams.get('game');
   }
+
 
   setConfig(firstGame: string, secondGame: string, thirdGame: string) {
     let _config = firstGame + ',' + secondGame + ',' + thirdGame;
@@ -32,16 +33,13 @@ export class ActivateGamePage {
       this.userProvider.addGames(identifier, config, game.gameID)
         .then((result: any) => {
           if (result.success === true) {
-            // this.app.getRootNav().setRoot('MenuPage')
-            //   .then(() => {
-            //     this.navCtrl.popToRoot();
-            //   });
-            this.dismiss();
-            this.navCtrl.popToRoot().then(() => {
-              // this.navCtrl.push('PacientListPage');
-              // this.navCtrl.setRoot('PacientListPage');
-              this.toast.create({ message: 'Jogo Ativado !', position: 'botton', duration: 2000 }).present();
-            });
+            this.viewCtrl.dismiss()
+              .then(() => {
+                // this.navCtrl.push('PacientListPage');
+                // this.navCtrl.setRoot('PacientListPage');
+                this.toast.create({ message: 'Jogo Ativado !', position: 'botton', duration: 2000 }).present();
+                resolve();
+              });
           }
           if (result.success === false) {
             this.navCtrl.popToRoot();

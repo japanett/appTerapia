@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ModalController, ItemSliding, AlertController, IonicPage, ViewController, NavController, NavParams, ToastController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Content, ModalController, ItemSliding, AlertController, IonicPage, ViewController, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
 import { Storage } from '@ionic/storage';
 import { ActivateGamePage } from './../activate-game/activate-game';
@@ -10,6 +10,8 @@ import { ActivateGamePage } from './../activate-game/activate-game';
   templateUrl: 'game-list.html',
 })
 export class GameListPage {
+  @ViewChild(Content) content: Content;
+
   testCheckboxOpen: boolean;
   testCheckboxResult;
   public name: string;
@@ -22,6 +24,8 @@ export class GameListPage {
   bola: Game;
   public ordemJogos: any = [];
 
+
+
   constructor(public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public storage: Storage, private toast: ToastController, private userProvider: UsersProvider) {
     this.name = navParams.get('name');
     this.sexo = navParams.get('sexo');
@@ -30,11 +34,7 @@ export class GameListPage {
     this.fillGames(navParams.get('games'));
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GameListPage222');
-  }
-
-  fillGames(games:any) {
+  fillGames(games: any) {
     this.mercearia = new Game();
     this.space = new Game();
     this.bola = new Game();
@@ -57,8 +57,14 @@ export class GameListPage {
     });
   };
 
-  activateGame(game: any, id:string) {
-    var pacientModal = this.modalCtrl.create(ActivateGamePage, { game: game, identifier:this.identifier }, { enableBackdropDismiss: false });
+  activateGame(game: any, id: string) {
+    var pacientModal = this.modalCtrl.create(ActivateGamePage, { game: game, identifier: this.identifier }, { enableBackdropDismiss: false });
+    pacientModal.onDidDismiss(() => {
+      this.viewCtrl.dismiss()
+        .then(() => {
+          console.log('321382190321');
+        })
+    })
     pacientModal.present();
   };
 
@@ -84,8 +90,9 @@ export class GameListPage {
               this.userProvider.removePacientGame(id, game.gameID)
                 .then((result: any) => {
                   if (result.success === true) {
-                    this.navCtrl.setRoot(this.navCtrl.getActive().component);
-                    this.toast.create({ message: 'Jogo Desativado !', position: 'botton', duration: 5000 }).present();
+                    // this.navCtrl.setRoot(this.navCtrl.getActive().component);
+                    this.viewCtrl.dismiss();
+                    this.toast.create({ message: 'Jogo Desativado !', position: 'botton', duration: 3000 }).present();
                   }
                 })
                 .catch((error: any) => {
@@ -97,6 +104,7 @@ export class GameListPage {
         }
       ]
     });
+    confirm.onDidDismiss(() => { console.log('dismissss') });
     confirm.present();
   };
 
@@ -120,6 +128,10 @@ export class GameListPage {
       return "girl";
     }
   };
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad GameListPage222');
+  }
 
 }
 export class Game {

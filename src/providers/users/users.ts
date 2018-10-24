@@ -229,7 +229,7 @@ export class UsersProvider {
         console.log(token);
         console.log('url: ', url);
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.put(url, { headers })
+        this.http.put(url, {},{ headers })
           .subscribe((result: any) => {
             resolve(result);
           },
