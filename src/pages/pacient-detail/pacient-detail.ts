@@ -22,6 +22,7 @@ export class PacientDetailPage {
     this.userProvider.getPacient(identifier)
       .then((result: any) => {
         this.model = result.data[0];
+        console.log(this.model);
         this.model.gamesNum = result.data[0].games.length;
         if (result.data[0].sexo.toLowerCase().trim() == 'feminino') {
           this.model.avatar = './assets/imgs/woman.png';
@@ -39,10 +40,8 @@ export class PacientDetailPage {
     gamesModal.present();
   }
 
-  addGame(name: string, identifier: string, games: any) {
-    console.log(games);
-    console.log('0');
-    var gameListModal = this.modalCtrl.create(GameListPage, { identifier: identifier, name: name, games: games }, { enableBackdropDismiss: false });
+  addGame(name: string, identifier: string, games: any, sexo: string, id: string) {
+    var gameListModal = this.modalCtrl.create(GameListPage, { identifier: identifier, name: name, games: games, sexo: sexo, id:id }, { enableBackdropDismiss: false });
     gameListModal.present();
   }
 
@@ -53,10 +52,26 @@ export class PacientDetailPage {
   teste() {
     this.toast.create({ message: 'Nao fiz ainda Burro', position: 'botton', duration: 5000 }).present();
   }
-
+  getStylee(pacient: any) {
+    // console.log(pacient);
+    if (pacient.sexo == 'masculino') {
+      return "rgba(64, 67, 240, 0.801)";
+    } else {
+      return "#eb2d2d";
+    }
+  };
+  getStylee2(pacient: any) {
+    // console.log(pacient);
+    if (pacient.sexo == 'masculino') {
+      return "boy";
+    } else {
+      return "girl";
+    }
+  };
   ionViewDidLoad() {
     // console.log('ionViewDidLoad PacientDetailPage');
   }
+
 }
 
 export class Pacient {

@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color="secondary">
+  <ion-navbar [color]="getStylee2(sexo)">
     <ion-title>{{name}}</ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
@@ -19,19 +19,33 @@
 
 
 <ion-content padding>
-    <ion-list *ngFor="let game of _games" (click)="selectGame(game)">
-        <ion-item>
-          <ion-icon name="checkmark" color="green" item-left *ngIf="game.config"></ion-icon>
-          <ion-icon name="close" color="dark" item-left *ngIf="!game.config"></ion-icon>
-          <h2 style="color:#eb2d2d;"><b>{{game.title}}</b></h2>
-          <!-- <p>{{game.title}}</p> -->
-          <ion-note item-end *ngIf="game.config">
-            {{game.config}}
-            <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime> -->
-          </ion-note>
-        </ion-item>
-    
-    
-      </ion-list>
+  <ion-list>
+    <ion-item-sliding *ngFor="let game of _games" #slidingItem>
+      <ion-item>
+        <ion-icon name="checkmark" color="green" item-left *ngIf="game.config"></ion-icon>
+        <ion-icon name="close" color="dark" item-left *ngIf="!game.config"></ion-icon>
+        <h2 [style.color]="getStylee(sexo)"><b>{{game.title}}</b></h2>
+        <!-- <p>{{game.title}}</p> -->
+        <ion-note item-end *ngIf="game.config">
+          {{game.config}}
+          <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime> -->
+        </ion-note>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button *ngIf="game.config" ion-button icon-only outline (click)="deactivateGame(game,id,slidingItem);$event.stopPropagation();">
+          <ion-icon color="danger" name="close"></ion-icon>
+        </button>
+        <button *ngIf="game.config" ion-button icon-only outline (click)="editGame(game);$event.stopPropagation();">
+          <ion-icon name="hammer" color="secondary"></ion-icon>
+        </button>
+        <button *ngIf="!game.config" ion-button icon-only outline (click)="activateGame(game, id);$event.stopPropagation();">
+          <ion-icon name="checkmark" color="green"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+
+  </ion-list>
 
 </ion-content>

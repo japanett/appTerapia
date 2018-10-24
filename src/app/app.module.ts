@@ -10,6 +10,7 @@ import { PacientDetailPage } from '../pages/pacient-detail/pacient-detail';
 import { GamesPage } from '../pages/games/games';
 import { GameDetailPage } from '../pages/game-detail/game-detail';
 import { GameListPage } from '../pages/game-list/game-list';
+import { ActivateGamePage } from '../pages/activate-game/activate-game';
 import { UsersProvider } from '../providers/users/users';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     PacientDetailPage,
     GamesPage,
     GameDetailPage,
-    GameListPage
+    GameListPage,
+    ActivateGamePage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
     PacientDetailPage,
     GamesPage,
     GameListPage,
-    GameDetailPage
+    GameDetailPage,
+    ActivateGamePage
   ],
   providers: [
     StatusBar,

@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar color="secondary">
+  <ion-navbar [color]="getStylee2(model)">
     <ion-title></ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
@@ -17,7 +17,7 @@
       <img src={{model.avatar}}>
     </ion-avatar>
     <ion-label>
-      <h2 class="nam">
+      <h2 [style.color]="getStylee(model)">
         {{model.name}}
       </h2>
       <p>
@@ -27,31 +27,31 @@
   </ion-item>
   <ion-item>
     <ion-label>
-      <h4 class="nam">Idade:</h4>
+      <h4 [style.color]="getStylee(model)">Idade:</h4>
       <h3 class="sub">{{model.age}}</h3>
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-label>
-      <h4 class="nam">Sexo:</h4>
+      <h4 [style.color]="getStylee(model)">Sexo:</h4>
       <h3 class="sub">{{model.sexo}}</h3>
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-label>
-      <h4 class="nam">Patologia:</h4>
+      <h4 [style.color]="getStylee(model)">Patologia:</h4>
       <h3 class="sub">{{model.patologia}}</h3>
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-label>
-      <h4 class="nam">Objetivo:</h4>
+      <h4 [style.color]="getStylee(model)">Objetivo:</h4>
       <h3 class="sub">{{model.objetivo}}</h3>
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-label>
-      <h4 class="nam">Jogos ativos:</h4>
+      <h4 [style.color]="getStylee(model)">Jogos ativos:</h4>
       <h3 class="sub">{{model.gamesNum}}</h3>
     </ion-label>
   </ion-item>
@@ -60,7 +60,7 @@
     <!-- <button ion-button medium round class="butt" (click)="addGame()"><ion-icon name="add"></ion-icon>Adicionar Jogos</button> -->
   </div>
   <ion-fab bottom right>
-    <button ion-fab color="secondary" (click)="addGame(model.name, model.identifier,model.games)">
+    <button ion-fab [color]="getStylee2(model)" (click)="addGame(model.name, model.identifier,model.games,model.sexo, model._id)">
       <ion-icon name="cog"></ion-icon>
     </button>
   </ion-fab>

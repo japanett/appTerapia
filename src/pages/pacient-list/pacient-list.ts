@@ -13,6 +13,7 @@ export class PacientListPage {
   public data: any = [];
   public man = './assets/imgs/man.png';
   public woman = './assets/imgs/woman.png';
+
   model: Pacient;
   constructor(public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new Pacient();
@@ -29,16 +30,21 @@ export class PacientListPage {
               this.data.push({
                 name: result.data[i].name,
                 identifier: result.data[i].identifier,
-                avatar: this.woman
+                avatar: this.woman,
+                sexo:result.data[i].sexo,
+                id:result.data[i].id
               });
             } else {
               this.data.push({
                 name: result.data[i].name,
                 identifier: result.data[i].identifier,
-                avatar: this.man
+                avatar: this.man,
+                sexo:result.data[i].sexo,
+                id:result.data[i].id
               });
             }
           }
+          console.log(this.data);
         }
       })
       .catch((error: any) => {
@@ -104,8 +110,8 @@ export class PacientListPage {
     this.navCtrl.push('CreatePacientPage');
   }
 
-  selectPacient(identifier: string) {
-    var pacientModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier }, { enableBackdropDismiss: false });
+  selectPacient(identifier: string, id: string) {
+    var pacientModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier, id:id }, { enableBackdropDismiss: false });
     pacientModal.present();
 
     // pacientModal.onDidDismiss((data) => {
@@ -133,7 +139,16 @@ export class PacientListPage {
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad PacientListPage');
   // }
+  getStyleSexoo(pacient: any) {
+    // console.log(pacient);
+    if (pacient.sexo == 'masculino') {
+      return "rgba(64, 67, 240, 0.801)";
+    } else {
+      return "#eb2d2d";
+    }
+  };
 }
+
 export class Pacient {
   active: boolean;
   name: string;

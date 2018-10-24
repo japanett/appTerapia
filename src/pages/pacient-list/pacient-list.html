@@ -12,10 +12,10 @@
 </ion-header>
 <ion-content padding>
   <ion-list>
-    <ion-item-sliding *ngFor="let pacient of data" (click)="selectPacient(pacient.identifier)" #slidingItem>
+    <ion-item-sliding *ngFor="let pacient of data" (click)="selectPacient(pacient.identifier, pacient.id)" #slidingItem>
       <ion-item>
         <ion-avatar item-start><img src={{pacient.avatar}}></ion-avatar>
-        <h2 style="color:#eb2d2d;"><b>{{pacient.name}}</b></h2>
+        <h2 [style.color]="getStyleSexoo(pacient)"><b>{{pacient.name}}</b></h2>
         <p>{{pacient.identifier}}</p>
       </ion-item>
 
@@ -29,6 +29,7 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+  
   <ion-fab bottom right>
     <button ion-fab color="secondary" (click)="createPacient()">
       <ion-icon name="person-add"></ion-icon>
