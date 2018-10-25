@@ -2,48 +2,47 @@ import { Component, ViewChild } from '@angular/core';
 import { ModalController, App, ViewController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
 import { Storage } from '@ionic/storage';
-import { PacientListPage } from '../pacient-list/pacient-list';
 
 @IonicPage()
 @Component({
-  selector: 'page-activate-game',
-  templateUrl: 'activate-game.html',
+  selector: 'page-game-config-edit',
+  templateUrl: 'game-config-edit.html',
 })
-export class ActivateGamePage {
-  public game: any;
-  public identifier: string;
-  public firstGame: string = '1';
-  public secondGame: string = '2';
-  public thirdGame: string = '3';
-
+export class GameConfigEditPage {
+  public id:string;
+  public game:any;
+  public identifier:any
+  public firstGame: string;
+  public secondGame: string;
+  public thirdGame: string;
 
   constructor(public app: App, public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.identifier = navParams.get('identifier');
+    this.id = navParams.get('id');
     this.game = navParams.get('game');
+    this.firstGame = this.game.config.split(',')[0];
+    this.secondGame = this.game.config.split(',')[1];
+    this.thirdGame = this.game.config.split(',')[2];
   }
 
-  setConfig(firstGame: string, secondGame: string, thirdGame: string) {
+  editConfig(firstGame: string, secondGame: string, thirdGame: string) {
     let _config = firstGame + ',' + secondGame + ',' + thirdGame;
     return _config;
   }
 
-  activate(identifier: string, game: any) {
+  editGame(id: string, game: any) {
     return new Promise((resolve, reject) => {
-      let config = this.setConfig(this.firstGame, this.secondGame, this.thirdGame);
-      this.userProvider.addGames(identifier, config, game.gameID)
+      let config = this.editConfig(this.firstGame, this.secondGame, this.thirdGame);
+      this.userProvider.updateGameConfig(id, config, game.gameID)
         .then((result: any) => {
           if (result.success === true) {
             this.viewCtrl.dismiss()
               .then(() => {
                 // this.navCtrl.push('PacientListPage');
                 // this.navCtrl.setRoot('PacientListPage');
-                this.toast.create({ message: 'Jogo Ativado !', position: 'botton', duration: 2000 }).present();
+                this.toast.create({ message: 'Jogo atualizado !', position: 'botton', duration: 2000 }).present();
                 resolve();
               });
-          }
-          if (result.success === false) {
-            this.navCtrl.popToRoot();
-            this.toast.create({ message: 'Jogo já foi ativado para o paciente !', position: 'botton', duration: 5000 }).present();
           }
         })
         .catch((error: any) => {
@@ -52,11 +51,13 @@ export class ActivateGamePage {
         });
     });
   }
+
   dismiss() {
     this.viewCtrl.dismiss();
   }
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ActivateGamePage');
+    console.log('ionViewDidLoad GameConfigEditPage');
   }
 
 }

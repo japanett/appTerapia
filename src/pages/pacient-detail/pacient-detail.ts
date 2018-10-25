@@ -35,20 +35,17 @@ export class PacientDetailPage {
       });
   }
 
-  getGames(identifier: string, name: string) {
+  getGames(identifier: string, name: string, id: string) {
     var gamesModal = this.modalCtrl.create(GamesPage, { identifier: identifier, name: name }, { enableBackdropDismiss: false });
     gamesModal.present();
   }
 
   addGame(name: string, identifier: string, games: any, sexo: string, id: string) {
     var _identifier = identifier;
-    var gameListModal = this.modalCtrl.create(GameListPage, { identifier: identifier, name: name, games: games, sexo: sexo, id: id }, { enableBackdropDismiss: false });
+    var gameListModal = this.modalCtrl.create(GameListPage, { identifier: _identifier, name: name, games: games, sexo: sexo, id: id }, { enableBackdropDismiss: false });
     gameListModal.onDidDismiss(() => {
       this.viewCtrl.dismiss();
-      // .then(()=>{
-      //   var gameListModal = this.modalCtrl.create(GameListPage, { identifier: _identifier, name: name, games: games, sexo: sexo, id: id }, { enableBackdropDismiss: false });
-      //   gameListModal.present();
-      // });
+      // gameListModal.present();
     });
     gameListModal.present();
   }
@@ -57,9 +54,6 @@ export class PacientDetailPage {
     this.viewCtrl.dismiss();
   }
 
-  teste() {
-    this.toast.create({ message: 'Nao fiz ainda Burro', position: 'botton', duration: 5000 }).present();
-  }
   getStylee(pacient: any) {
     // console.log(pacient);
     if (pacient.sexo == 'masculino') {

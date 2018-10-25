@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { PacientDetailPage } from '../pages/pacient-detail/pacient-detail';
 import { GamesPage } from '../pages/games/games';
 import { GameDetailPage } from '../pages/game-detail/game-detail';
+import { GameConfigEditPage } from '../pages/game-config-edit/game-config-edit';
 import { GameListPage } from '../pages/game-list/game-list';
 import { ActivateGamePage } from '../pages/activate-game/activate-game';
 import { UsersProvider } from '../providers/users/users';
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     GamesPage,
     GameDetailPage,
     GameListPage,
-    ActivateGamePage
+    ActivateGamePage,
+    GameConfigEditPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
     GamesPage,
     GameListPage,
     GameDetailPage,
-    ActivateGamePage
+    ActivateGamePage,
+    GameConfigEditPage
   ],
   providers: [
     StatusBar,

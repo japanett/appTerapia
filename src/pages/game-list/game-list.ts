@@ -3,6 +3,7 @@ import { Content, ModalController, ItemSliding, AlertController, IonicPage, View
 import { UsersProvider } from './../../providers/users/users';
 import { Storage } from '@ionic/storage';
 import { ActivateGamePage } from './../activate-game/activate-game';
+import { GameConfigEditPage } from './../game-config-edit/game-config-edit';
 
 @IonicPage()
 @Component({
@@ -69,7 +70,14 @@ export class GameListPage {
   };
 
   editGame(game: any) {
-    console.log(game);
+    var gameEditModal = this.modalCtrl.create(GameConfigEditPage, { game: game, identifier: this.identifier, id: this.id }, { enableBackdropDismiss: false });
+    gameEditModal.onDidDismiss(() => {
+      this.viewCtrl.dismiss()
+        .then(() => {
+          console.log('321382190321');
+        })
+    })
+    gameEditModal.present();
   };
 
   deactivateGame(game: any, id: string, slidingItem: ItemSliding) {

@@ -49,7 +49,6 @@ export class UsersProvider {
     });
   }
 
-
   createPacient(name: string, age: number, sexo: string, patologia: string, objetivo: string) {
     return new Promise((resolve, reject) => {
       let data = {
@@ -205,10 +204,29 @@ export class UsersProvider {
         "config": config
       }
       this.storage.get('token').then((token) => {
-        console.log('token');
-        console.log(token);
-        console.log(data);
         let url = this.apiURL + 'user/pacients/games/' + identifier;
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.put(url, data, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              console.log(error);
+              reject(error);
+            });
+      });
+    });
+  }
+
+  updateGameConfig(pacientId: string, config: string, gameID: number) {
+    return new Promise((resolve, reject) => {
+      let data = {
+        "gameID": gameID,
+        "config": config
+      }
+      this.storage.get('token').then((token) => {
+        console.log()
+        let url = this.apiURL + 'user/games/' + pacientId;
         let headers = new HttpHeaders().set('x-access-token', token);
         this.http.put(url, data, { headers })
           .subscribe((result: any) => {
@@ -225,9 +243,6 @@ export class UsersProvider {
     return new Promise((resolve, reject) => {
       let url = (this.apiURL + 'user/' + id + '/games/' + gameID).toString();
       this.storage.get('token').then((token) => {
-        console.log('token');
-        console.log(token);
-        console.log('url: ', url);
         let headers = new HttpHeaders().set('x-access-token', token);
         this.http.put(url, {},{ headers })
           .subscribe((result: any) => {

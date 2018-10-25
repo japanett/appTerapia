@@ -19,20 +19,64 @@
 
 
 <ion-content padding>
-  <ion-list *ngFor="let game of data" (click)="selectGame(game)">
+
+  <ion-item-group>
+    <ion-item-divider>
+      <h2><b>Bola na Caixa</b></h2>
+    </ion-item-divider>
+    <ion-list *ngFor="let game of data">
+      <ion-item *ngIf="game.title == 'Bola na Caixa'" (click)="selectGame(game)">
+        <h3 style="color:#eb2d2d;">{{game.title}}</h3>
+        <ion-note item-end>
+          {{game.date | date: "dd/MM/yyyy HH:mm"}}
+          <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime> -->
+        </ion-note>
+      </ion-item>
+    </ion-list>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <h2><b>Invasão Espacial</b></h2>
+    </ion-item-divider>
+    <ion-list *ngFor="let game of data">
+      <ion-item *ngIf="game.title == 'Invasão Espacial'" (click)="selectGame(game)">
+        <h3 style="color:#eb2d2d;">{{game.title}}</h3>
+        <ion-note item-end>
+          {{game.date | date: "dd/MM/yyyy HH:mm"}}
+          <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime> -->
+        </ion-note>
+      </ion-item>
+    </ion-list>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <h2><b>Jogo da Mercearia</b></h2>
+    </ion-item-divider>
+    <ion-list *ngFor="let game of data">
+      <ion-item *ngIf="game.title == 'Jogo da Mercearia'" (click)="selectGame(game)">
+        <h3 style="color:#eb2d2d;">{{game.title}}</h3>
+        <ion-note item-end>
+          {{game.date | date: "dd/MM/yyyy HH:mm"}}
+          <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime> -->
+        </ion-note>
+      </ion-item>
+    </ion-list>
+  </ion-item-group>
+  <!-- <ion-list *ngFor="let game of data" (click)="selectGame(game)">
     <ion-item>
       <ion-icon name="checkmark" color="green" item-left *ngIf="game.played"></ion-icon>
       <ion-icon name="close" color="dark" item-left *ngIf="!game.played"></ion-icon>
       <h2 style="color:#eb2d2d;"><b>{{game.title}}</b></h2>
-      <!-- <p>{{game.title}}</p> -->
+      <p>{{game.title}}</p>
       <ion-note item-end>
         {{game.date | date: "dd/MM/yyyy HH:mm"}}
-        <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime> -->
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime>
       </ion-note>
     </ion-item>
+  </ion-list> -->
 
-
-  </ion-list>
   <ion-fab bottom right>
     <button ion-fab color="secondary" (click)="addGame(identifier)">
       <ion-icon name="add"></ion-icon>

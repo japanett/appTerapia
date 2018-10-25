@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ModalController, ViewController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { UsersProvider } from './../../providers/users/users';
+import { Storage } from '@ionic/storage';
 
-/**
- * Generated class for the GameDetailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,11 +10,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'game-detail.html',
 })
 export class GameDetailPage {
+  public game: any
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
+  this.game = navParams.get('game');
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 
   ionViewDidLoad() {
+    console.log(this.game);
     console.log('ionViewDidLoad GameDetailPage');
   }
 

@@ -1,18 +1,66 @@
-<!--
-  Generated template for the GameDetailPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>game-detail</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+    <ion-navbar color="primary">
+      <ion-title></ion-title>
+      <ion-buttons left>
+        <button ion-button icon-only (click)="dismiss()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding>
+    <!-- <ion-item>
+      <ion-label>
+        <h2 [style.color]="getStylee(model)">
+          {{game.title}}
+        </h2>
+        <p>
+          {{model.identifier}}
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h4 [style.color]="getStylee(model)">Idade:</h4>
+        <h3 class="sub">{{model.age}}</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h4 [style.color]="getStylee(model)">Sexo:</h4>
+        <h3 class="sub">{{model.sexo}}</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h4 [style.color]="getStylee(model)">Patologia:</h4>
+        <h3 class="sub">{{model.patologia}}</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h4 [style.color]="getStylee(model)">Objetivo:</h4>
+        <h3 class="sub">{{model.objetivo}}</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h4 [style.color]="getStylee(model)">Jogos ativos:</h4>
+        <h3 class="sub">{{model.gamesNum}}</h3>
+      </ion-label>
+    </ion-item>
+    <div style="text-align: center;">
+      <button ion-button icon-start block outline round color="dark" (click)="getGames(model.identifier, model.name)"><ion-icon name="jet"></ion-icon>Jogos</button>
+    </div>
+    <ion-fab bottom right>
+      <button ion-fab [color]="getStylee2(model)" (click)="addGame(model.name, model.identifier,model.games,model.sexo, model._id)">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-fab> -->
+    <!-- <ion-fab bottom right>
+      <button ion-fab (click)="createPacient()"><ion-icon name="person-add"></ion-icon></button>
+    </ion-fab> -->
+  </ion-content>

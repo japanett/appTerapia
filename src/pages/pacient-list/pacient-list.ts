@@ -31,16 +31,16 @@ export class PacientListPage {
                 name: result.data[i].name,
                 identifier: result.data[i].identifier,
                 avatar: this.woman,
-                sexo:result.data[i].sexo,
-                id:result.data[i].id
+                sexo: result.data[i].sexo,
+                id: result.data[i].id
               });
             } else {
               this.data.push({
                 name: result.data[i].name,
                 identifier: result.data[i].identifier,
                 avatar: this.man,
-                sexo:result.data[i].sexo,
-                id:result.data[i].id
+                sexo: result.data[i].sexo,
+                id: result.data[i].id
               });
             }
           }
@@ -111,7 +111,12 @@ export class PacientListPage {
   }
 
   selectPacient(identifier: string, id: string) {
-    var pacientModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier, id:id }, { enableBackdropDismiss: false });
+    var pacientModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier, id: id }, { enableBackdropDismiss: false });
+    pacientModal.onDidDismiss(() => {
+      // pacientModal.present();
+      //fazer esquema de refresh===true
+      // gameListModal.present();
+    });
     pacientModal.present();
 
     // pacientModal.onDidDismiss((data) => {
@@ -139,6 +144,14 @@ export class PacientListPage {
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad PacientListPage');
   // }
+  refresh(identifier: string, id: string) {
+    var pacientModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier, id: id }, { enableBackdropDismiss: false });
+    pacientModal.onDidDismiss(() => {
+      pacientModal.present();
+      // gameListModal.present();
+    });
+    pacientModal.present();
+  }
   getStyleSexoo(pacient: any) {
     // console.log(pacient);
     if (pacient.sexo == 'masculino') {
