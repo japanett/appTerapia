@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color="secondary">
+  <ion-navbar color="primary">
     <ion-title>{{pacientName}}</ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
@@ -26,7 +26,7 @@
     </ion-item-divider>
     <ion-list *ngFor="let game of data">
       <ion-item *ngIf="game.title == 'Bola na Caixa'" (click)="selectGame(game)">
-        <h3 style="color:#eb2d2d;">{{game.title}}</h3>
+        <h3 style="color: #2bad3e;">{{game.title}}</h3>
         <ion-note item-end>
           {{game.date | date: "dd/MM/yyyy HH:mm"}}
           <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime> -->
@@ -41,7 +41,7 @@
     </ion-item-divider>
     <ion-list *ngFor="let game of data">
       <ion-item *ngIf="game.title == 'Invasão Espacial'" (click)="selectGame(game)">
-        <h3 style="color:#eb2d2d;">{{game.title}}</h3>
+        <h3 style="color: #2bad3e;">{{game.title}}</h3>
         <ion-note item-end>
           {{game.date | date: "dd/MM/yyyy HH:mm"}}
           <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime> -->
@@ -56,7 +56,7 @@
     </ion-item-divider>
     <ion-list *ngFor="let game of data">
       <ion-item *ngIf="game.title == 'Jogo da Mercearia'" (click)="selectGame(game)">
-        <h3 style="color:#eb2d2d;">{{game.title}}</h3>
+        <h3 style="color: #2bad3e;">{{game.title}}</h3>
         <ion-note item-end>
           {{game.date | date: "dd/MM/yyyy HH:mm"}}
           <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime> -->
@@ -78,7 +78,7 @@
   </ion-list> -->
 
   <ion-fab bottom right>
-    <button ion-fab color="secondary" (click)="addGame(identifier)">
+    <button ion-fab (click)="addGame(identifier)">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>

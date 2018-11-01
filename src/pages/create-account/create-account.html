@@ -1,5 +1,5 @@
 <ion-header>
-<ion-navbar color="secondary">
+  <ion-navbar color="primary" (click)="goBack()">
     <ion-title>
     </ion-title>
   </ion-navbar>
@@ -7,7 +7,7 @@
 
 <ion-content padding>
 
-  <h1 text-center>Registrar</h1>
+  <h3 text-center>Preencha suas informações</h3>
 
   <ion-list>
     <ion-item>
@@ -31,6 +31,9 @@
     </ion-item>
   </ion-list>
 
-  <button ion-button block round (click)="createAccount()" color="primary">Criar conta</button>
+  <div style="text-align: center;">
+    <button ion-button block round (click)="createAccount()">Cadastrar</button>
+  </div>
+
 
 </ion-content>

@@ -23,13 +23,13 @@
     <ion-item-sliding *ngFor="let game of _games" #slidingItem>
       <ion-item>
         <ion-icon name="checkmark" color="green" item-left *ngIf="game.config"></ion-icon>
-        <ion-icon name="close" color="dark" item-left *ngIf="!game.config"></ion-icon>
+        <ion-icon name="close" color="danger" item-left *ngIf="!game.config"></ion-icon>
         <h2 [style.color]="getStylee(sexo)"><b>{{game.title}}</b></h2>
         <!-- <p>{{game.title}}</p> -->
-        <ion-note item-end *ngIf="game.config">
+        <!-- <ion-note item-end *ngIf="game.config">
           {{game.config}}
-          <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime> -->
-        </ion-note>
+          
+        </ion-note> -->
       </ion-item>
 
       <ion-item-options side="right">

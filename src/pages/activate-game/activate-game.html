@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar color="secondary">
+  <ion-navbar color="primary">
     <ion-title>{{game.title}}</ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
@@ -11,6 +11,7 @@
 
 </ion-header>
 
+<!-- Checar os jogos, cada jogo tem config diferente -->
 
 <ion-content padding>
   <ion-item>
@@ -41,7 +42,7 @@
   </ion-item>
 
   <div style="text-align: center;">
-    <button ion-button color="secondary" ion-button medium round (click)="dismiss()">Cancelar</button>
+    <button ion-button color="danger" ion-button medium round (click)="dismiss()">Cancelar</button>
     <button ion-button color="green" ion-button medium round (click)="activate(identifier, game)">Ativar</button>
   </div>
 </ion-content>

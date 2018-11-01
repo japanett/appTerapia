@@ -24,7 +24,11 @@ export class UserEditPage {
         } else {
           this.toast.create({ message: 'Erro ao atualizar...', position: 'botton', duration: 5000 }).present();
         }
-      })
+      });
+  }
+
+  goBack(){
+    this.navCtrl.pop();
   }
 
 }

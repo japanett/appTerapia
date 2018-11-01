@@ -26,7 +26,7 @@ export class UsersProvider {
 
   // private apiURL = 'http://localhost:3000/api/';
   private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
-  // private apiURL = 'https://terapiaic.herokuapp.com/api/';
+  // private apiURL = 'https://damp-anchorage-23115.herokuapp.com/api/';
 
   constructor(public http: HttpClient, public storage: Storage) { }
 

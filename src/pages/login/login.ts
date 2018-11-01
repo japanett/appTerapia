@@ -40,7 +40,12 @@ export class LoginPage {
         });
     })
   }
+
+  goBack(){
+    this.navCtrl.pop();
+  }
 }
+
 
 export class User {
   login: string;

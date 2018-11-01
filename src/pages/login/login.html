@@ -1,14 +1,11 @@
 <ion-header>
-  <ion-navbar color="secondary">
+  <ion-navbar color="primary" (click)="goBack()"> 
     <ion-title>
-      Home
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
-  <h1>Usuário</h1>
 
   <ion-list>
     <ion-item>
@@ -22,6 +19,8 @@
     </ion-item>
   </ion-list>
 
-  <button ion-button block round (click)="login()" color="primary">Entrar</button>
-
+  <div style="text-align: center;">
+      <button ion-button block round (click)="login()">Entrar</button>
+  </div>
+  
 </ion-content>
