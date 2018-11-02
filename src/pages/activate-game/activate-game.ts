@@ -22,14 +22,30 @@ export class ActivateGamePage {
     this.game = navParams.get('game');
   }
 
-  setConfig(firstGame: string, secondGame: string, thirdGame: string) {
+  setConfigMercearia(firstGame: string, secondGame: string, thirdGame: string) {
     let _config = firstGame + ',' + secondGame + ',' + thirdGame;
     return _config;
   }
-
+  setConfigBola(firstGame: string) {
+    let _config = firstGame;
+    return _config;
+  }
+  setConfigNave(firstGame: string) {
+    let _config = firstGame;
+    return _config;
+  }
   activate(identifier: string, game: any) {
     return new Promise((resolve, reject) => {
-      let config = this.setConfig(this.firstGame, this.secondGame, this.thirdGame);
+      let config;
+      if (game.title == 'Bola na Caixa') {
+        config = this.setConfigBola(this.firstGame);
+      }
+      if (game.title == 'Jogo da Mercearia'){
+        config = this.setConfigMercearia(this.firstGame, this.secondGame, this.thirdGame);
+      }
+      if (game.title == 'Invasão Espacial'){
+        config = this.setConfigNave(this.firstGame);
+      } 
       this.userProvider.addGames(identifier, config, game.gameID)
         .then((result: any) => {
           if (result.success === true) {
@@ -37,6 +53,7 @@ export class ActivateGamePage {
               .then(() => {
                 // this.navCtrl.push('PacientListPage');
                 // this.navCtrl.setRoot('PacientListPage');
+                console.log('config: ',config);
                 this.toast.create({ message: 'Jogo Ativado !', position: 'botton', duration: 2000 }).present();
                 resolve();
               });

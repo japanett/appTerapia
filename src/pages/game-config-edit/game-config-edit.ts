@@ -21,24 +21,42 @@ export class GameConfigEditPage {
     this.id = navParams.get('id');
     this.game = navParams.get('game');
     this.firstGame = this.game.config.split(',')[0];
-    this.secondGame = this.game.config.split(',')[1];
-    this.thirdGame = this.game.config.split(',')[2];
+    this.secondGame = this.game.config.split(',')[1] || this.game.config;
+    this.thirdGame = this.game.config.split(',')[2] || this.game.config;
   }
 
-  editConfig(firstGame: string, secondGame: string, thirdGame: string) {
+  setConfigMercearia(firstGame: string, secondGame: string, thirdGame: string) {
     let _config = firstGame + ',' + secondGame + ',' + thirdGame;
+    return _config;
+  }
+  setConfigBola(firstGame: string) {
+    let _config = firstGame;
+    return _config;
+  }
+  setConfigNave(firstGame: string) {
+    let _config = firstGame;
     return _config;
   }
 
   editGame(id: string, game: any) {
     return new Promise((resolve, reject) => {
-      let config = this.editConfig(this.firstGame, this.secondGame, this.thirdGame);
+      let config;
+      if (game.title == 'Bola na Caixa') {
+        config = this.setConfigBola(this.firstGame);
+      }
+      if (game.title == 'Jogo da Mercearia'){
+        config = this.setConfigMercearia(this.firstGame, this.secondGame, this.thirdGame);
+      }
+      if (game.title == 'Invasão Espacial'){
+        config = this.setConfigNave(this.firstGame);
+      } 
       this.userProvider.updateGameConfig(id, config, game.gameID)
         .then((result: any) => {
           if (result.success === true) {
             this.viewCtrl.dismiss()
               .then(() => {
                 // this.navCtrl.push('PacientListPage');
+                console.log('config: ', config)
                 // this.navCtrl.setRoot('PacientListPage');
                 this.toast.create({ message: 'Jogo atualizado !', position: 'botton', duration: 2000 }).present();
                 resolve();
