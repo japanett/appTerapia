@@ -5,9 +5,7 @@ WORKDIR /usr/src/app
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 COPY package*.json ./
-RUN npm install
-RUN npm install cordova
-RUN npm install ionic
+RUN npm install && npm install cordova && npm install ionic && npm install angular-cli@latest
 # If you are building your code for production
 # RUN npm install --only=production
 # Bundle app source

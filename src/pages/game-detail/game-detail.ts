@@ -25,7 +25,6 @@ export class GameDetailPage {
       let primeiraEtapa,
         segundaEtapa,
         terceiraEtapa;
-      
       _configuration = 'Primeira Etapa: ' + primeiraEtapa + ', Segunda Etapa: ' + segundaEtapa + ', Terceira Etapa: ' + terceiraEtapa;
     }
     else if (game.title == 'Bola na Caixa'){
