@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>{{pacientName}}</ion-title>
+    <ion-title>Relatórios</ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
         <ion-icon name="arrow-back"></ion-icon>
@@ -22,7 +22,7 @@
 
   <ion-item-group>
     <ion-item-divider>
-      <h2><b>Bola na Caixa</b></h2>
+      <h2 style="color: #2f5004;"><b>Bola na Caixa</b></h2>
     </ion-item-divider>
     <ion-list *ngFor="let game of data">
       <ion-item *ngIf="game.title == 'Bola na Caixa'" (click)="selectGame(game)">
@@ -37,7 +37,7 @@
 
   <ion-item-group>
     <ion-item-divider>
-      <h2><b>Invasão Espacial</b></h2>
+      <h2 style="color: #2f5004;"><b>Invasão Espacial</b></h2>
     </ion-item-divider>
     <ion-list *ngFor="let game of data">
       <ion-item *ngIf="game.title == 'Invasão Espacial'" (click)="selectGame(game)">
@@ -52,7 +52,7 @@
 
   <ion-item-group>
     <ion-item-divider>
-      <h2><b>Jogo da Mercearia</b></h2>
+      <h2 style="color: #2f5004;"><b>Jogo da Mercearia</b></h2>
     </ion-item-divider>
     <ion-list *ngFor="let game of data">
       <ion-item *ngIf="game.title == 'Jogo da Mercearia'" (click)="selectGame(game)">

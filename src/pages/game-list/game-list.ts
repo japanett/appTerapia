@@ -25,8 +25,6 @@ export class GameListPage {
   bola: Game;
   public ordemJogos: any = [];
 
-
-
   constructor(public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public storage: Storage, private toast: ToastController, private userProvider: UsersProvider) {
     this.name = navParams.get('name');
     this.sexo = navParams.get('sexo');
@@ -53,6 +51,7 @@ export class GameListPage {
         if (game.title == x.title) {
           game.config = x.config;
           game.gameID = x.gameID;
+          game.time = x.time;
         }
       });
     });
@@ -146,4 +145,5 @@ export class Game {
   gameID: string;
   config: string;
   title: string;
+  time:string;
 };

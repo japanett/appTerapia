@@ -25,7 +25,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class UsersProvider {
 
   // private apiURL = 'http://localhost:3000/api/';
-  private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
+  private apiURL = 'http://192.168.0.158:3000/api/';
+  // private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
   // private apiURL = 'https://damp-anchorage-23115.herokuapp.com/api/';
 
   constructor(public http: HttpClient, public storage: Storage) { }
@@ -175,8 +176,6 @@ export class UsersProvider {
             (error) => {
               reject(error);
             });
-
-
       });
     });
   }
@@ -197,11 +196,12 @@ export class UsersProvider {
     });
   }
 
-  addGames(identifier: string, config: string, gameID: number) {
+  addGames(identifier: string, config: string, gameID: number,  time: string) {
     return new Promise((resolve, reject) => {
       let data = {
         "toPlay": gameID,
-        "config": config
+        "config": config,
+        "time": time
       }
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients/games/' + identifier;
@@ -218,14 +218,14 @@ export class UsersProvider {
     });
   }
 
-  updateGameConfig(pacientId: string, config: string, gameID: number) {
+  updateGameConfig(pacientId: string, config: string, gameID: number, time:string) {
     return new Promise((resolve, reject) => {
       let data = {
         "gameID": gameID,
-        "config": config
+        "config": config,
+        "time": time
       }
       this.storage.get('token').then((token) => {
-        console.log()
         let url = this.apiURL + 'user/games/' + pacientId;
         let headers = new HttpHeaders().set('x-access-token', token);
         this.http.put(url, data, { headers })

@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar [color]="getStylee2(model)">
+  <ion-navbar color="primary">
     <ion-title></ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
@@ -55,16 +55,19 @@
       <h3 class="sub">{{model.gamesNum}}</h3>
     </ion-label>
   </ion-item>
-  <div style="text-align: center;">
-    <button ion-button icon-start block outline round color="dark" (click)="getGames(model.identifier, model.name)"><ion-icon name="jet"></ion-icon>Jogos</button>
-    <!-- <button ion-button medium round class="butt" (click)="addGame()"><ion-icon name="add"></ion-icon>Adicionar Jogos</button> -->
-  </div>
-  <ion-fab bottom right>
-    <button ion-fab [color]="getStylee2(model)" (click)="addGame(model.name, model.identifier,model.games,model.sexo, model._id)">
-      <ion-icon name="cog"></ion-icon>
-    </button>
-  </ion-fab>
-  <!-- <ion-fab bottom right>
-    <button ion-fab (click)="createPacient()"><ion-icon name="person-add"></ion-icon></button>
-  </ion-fab> -->
+
+  <ion-row text-center>
+    <ion-col col-4></ion-col>
+    <ion-col col-3>
+      <button ion-fab fab-fixed color="secondary" (click)="getGames(model.identifier, model.name)">
+        <ion-icon name="archive"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col col-3>
+      <button ion-fab fab-fixed color="danger" (click)="addGame(model.name, model.identifier,model.games,model.sexo, model._id)">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col col-4></ion-col>
+  </ion-row>
 </ion-content>

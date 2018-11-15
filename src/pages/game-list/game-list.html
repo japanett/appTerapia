@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar [color]="getStylee2(sexo)">
-    <ion-title>Ativar Jogos</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Jogos</ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
         <ion-icon name="arrow-back"></ion-icon>
@@ -25,11 +25,6 @@
         <ion-icon name="checkmark" color="green" item-left *ngIf="game.config"></ion-icon>
         <ion-icon name="close" color="danger" item-left *ngIf="!game.config"></ion-icon>
         <h2 [style.color]="getStylee(sexo)"><b>{{game.title}}</b></h2>
-        <!-- <p>{{game.title}}</p> -->
-        <!-- <ion-note item-end *ngIf="game.config">
-          {{game.config}}
-          
-        </ion-note> -->
       </ion-item>
 
       <ion-item-options side="right">

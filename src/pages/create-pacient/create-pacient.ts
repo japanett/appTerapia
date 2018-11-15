@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, ViewController, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
 
 @IonicPage()
@@ -10,7 +10,7 @@ import { UsersProvider } from './../../providers/users/users';
 export class CreatePacientPage {
   model: Pacient;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new Pacient();
     this.model.name = '';
     this.model.age;
@@ -22,7 +22,9 @@ export class CreatePacientPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreatePacientPage');
   }
-
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
   createPacient() {
     this.userProvider.createPacient(this.model.name, this.model.age, this.model.sexo, this.model.patologia, this.model.objetivo)
       .then((result: any) => {

@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>{{game.title}}</ion-title>
+    <ion-title>Ativar {{game.title}}</ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
         <ion-icon name="arrow-back"></ion-icon>
@@ -16,7 +16,7 @@
 <ion-content padding >
   <div *ngIf="game.title == 'Jogo da Mercearia'">
       <ion-item>
-          <ion-label>Primeiro Jogo</ion-label>
+          <ion-label>Primeira Etapa</ion-label>
           <ion-select [(ngModel)]="firstGame">
             <ion-option value="2" checked>Mão Direita</ion-option>
             <ion-option value="1">Mão Esquerda</ion-option>
@@ -25,7 +25,7 @@
         </ion-item>
       
         <ion-item>
-          <ion-label>Segundo Jogo</ion-label>
+          <ion-label>Segunda Etapa</ion-label>
           <ion-select [(ngModel)]="secondGame">
             <ion-option value="2">Mão Direita</ion-option>
             <ion-option value="1" checked>Mão Esquerda</ion-option>
@@ -34,12 +34,25 @@
         </ion-item>
       
         <ion-item>
-          <ion-label>Terceiro Jogo</ion-label>
+          <ion-label>Terceira Etapa</ion-label>
           <ion-select [(ngModel)]="thirdGame">
             <ion-option value="2">Mão Direita</ion-option>
             <ion-option value="1">Mão Esquerda</ion-option>
             <ion-option value="3" checked>Mãos Cruzadas</ion-option>
           </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Quarta Etapa</ion-label>
+          <ion-select [(ngModel)]="fourthGame">
+            <ion-option value="F" checked>Não</ion-option>
+            <ion-option value="T">Sim</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked><h2>Tempo de cada etapa (segundos), EX: 60</h2></ion-label>
+          <ion-input type="text" name="time" [(ngModel)]="time"></ion-input>
         </ion-item>
   </div>
 
