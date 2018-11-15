@@ -12,7 +12,7 @@ import { GameListPage } from './../game-list/game-list';
 })
 export class PacientDetailPage {
   model: Pacient;
-  // public avatar = '';
+
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new Pacient();
     this.getPacient(navParams.get('identifier'));
@@ -44,8 +44,8 @@ export class PacientDetailPage {
     var _identifier = identifier;
     var gameListModal = this.modalCtrl.create(GameListPage, { identifier: _identifier, name: name, games: games, sexo: sexo, id: id }, { enableBackdropDismiss: false });
     gameListModal.onDidDismiss(() => {
-      this.viewCtrl.dismiss();
-      // gameListModal.present();
+      console.log('game-list on didDismiss');
+      this.getPacient(_identifier);
     });
     gameListModal.present();
   }
@@ -62,14 +62,7 @@ export class PacientDetailPage {
       return "#eb2d2d";
     }
   };
-  getStylee2(pacient: any) {
-    // console.log(pacient);
-    if (pacient.sexo == 'masculino') {
-      return "boy";
-    } else {
-      return "girl";
-    }
-  };
+
   ionViewDidLoad() {
     // console.log('ionViewDidLoad PacientDetailPage');
   }

@@ -52,23 +52,6 @@ export class PacientListPage {
       });
   }
 
-  getPacient(identifier: string) {
-    return new Promise((resolve, reject) => {
-      this.userProvider.getPacient(identifier)
-        .then((result: any) => {
-          if (result.success === true) {
-            // this.model = result.data[0];
-            resolve(result.data[0]);
-          } else {
-            resolve(false);
-          }
-        })
-        .catch((error: any) => {
-          reject(error);
-          this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
-        });
-    });
-  }
   deletePacient(identifier: string, name: string, slidingItem: ItemSliding) {
     const confirm = this.alertCtrl.create({
       title: 'Remover paciente ?',
@@ -113,47 +96,15 @@ export class PacientListPage {
   selectPacient(identifier: string, id: string) {
     var pacientModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier, id: id }, { enableBackdropDismiss: false });
     pacientModal.onDidDismiss(() => {
-      // pacientModal.present();
-      //fazer esquema de refresh===true
-      // gameListModal.present();
-    });
-    pacientModal.present();
-
-    // pacientModal.onDidDismiss((data) => {
-    //   console.log("I have dismissed.");
-    //   console.log(data);
-    // });
-
-    // pacientModal.onWillDismiss((data) => {
-    //   console.log("I'm about to dismiss");
-    //   console.log(data);
-    // });
-    // this.getPacient(identifier)
-    //   .then((result) => {
-    //     if (result) {
-    //       console.log('=== result ===');
-    //       console.log(result);
-    //       this.model = result[0];
-    //       console.log('=== model ===');
-    //       console.log(this.model);
-    // this.model = result;
-    // }
-    // });
-    // this.toast.create({ message: this.model.name, position: 'botton', duration: 5000 }).present();
-  }
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad PacientListPage');
-  // }
-  refresh(identifier: string, id: string) {
-    var pacientModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier, id: id }, { enableBackdropDismiss: false });
-    pacientModal.onDidDismiss(() => {
-      pacientModal.present();
-      // gameListModal.present();
-    });
+          console.log('pacient-list on didDismiss');
+          this.data = [];
+          this.getPacients();
+          console.log(this.data);
+    })
     pacientModal.present();
   }
+
   getStyleSexoo(pacient: any) {
-    // console.log(pacient);
     if (pacient.sexo == 'masculino') {
       return "rgba(64, 67, 240, 0.801)";
     } else {
