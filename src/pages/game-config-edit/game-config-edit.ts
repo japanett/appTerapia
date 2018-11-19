@@ -69,6 +69,7 @@ export class GameConfigEditPage {
               if (result.success === true) {
                 this.viewCtrl.dismiss()
                   .then(() => {
+                    this.navCtrl.popToRoot();
                     this.toast.create({ message: 'Jogo atualizado !', position: 'botton', duration: 2000 }).present();
                     resolve();
                   });

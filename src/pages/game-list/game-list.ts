@@ -58,24 +58,12 @@ export class GameListPage {
   };
 
   activateGame(game: any, id: string) {
-    var pacientModal = this.modalCtrl.create(ActivateGamePage, { game: game, identifier: this.identifier }, { enableBackdropDismiss: false });
-    pacientModal.onDidDismiss(() => {
-      this.viewCtrl.dismiss()
-        .then(() => {
-          console.log('321382190321');
-        })
-    })
-    pacientModal.present();
+    var activateGameModal = this.modalCtrl.create(ActivateGamePage, { game: game, identifier: this.identifier }, { enableBackdropDismiss: false });
+    activateGameModal.present();
   };
 
   editGame(game: any) {
     var gameEditModal = this.modalCtrl.create(GameConfigEditPage, { game: game, identifier: this.identifier, id: this.id }, { enableBackdropDismiss: false });
-    gameEditModal.onDidDismiss(() => {
-      this.viewCtrl.dismiss()
-        .then(() => {
-          console.log('321382190321');
-        })
-    })
     gameEditModal.present();
   };
 
@@ -97,7 +85,6 @@ export class GameListPage {
               this.userProvider.removePacientGame(id, game.gameID)
                 .then((result: any) => {
                   if (result.success === true) {
-                    // this.navCtrl.setRoot(this.navCtrl.getActive().component);
                     this.viewCtrl.dismiss();
                     this.toast.create({ message: 'Jogo Desativado !', position: 'botton', duration: 3000 }).present();
                   }
@@ -111,7 +98,6 @@ export class GameListPage {
         }
       ]
     });
-    confirm.onDidDismiss(() => { console.log('dismissss') });
     confirm.present();
   };
 
@@ -120,7 +106,6 @@ export class GameListPage {
   }
 
   getStylee(sexo: string) {
-    // console.log(pacient);
     if (sexo == 'masculino') {
       return "rgba(64, 67, 240, 0.801)";
     } else {
@@ -128,17 +113,12 @@ export class GameListPage {
     }
   };
   getStylee2(sexo: string) {
-    // console.log(pacient);
     if (sexo == 'masculino') {
       return "boy";
     } else {
       return "girl";
     }
   };
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GameListPage222');
-  }
 
 }
 export class Game {

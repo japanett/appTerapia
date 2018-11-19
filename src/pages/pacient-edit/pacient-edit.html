@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Editar Paciente</ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h1 text-center>Informações</h1>
+
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Nome:</ion-label>
+      <ion-input type="text" name="name" [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Idade:</ion-label>
+      <ion-input type="text" name="age" [(ngModel)]="age"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Sexo:</ion-label>
+      <ion-select name="sexo" [(ngModel)]="sexo">
+        <ion-option value="masculino">Masculino</ion-option>
+        <ion-option value="feminino">Feminino</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Patologia:</ion-label>
+      <ion-input type="text" name="patologia" [(ngModel)]="patologia"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Objetivo:</ion-label>
+      <ion-input type="text" name="objetivo" [(ngModel)]="objetivo"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div style="text-align: center;">
+    <button ion-button color="danger" ion-button medium round (click)="dismiss()">Cancelar</button>
+    <button ion-button color="green" ion-button medium round (click)="editPacient()">Confirmar</button>
+  </div>
+</ion-content>

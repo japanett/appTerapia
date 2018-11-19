@@ -44,7 +44,6 @@ export class PacientDetailPage {
     var _identifier = identifier;
     var gameListModal = this.modalCtrl.create(GameListPage, { identifier: _identifier, name: name, games: games, sexo: sexo, id: id }, { enableBackdropDismiss: false });
     gameListModal.onDidDismiss(() => {
-      console.log('game-list on didDismiss');
       this.getPacient(_identifier);
     });
     gameListModal.present();

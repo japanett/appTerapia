@@ -59,27 +59,9 @@
         <h3 style="color: #2bad3e;">{{game.title}}</h3>
         <ion-note item-end>
           {{game.date | date: "dd/MM/yyyy HH:mm"}}
-          <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime> -->
         </ion-note>
       </ion-item>
     </ion-list>
   </ion-item-group>
-  <!-- <ion-list *ngFor="let game of data" (click)="selectGame(game)">
-    <ion-item>
-      <ion-icon name="checkmark" color="green" item-left *ngIf="game.played"></ion-icon>
-      <ion-icon name="close" color="dark" item-left *ngIf="!game.played"></ion-icon>
-      <h2 style="color:#eb2d2d;"><b>{{game.title}}</b></h2>
-      <p>{{game.title}}</p>
-      <ion-note item-end>
-        {{game.date | date: "dd/MM/yyyy HH:mm"}}
-        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime>
-      </ion-note>
-    </ion-item>
-  </ion-list> -->
-  
-  <!-- <ion-buttons left>
-    <button ion-button outline icon-only (click)="teste()">
-      <ion-icon name="arrow-back"></ion-icon>
-    </button>
-  </ion-buttons> -->
+
 </ion-content>

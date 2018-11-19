@@ -3,6 +3,7 @@ import { ModalController, ItemSliding, AlertController, IonicPage, NavController
 import { UsersProvider } from './../../providers/users/users';
 import { Storage } from '@ionic/storage';
 import { PacientDetailPage } from './../pacient-detail/pacient-detail';
+import { PacientEditPage } from './../pacient-edit/pacient-edit';
 
 @IonicPage()
 @Component({
@@ -24,6 +25,9 @@ export class PacientListPage {
   getPacients() {
     this.userProvider.getPacients()
       .then((result: any) => {
+        if (this.data.length > 0) {
+          this.data = [];
+        }
         if (result.success === true) {
           for (let i = 0; i < result.data.length; i++) {
             if (result.data[i].sexo.toLowerCase().trim() == 'feminino') {
@@ -32,7 +36,10 @@ export class PacientListPage {
                 identifier: result.data[i].identifier,
                 avatar: this.woman,
                 sexo: result.data[i].sexo,
-                id: result.data[i].id
+                id: result.data[i].id,
+                age: result.data[i].age,
+                objetivo: result.data[i].objetivo,
+                patologia: result.data[i].patologia
               });
             } else {
               this.data.push({
@@ -40,7 +47,10 @@ export class PacientListPage {
                 identifier: result.data[i].identifier,
                 avatar: this.man,
                 sexo: result.data[i].sexo,
-                id: result.data[i].id
+                id: result.data[i].id,
+                age: result.data[i].age,
+                objetivo: result.data[i].objetivo,
+                patologia: result.data[i].patologia
               });
             }
           }
@@ -86,8 +96,12 @@ export class PacientListPage {
     confirm.present();
   }
 
-  editPacient(identifier: string, name: string) {
-    this.toast.create({ message: 'A fazer', position: 'botton', duration: 5000 }).present();
+  editPacient(pacient:any) {
+    var pacientEditModal = this.modalCtrl.create(PacientEditPage, { pacient: pacient }, { enableBackdropDismiss: false });
+    pacientEditModal.onDidDismiss(()=>{
+      this.getPacients();
+    })
+    pacientEditModal.present();
   }
   createPacient() {
     this.navCtrl.push('CreatePacientPage');
@@ -95,12 +109,6 @@ export class PacientListPage {
 
   selectPacient(identifier: string, id: string) {
     var pacientModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier, id: id }, { enableBackdropDismiss: false });
-    pacientModal.onDidDismiss(() => {
-          console.log('pacient-list on didDismiss');
-          this.data = [];
-          this.getPacients();
-          console.log(this.data);
-    })
     pacientModal.present();
   }
 

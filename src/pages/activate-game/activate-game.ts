@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ModalController, App, ViewController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
 import { Storage } from '@ionic/storage';
-// import { PacientListPage } from '../pacient-list/pacient-list';
 
 @IonicPage()
 @Component({
@@ -63,9 +62,10 @@ export class ActivateGamePage {
               if (result.success === true) {
                 this.viewCtrl.dismiss()
                   .then(() => {
+                    this.navCtrl.popToRoot();
                     this.toast.create({ message: 'Jogo Ativado !', position: 'botton', duration: 2000 }).present();
                     resolve();
-                  });
+                  })
               }
               if (result.success === false) {
                 this.navCtrl.popToRoot();
@@ -96,9 +96,5 @@ export class ActivateGamePage {
       }
     })
   }
-
-  // ionViewDidLoad() {
-    // console.log('ionViewDidLoad ActivateGamePage');
-  // }
 
 }

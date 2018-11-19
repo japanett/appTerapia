@@ -12,6 +12,7 @@ import { GameDetailPage } from '../pages/game-detail/game-detail';
 import { GameConfigEditPage } from '../pages/game-config-edit/game-config-edit';
 import { GameListPage } from '../pages/game-list/game-list';
 import { ActivateGamePage } from '../pages/activate-game/activate-game';
+import { PacientEditPage } from '../pages/pacient-edit/pacient-edit';
 import { UsersProvider } from '../providers/users/users';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     GameDetailPage,
     GameListPage,
     ActivateGamePage,
-    GameConfigEditPage
+    GameConfigEditPage,
+    PacientEditPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     GameListPage,
     GameDetailPage,
     ActivateGamePage,
-    GameConfigEditPage
+    GameConfigEditPage,
+    PacientEditPage
   ],
   providers: [
     StatusBar,
