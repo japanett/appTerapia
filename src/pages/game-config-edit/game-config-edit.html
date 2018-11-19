@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Editar {{game.title}}</ion-title>
+    <ion-title>Editar Jogo</ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
         <ion-icon name="arrow-back"></ion-icon>
@@ -50,7 +50,7 @@
           </ion-item>
   
           <ion-item>
-            <ion-label stacked><h2>Tempo de cada etapa (segundos), EX: 60</h2></ion-label>
+            <ion-label stacked><h2>Tempo/Etapa em segundos. EX: 60</h2></ion-label>
             <ion-input type="text" name="time" [(ngModel)]="time"></ion-input>
           </ion-item>
     </div>

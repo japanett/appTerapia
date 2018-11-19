@@ -21,12 +21,12 @@
 <ion-content padding>
 
   <ion-item-group>
-    <ion-item-divider>
+    <!-- <ion-item-divider>
       <h2 style="color: #2f5004;"><b>Bola na Caixa</b></h2>
-    </ion-item-divider>
+    </ion-item-divider> -->
     <ion-list *ngFor="let game of data">
       <ion-item *ngIf="game.title == 'Bola na Caixa'" (click)="selectGame(game)">
-        <h3 style="color: #2bad3e;">{{game.title}}</h3>
+        <h3 style="color: #cedacf;">{{game.title}}</h3>
         <ion-note item-end>
           {{game.date | date: "dd/MM/yyyy HH:mm"}}
           <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime> -->
@@ -36,12 +36,12 @@
   </ion-item-group>
 
   <ion-item-group>
-    <ion-item-divider>
+    <!-- <ion-item-divider>
       <h2 style="color: #2f5004;"><b>Invasão Espacial</b></h2>
-    </ion-item-divider>
+    </ion-item-divider> -->
     <ion-list *ngFor="let game of data">
       <ion-item *ngIf="game.title == 'Invasão Espacial'" (click)="selectGame(game)">
-        <h3 style="color: #2bad3e;">{{game.title}}</h3>
+        <h3 style="color: #cedacf;">{{game.title}}</h3>
         <ion-note item-end>
           {{game.date | date: "dd/MM/yyyy HH:mm"}}
           <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="game.date"></ion-datetime> -->
@@ -51,12 +51,12 @@
   </ion-item-group>
 
   <ion-item-group>
-    <ion-item-divider>
-      <h2 style="color: #2f5004;"><b>Jogo da Mercearia</b></h2>
-    </ion-item-divider>
+    <!-- <ion-item-divider>
+      <h2 style="color: #fefffe;"><b>Jogo da Mercearia</b></h2>
+    </ion-item-divider> -->
     <ion-list *ngFor="let game of data">
       <ion-item *ngIf="game.title == 'Jogo da Mercearia'" (click)="selectGame(game)">
-        <h3 style="color: #2bad3e;">{{game.title}}</h3>
+        <h3 style="color: #cedacf;">{{game.title}}</h3>
         <ion-note item-end>
           {{game.date | date: "dd/MM/yyyy HH:mm"}}
         </ion-note>

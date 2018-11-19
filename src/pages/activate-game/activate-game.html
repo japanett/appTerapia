@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Ativar {{game.title}}</ion-title>
+    <ion-title>Ativar Jogo</ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
         <ion-icon name="arrow-back"></ion-icon>
@@ -10,8 +10,6 @@
   </ion-navbar>
 
 </ion-header>
-
-<!-- Checar os jogos, cada jogo tem config diferente -->
 
 <ion-content padding >
   <div *ngIf="game.title == 'Jogo da Mercearia'">
@@ -51,7 +49,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-label stacked><h2>Tempo de cada etapa (segundos), EX: 60</h2></ion-label>
+          <ion-label stacked><h2>Tempo/Etapa em segundos. EX: 60</h2></ion-label>
           <ion-input type="text" name="time" [(ngModel)]="time"></ion-input>
         </ion-item>
   </div>

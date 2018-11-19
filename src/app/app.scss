@@ -1,6 +1,18 @@
 // http://ionicframework.com/docs/theming/
 
+ion-content {
+  background: $app-background;
+}
 
+ion-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 90px 1px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These

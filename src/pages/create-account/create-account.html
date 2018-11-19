@@ -1,15 +1,91 @@
 <ion-header>
   <ion-navbar color="primary" (click)="goBack()">
     <ion-title>
+      Cadastro
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="form-content">
 
   <h3 text-center>Preencha suas informações</h3>
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="createAccount(validations_form.value)">
 
-  <ion-list>
+    <ion-item>
+      <ion-label floating color="primary">Login</ion-label>
+      <ion-input type="text" formControlName="login" required></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.login">
+        <div class="error-message" *ngIf="validations_form.get('login').hasError(validation.type) && (validations_form.get('login').dirty || validations_form.get('login').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label floating color="primary">Nome</ion-label>
+      <ion-input type="text" formControlName="name" required></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.name">
+        <div class="error-message" *ngIf="validations_form.get('name').hasError(validation.type) && (validations_form.get('name').dirty || validations_form.get('name').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label floating color="primary">Email</ion-label>
+      <ion-input [textMask]="emailMask" type="text" formControlName="email" required></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <div formGroupName="matching_passwords">
+      <ion-item>
+        <ion-label floating color="primary">Senha</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div class="error-message" *ngIf="validations_form.get('matching_passwords').get('password').hasError(validation.type) && (validations_form.get('matching_passwords').get('password').dirty || validations_form.get('matching_passwords').get('password').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item>
+        <ion-label floating color="primary">Confirme a senha</ion-label>
+        <ion-input type="password" formControlName="confirm_password"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.confirm_password">
+          <div class="error-message" *ngIf="validations_form.get('matching_passwords').get('confirm_password').hasError(validation.type) && (validations_form.get('matching_passwords').get('confirm_password').dirty || validations_form.get('matching_passwords').get('confirm_password').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.matching_passwords">
+        <div class="error-message" *ngIf="validations_form.get('matching_passwords').hasError(validation.type) && (validations_form.get('matching_passwords').get('confirm_password').dirty || validations_form.get('matching_passwords').get('confirm_password').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <div style="text-align: center; border-top: 20px">
+      <button ion-button full type="submit" round [disabled]="!validations_form.valid" class="myButton">Cadastrar</button>
+    </div>
+  </form>
+
+  <!-- <ion-list>
     <ion-item>
       <ion-label stacked>Nome</ion-label>
       <ion-input type="text" name="name" [(ngModel)]="model.name"></ion-input>
@@ -32,8 +108,8 @@
   </ion-list>
 
   <div style="text-align: center;">
-    <button ion-button block round (click)="createAccount()">Cadastrar</button>
-  </div>
-
+    <button ion-button color="danger" ion-button medium round (click)="goBack()">Cancelar</button>
+    <button ion-button color="green" ion-button medium round (click)="createAccount()">Criar Conta</button>
+  </div> -->
 
 </ion-content>

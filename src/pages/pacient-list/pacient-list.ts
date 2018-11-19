@@ -54,7 +54,6 @@ export class PacientListPage {
               });
             }
           }
-          console.log(this.data);
         }
       })
       .catch((error: any) => {

@@ -16,6 +16,8 @@ import { PacientEditPage } from '../pages/pacient-edit/pacient-edit';
 import { UsersProvider } from '../providers/users/users';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
+import { ValidatorsModule } from '../validators/validators.module';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -32,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
+    ValidatorsModule,
     IonicStorageModule.forRoot({
       name: '__mydb',
          driverOrder: ['indexeddb', 'sqlite', 'websql']

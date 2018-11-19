@@ -31,7 +31,6 @@ export class PacientEditPage {
           this.viewCtrl.dismiss()
             .then(() => {
               this.toast.create({ message: 'Paciente Atualizado !', position: 'botton', duration: 5000 }).present();
-              // this.navCtrl.popToRoot();
             })
         } else {
           this.toast.create({ message: 'Preencha todos os campos corretamente', position: 'botton', duration: 5000 }).present();

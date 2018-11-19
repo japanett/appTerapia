@@ -5,7 +5,7 @@
     </ion-toolbar>
   </ion-header>
  
-  <ion-content>
+  <ion-content >
     <ion-list>
       <button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">
           <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
