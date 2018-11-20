@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar>
     <ion-title>
       APP Games VR
     </ion-title>
@@ -8,12 +8,11 @@
 
 <ion-content padding>
   <div class="logo">
-    <img src="./assets/imgs/mack.png">
-    <!-- <h1 text-center margin-bottom>APP Terapeuta</h1> -->
+    <img src="./assets/imgs/vr.png">
   </div>
 
-  <div class="body" style="text-align: center;">
-    <button ion-button block round (click)="openCreateAccount()">Criar conta</button>
-    <button ion-button block round (click)="openLogin()">Login</button>
+  <div style="text-align: center;margin-top:25px;">
+    <button ion-button class="customButton" round block (click)="openCreateAccount()">Criar Terapeuta</button>
+    <button ion-button class="customButton" round block (click)="openLogin()">Entrar</button>
   </div>
 </ion-content>

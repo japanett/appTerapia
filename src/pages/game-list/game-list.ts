@@ -105,21 +105,6 @@ export class GameListPage {
     this.viewCtrl.dismiss();
   }
 
-  getStylee(sexo: string) {
-    if (sexo == 'masculino') {
-      return "rgba(64, 67, 240, 0.801)";
-    } else {
-      return "#eb2d2d";
-    }
-  };
-  getStylee2(sexo: string) {
-    if (sexo == 'masculino') {
-      return "boy";
-    } else {
-      return "girl";
-    }
-  };
-
 }
 export class Game {
   gameID: string;

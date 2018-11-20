@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar>
     <ion-title></ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
@@ -18,48 +18,49 @@
     </ion-avatar>
     <ion-label>
       <h2 [style.color]="getStylee(model)">
-        {{model.name}}
+        <b>{{model.name}}</b>
       </h2>
       <p>
-        {{model.identifier}}
+        <b>{{model.identifier}}</b>
       </p>
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-label>
-      <h4 [style.color]="getStylee(model)">Idade:</h4>
+      <h4 [style.color]="getStylee(model)"><b>Idade:</b></h4>
       <h3 class="sub">{{model.age}}</h3>
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-label>
-      <h4 [style.color]="getStylee(model)">Sexo:</h4>
+      <h4 [style.color]="getStylee(model)"><b>Sexo:</b></h4>
       <h3 class="sub">{{model.sexo}}</h3>
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-label>
-      <h4 [style.color]="getStylee(model)">Patologia:</h4>
+      <h4 [style.color]="getStylee(model)"><b>Patologia:</b></h4>
       <h3 class="sub">{{model.patologia}}</h3>
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-label>
-      <h4 [style.color]="getStylee(model)">Objetivo:</h4>
+      <h4 [style.color]="getStylee(model)"><b>Objetivo:</b></h4>
       <h3 class="sub">{{model.objetivo}}</h3>
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-label>
-      <h4 [style.color]="getStylee(model)">Jogos ativos:</h4>
+      <h4 [style.color]="getStylee(model)"><b>Jogos ativos:</b></h4>
       <h3 class="sub">{{model.gamesNum}}</h3>
     </ion-label>
   </ion-item>
 
+ <div style="margin-top: 25px;">
   <ion-row text-center>
     <ion-col col-4></ion-col>
     <ion-col col-3>
-      <button ion-fab fab-fixed color="primary" (click)="getGames(model.identifier, model.name)">
+      <button ion-fab fab-fixed color="light" (click)="getGames(model.identifier, model.name)">
         <ion-icon name="archive"></ion-icon>
       </button>
     </ion-col>
@@ -70,4 +71,5 @@
     </ion-col>
     <ion-col col-4></ion-col>
   </ion-row>
+ </div>
 </ion-content>

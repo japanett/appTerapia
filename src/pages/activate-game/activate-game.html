@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar>
     <ion-title>Ativar Jogo</ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
@@ -71,8 +71,8 @@
           </ion-select>
         </ion-item>
   </div>
-  <div style="text-align: center;">
-    <button ion-button color="danger" ion-button medium round (click)="dismiss()">Cancelar</button>
-    <button ion-button color="green" ion-button medium round (click)="activate(identifier, game)">Ativar</button>
+  <div style="text-align: center;margin-top: 15px;">
+    <button ion-button class="backButton" ion-button block round (click)="dismiss()">Cancelar</button>
+    <button ion-button class="customButton" ion-button block round (click)="activate(identifier, game)">Ativar</button>
   </div>
 </ion-content>

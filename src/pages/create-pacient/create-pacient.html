@@ -1,14 +1,12 @@
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar>
     <ion-title>Registrar Paciente</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-  <h1 text-center>Informações</h1>
-
   <ion-list>
     <ion-item>
       <ion-label stacked>Nome:</ion-label>
@@ -38,10 +36,9 @@
       <ion-input type="text" name="objetivo" [(ngModel)]="model.objetivo"></ion-input>
     </ion-item>
   </ion-list>
-  <ion-fab bottom right>
-    <button ion-fab color="primary" (click)="createPacient()">
-      <ion-icon name="checkmark-circle-outline"></ion-icon>
-    </button>
-  </ion-fab>
 
+  <div style="text-align: center;">
+    <button ion-button class="customButton" ion-button block round (click)="createPacient()">Confirmar</button>
+    <button ion-button class="backButton" ion-button block round (click)="dismiss()">Cancelar</button>
+  </div>
 </ion-content>

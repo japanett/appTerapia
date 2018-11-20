@@ -61,6 +61,7 @@ export class CreateAccountPage {
         this.toast.create({ message: 'Erro ao cadastrar usuário.', position: 'botton', duration: 5000 }).present();
       })
   }
+  
   validation_messages = {
     'login': [
       { type: 'required', message: 'Login é obrigatório !' }

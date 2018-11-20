@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary" (click)="goBack()">
+  <ion-navbar (click)="goBack()">
     <ion-title>
       Cadastro
     </ion-title>
@@ -12,7 +12,7 @@
   <form class="form" [formGroup]="validations_form" (ngSubmit)="createAccount(validations_form.value)">
 
     <ion-item>
-      <ion-label floating color="primary">Login</ion-label>
+      <ion-label floating>Login</ion-label>
       <ion-input type="text" formControlName="login" required></ion-input>
     </ion-item>
     <div class="validation-errors">
@@ -24,7 +24,7 @@
     </div>
 
     <ion-item>
-      <ion-label floating color="primary">Nome</ion-label>
+      <ion-label floating>Nome</ion-label>
       <ion-input type="text" formControlName="name" required></ion-input>
     </ion-item>
     <div class="validation-errors">
@@ -36,7 +36,7 @@
     </div>
 
     <ion-item>
-      <ion-label floating color="primary">Email</ion-label>
+      <ion-label floating>Email</ion-label>
       <ion-input [textMask]="emailMask" type="text" formControlName="email" required></ion-input>
     </ion-item>
     <div class="validation-errors">
@@ -49,7 +49,7 @@
 
     <div formGroupName="matching_passwords">
       <ion-item>
-        <ion-label floating color="primary">Senha</ion-label>
+        <ion-label floating>Senha</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
       <div class="validation-errors">
@@ -61,7 +61,7 @@
       </div>
 
       <ion-item>
-        <ion-label floating color="primary">Confirme a senha</ion-label>
+        <ion-label floating>Confirme a senha</ion-label>
         <ion-input type="password" formControlName="confirm_password"></ion-input>
       </ion-item>
       <div class="validation-errors">
@@ -80,36 +80,9 @@
       </ng-container>
     </div>
 
-    <div style="text-align: center; border-top: 20px">
-      <button ion-button full type="submit" round [disabled]="!validations_form.valid" class="myButton">Cadastrar</button>
+    <div style="text-align: center; padding-top: 30px">
+      <button ion-button full type="submit" round [disabled]="!validations_form.valid" class="customButton">Confirmar</button>
     </div>
   </form>
-
-  <!-- <ion-list>
-    <ion-item>
-      <ion-label stacked>Nome</ion-label>
-      <ion-input type="text" name="name" [(ngModel)]="model.name"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked>Login</ion-label>
-      <ion-input type="text" name="login" [(ngModel)]="model.login"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input type="text" name="email" [(ngModel)]="model.email"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked>Senha</ion-label>
-      <ion-input type="password" name="password" [(ngModel)]="model.password"></ion-input>
-    </ion-item>
-  </ion-list>
-
-  <div style="text-align: center;">
-    <button ion-button color="danger" ion-button medium round (click)="goBack()">Cancelar</button>
-    <button ion-button color="green" ion-button medium round (click)="createAccount()">Criar Conta</button>
-  </div> -->
 
 </ion-content>

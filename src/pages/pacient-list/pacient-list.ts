@@ -95,9 +95,9 @@ export class PacientListPage {
     confirm.present();
   }
 
-  editPacient(pacient:any) {
+  editPacient(pacient: any) {
     var pacientEditModal = this.modalCtrl.create(PacientEditPage, { pacient: pacient }, { enableBackdropDismiss: false });
-    pacientEditModal.onDidDismiss(()=>{
+    pacientEditModal.onDidDismiss(() => {
       this.getPacients();
     })
     pacientEditModal.present();
@@ -111,13 +111,14 @@ export class PacientListPage {
     pacientModal.present();
   }
 
-  getStyleSexoo(pacient: any) {
+
+  getStylee(pacient: any) {
     if (pacient.sexo == 'masculino') {
-      return "rgba(64, 67, 240, 0.801)";
+      return "#ACCDD4";
     } else {
-      return "#eb2d2d";
+      return "#DB7F67";
     }
-  };
+  }
 }
 
 export class Pacient {

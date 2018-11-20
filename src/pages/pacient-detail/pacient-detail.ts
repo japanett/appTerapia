@@ -54,13 +54,12 @@ export class PacientDetailPage {
   }
 
   getStylee(pacient: any) {
-    // console.log(pacient);
     if (pacient.sexo == 'masculino') {
-      return "rgba(64, 67, 240, 0.801)";
+      return "#ACCDD4";
     } else {
-      return "#eb2d2d";
+      return "#DB7F67";
     }
-  };
+  }
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad PacientDetailPage');

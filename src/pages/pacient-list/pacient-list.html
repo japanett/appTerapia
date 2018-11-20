@@ -1,7 +1,7 @@
 <ion-header>
 
-  <ion-navbar color="primary">
-    <ion-buttons end>
+  <ion-navbar>
+    <ion-buttons start>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
@@ -15,15 +15,15 @@
     <ion-item-sliding *ngFor="let pacient of data" #slidingItem>
       <ion-item (click)="selectPacient(pacient.identifier, pacient.id)">
         <ion-avatar item-start><img src={{pacient.avatar}}></ion-avatar>
-        <h2 [style.color]="getStyleSexoo(pacient)"><b>{{pacient.name}}</b></h2>
-        <p>{{pacient.identifier}}</p>
+        <h2 [style.color]="getStylee(pacient)"><b>{{pacient.name}}</b></h2>
+        <p><b>{{pacient.identifier}}</b></p>
       </ion-item>
 
       <ion-item-options side="right">
-        <button ion-button color="light" icon-only outline (click)="editPacient(pacient);$event.stopPropagation();">
-          <ion-icon color="dark" name="hammer"></ion-icon>
+        <button ion-button icon-only outline (click)="editPacient(pacient);$event.stopPropagation();">
+          <ion-icon color="light" name="hammer"></ion-icon>
         </button>
-        <button ion-button color="light" icon-only outline (click)="deletePacient(pacient.identifier, pacient.name);$event.stopPropagation();">
+        <button ion-button icon-only outline (click)="deletePacient(pacient.identifier, pacient.name);$event.stopPropagation();">
           <ion-icon color="danger" name="trash"></ion-icon>
         </button>
       </ion-item-options>

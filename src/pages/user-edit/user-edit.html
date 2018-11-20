@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar color="primary" (click)="goBack()">
+  <ion-navbar (click)="goBack()">
     <ion-title>Editar</ion-title>
   </ion-navbar>
 
@@ -20,9 +20,10 @@
       <ion-input type="text" name="email" [(ngModel)]="model.email"></ion-input>
     </ion-item>
   </ion-list>
-  <ion-fab bottom right>
-    <button ion-fab (click)="updateUser()">
-      <ion-icon name="checkmark-circle-outline"></ion-icon>
-    </button>
-  </ion-fab>
+
+  <div style="text-align: center;">
+    <button ion-button class="customButton" ion-button block round (click)="updateUser()">Confirmar</button>
+    <button ion-button class="backButton" ion-button block round (click)="goBack()">Cancelar</button>
+  </div>
+
 </ion-content>

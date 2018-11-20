@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar>
     <ion-title>Editar Paciente</ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
@@ -12,8 +12,6 @@
 
 
 <ion-content padding>
-  <h1 text-center>Informações</h1>
-
   <ion-list>
     <ion-item>
       <ion-label stacked>Nome:</ion-label>
@@ -45,7 +43,7 @@
   </ion-list>
 
   <div style="text-align: center;">
-    <button ion-button color="danger" ion-button medium round (click)="dismiss()">Cancelar</button>
-    <button ion-button color="green" ion-button medium round (click)="editPacient()">Confirmar</button>
+    <button ion-button class="customButton" ion-button medium round (click)="editPacient()">Confirmar</button>
+    <button ion-button class="backButton" ion-button medium round (click)="dismiss()">Cancelar</button>
   </div>
 </ion-content>
