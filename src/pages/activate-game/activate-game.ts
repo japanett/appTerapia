@@ -45,11 +45,7 @@ export class ActivateGamePage {
       }
       if (game.title == 'Jogo da Mercearia') {
         config = this.setConfigMercearia(this.firstGame, this.secondGame, this.thirdGame, this.fourthGame);
-        if (this.fourthGame === 'T') {
-          _time = (parseInt(this.time) * 4).toString();
-        } else {
-          _time = (parseInt(this.time) * 3).toString();
-        }
+        _time = this.time;
       }
       if (game.title == 'Invasão Espacial') {
         config = this.setConfigNave(this.firstGame);

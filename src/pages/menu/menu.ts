@@ -26,8 +26,8 @@ export class MenuPage {
 
   pages: PageInterface[] = [
     { title: 'Perfil', pageName: 'UserDetailPage',  index: 0, icon: 'contact' },
-    { title: 'Pacientes', pageName: 'PacientListPage', index: 1, icon: 'contacts' },
-    // { title: 'Criar paciente', pageName: 'CreatePacientPage', icon: 'person-add' },
+    { title: 'Pacientes', pageName: 'PacientListPage', index: 1, icon: 'people' },
+    { title: 'Relatório', pageName: 'ReportPage', icon: 'paper' },
     { title: 'Logout', pageName: 'HomePage', icon: 'log-out' }
   ];
 

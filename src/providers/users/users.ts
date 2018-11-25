@@ -135,7 +135,22 @@ export class UsersProvider {
     return new Promise((resolve, reject) => {
       let url = this.apiURL + 'user';
       this.storage.get('token').then((token) => {
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.get(url, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
+      });
+    });
+  }
 
+  sendReport() {
+    return new Promise((resolve, reject) => {
+      let url = this.apiURL + 'user/report';
+      this.storage.get('token').then((token) => {
         let headers = new HttpHeaders().set('x-access-token', token);
         this.http.get(url, { headers })
           .subscribe((result: any) => {

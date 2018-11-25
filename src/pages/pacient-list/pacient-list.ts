@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController, ItemSliding, AlertController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
-import { Storage } from '@ionic/storage';
 import { PacientDetailPage } from './../pacient-detail/pacient-detail';
 import { PacientEditPage } from './../pacient-edit/pacient-edit';
 
@@ -16,7 +15,7 @@ export class PacientListPage {
   public woman = './assets/imgs/woman.png';
 
   model: Pacient;
-  constructor(public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
+  constructor(public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new Pacient();
     this.getPacients();
   }

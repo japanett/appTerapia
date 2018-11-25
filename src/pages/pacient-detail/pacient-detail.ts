@@ -22,7 +22,6 @@ export class PacientDetailPage {
     this.userProvider.getPacient(identifier)
       .then((result: any) => {
         this.model = result.data[0];
-        console.log(this.model);
         this.model.gamesNum = result.data[0].games.length;
         if (result.data[0].sexo.toLowerCase().trim() == 'feminino') {
           this.model.avatar = './assets/imgs/woman.png';

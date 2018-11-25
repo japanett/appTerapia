@@ -23,7 +23,7 @@
         <button ion-button icon-only outline (click)="editPacient(pacient);$event.stopPropagation();">
           <ion-icon color="light" name="hammer"></ion-icon>
         </button>
-        <button ion-button icon-only outline (click)="deletePacient(pacient.identifier, pacient.name);$event.stopPropagation();">
+        <button ion-button icon-only outline (click)="deletePacient(pacient.identifier, pacient.name, slidingItem);$event.stopPropagation();">
           <ion-icon color="danger" name="trash"></ion-icon>
         </button>
       </ion-item-options>

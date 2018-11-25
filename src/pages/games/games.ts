@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController, ItemSliding, AlertController, IonicPage, ViewController, NavController, NavParams, ToastController } from 'ionic-angular';
+import { ModalController, IonicPage, ViewController, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
 import { Storage } from '@ionic/storage';
 import { GameDetailPage } from './../game-detail/game-detail';
@@ -52,27 +52,18 @@ export class GamesPage {
         }
       })
       .catch((error: any) => {
-        console.log(error);
         this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
       });
   }
   ionViewDidLoad() {
     // console.log('ionViewDidLoad GamesPage');
   }
-  teste() {
-    console.log('this.data: ' + this.data[0]);
-  }
+
   selectGame(game: any) {
     var gamesModal = this.modalCtrl.create(GameDetailPage, { game: game }, { enableBackdropDismiss: false });
     gamesModal.present();
   }
 
-  addGame(identifier: string) {
-    // var gameModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier }, { enableBackdropDismiss: false });
-    // gameModal.present();
-    console.log('identifier: ' + identifier);
-
-  }
   dismiss() {
     this.viewCtrl.dismiss();
   }

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController, App, ViewController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
 import { Storage } from '@ionic/storage';
@@ -26,7 +26,7 @@ export class GameConfigEditPage {
     this.secondGame = this.game.config.split(',')[1] || this.game.config;
     this.thirdGame = this.game.config.split(',')[2] || this.game.config;
     this.fourthGame = this.game.config.split(',')[3] || this.game.config;
-    this.time = this.fractionTime(this.game.time, this.fourthGame).toString();
+    this.time = this.game.time;
   }
 
   setConfigMercearia(firstGame: string, secondGame: string, thirdGame: string, fourthGame: string) {
@@ -52,11 +52,7 @@ export class GameConfigEditPage {
       }
       if (game.title == 'Jogo da Mercearia') {
         config = this.setConfigMercearia(this.firstGame, this.secondGame, this.thirdGame, this.fourthGame);
-        if (this.fourthGame === 'T') {
-          _time = (parseInt(this.time) * 4).toString();
-        } else {
-          _time = (parseInt(this.time) * 3).toString();
-        }
+        _time = this.time;
       }
       if (game.title == 'Invasão Espacial') {
         config = this.setConfigNave(this.firstGame);
@@ -99,15 +95,5 @@ export class GameConfigEditPage {
         resolve();
       }
     })
-  }
-
-  fractionTime(time: string, fourthGame: string) {
-    let _time = parseInt(time);
-    if (fourthGame === 'T') {
-      return _time / 4;
-    }
-    else {
-      return _time / 3;
-    }
   }
 }
