@@ -1,12 +1,6 @@
-<!--
-  Generated template for the GameListPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar [color]="getStylee2(sexo)">
+  <ion-navbar>
     <ion-title>Ativar Jogos</ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="dismiss()">
@@ -21,15 +15,10 @@
 <ion-content padding>
   <ion-list>
     <ion-item-sliding *ngFor="let game of _games" #slidingItem>
-      <ion-item>
-        <ion-icon name="checkmark" color="green" item-left *ngIf="game.config"></ion-icon>
+      <ion-item (click)="game.config || activateGame(game, id)">
+        <ion-icon name="checkmark" color="light" item-left *ngIf="game.config"></ion-icon>
         <ion-icon name="close" color="danger" item-left *ngIf="!game.config"></ion-icon>
-        <h2 [style.color]="getStylee(sexo)"><b>{{game.title}}</b></h2>
-        <!-- <p>{{game.title}}</p> -->
-        <!-- <ion-note item-end *ngIf="game.config">
-          {{game.config}}
-          
-        </ion-note> -->
+        <h2><b>{{game.title}}</b></h2>
       </ion-item>
 
       <ion-item-options side="right">
@@ -37,10 +26,7 @@
           <ion-icon color="danger" name="close"></ion-icon>
         </button>
         <button *ngIf="game.config" ion-button icon-only outline (click)="editGame(game);$event.stopPropagation();">
-          <ion-icon name="hammer" color="secondary"></ion-icon>
-        </button>
-        <button *ngIf="!game.config" ion-button icon-only outline (click)="activateGame(game, id);$event.stopPropagation();">
-          <ion-icon name="checkmark" color="green"></ion-icon>
+          <ion-icon name="hammer" color="light"></ion-icon>
         </button>
       </ion-item-options>
     </ion-item-sliding>

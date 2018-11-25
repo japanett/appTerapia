@@ -1,31 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import 'rxjs/add/operator/map';
-// import { resolveDefinition } from '../../../node_modules/@angular/core/src/view/util';
-//Taquebrando o    storage qnd tento rodar no celular, acho te tenqe fazer sqlite pro cel
-/*
-  constructor(private userService: UserService) {
-    this.getAuthUser();
-  }
 
-  private getAuthUser() {
-    this.userService.getOnStorage().then(
-      (user) => {
-        this.user = user;
-
-        if (!this.user.token) {
-          this.navCtrl.push(LoginPage)
-        }
-      }
-    );
-  }
-*/
 @Injectable()
 export class UsersProvider {
 
-  // private apiURL = 'http://localhost:3000/api/';
-  private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
+  private apiURL = 'http://localhost:3000/api/';
+  // private apiURL = 'http://192.168.0.158:3000/api/';
+  // private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
   // private apiURL = 'https://damp-anchorage-23115.herokuapp.com/api/';
 
   constructor(public http: HttpClient, public storage: Storage) { }
@@ -90,7 +72,7 @@ export class UsersProvider {
     });
   }
 
-  getPacients(identifier?: string) { //update this
+  getPacients(identifier?: string) { 
     return new Promise((resolve, reject) => {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients';
@@ -125,11 +107,50 @@ export class UsersProvider {
     });
   }
 
+  updatePacient(identifier: string, name: string, age: number, sexo: string, patologia: string, objetivo: string) {
+    return new Promise((resolve, reject) => {
+      let url = this.apiURL + 'user/pacients/' + identifier;
+      let data = {
+        "name": name,
+        "age": age,
+        "sexo": sexo,
+        "patologia": patologia,
+        "objetivo": objetivo,
+        "active": true
+      }
+      this.storage.get('token').then((token) => {
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.put(url, data, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
+      });
+    });
+  }
+
   getUser() {
     return new Promise((resolve, reject) => {
       let url = this.apiURL + 'user';
       this.storage.get('token').then((token) => {
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.get(url, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
+      });
+    });
+  }
 
+  sendReport() {
+    return new Promise((resolve, reject) => {
+      let url = this.apiURL + 'user/report';
+      this.storage.get('token').then((token) => {
         let headers = new HttpHeaders().set('x-access-token', token);
         this.http.get(url, { headers })
           .subscribe((result: any) => {
@@ -175,8 +196,6 @@ export class UsersProvider {
             (error) => {
               reject(error);
             });
-
-
       });
     });
   }
@@ -197,11 +216,12 @@ export class UsersProvider {
     });
   }
 
-  addGames(identifier: string, config: string, gameID: number) {
+  addGames(identifier: string, config: string, gameID: number,  time: string) {
     return new Promise((resolve, reject) => {
       let data = {
         "toPlay": gameID,
-        "config": config
+        "config": config,
+        "time": time
       }
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients/games/' + identifier;
@@ -218,14 +238,14 @@ export class UsersProvider {
     });
   }
 
-  updateGameConfig(pacientId: string, config: string, gameID: number) {
+  updateGameConfig(pacientId: string, config: string, gameID: number, time:string) {
     return new Promise((resolve, reject) => {
       let data = {
         "gameID": gameID,
-        "config": config
+        "config": config,
+        "time": time
       }
       this.storage.get('token').then((token) => {
-        console.log()
         let url = this.apiURL + 'user/games/' + pacientId;
         let headers = new HttpHeaders().set('x-access-token', token);
         this.http.put(url, data, { headers })

@@ -23,6 +23,7 @@ dist/
 node_modules/
 tmp/
 temp/
+package-lock.json
 platforms/
 plugins/
 plugins/android.json

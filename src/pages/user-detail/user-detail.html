@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar>
     <ion-buttons start>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
@@ -14,27 +14,27 @@
 
 
 <ion-content padding>
-  <h3 text-center>Olá, {{model.firstname}}</h3>
+  <h3 text-center>Bem vindo <p><b>{{model.firstname}}</b></p></h3>
   <ion-item>
     <ion-icon name="body" item-start></ion-icon>
-    <h4 class="nam">Nome:</h4>
+    <h4><b>Nome:</b></h4>
     <h3>{{model.name}}</h3>
   </ion-item>
 
   <ion-item>
     <ion-icon name="at" item-start></ion-icon>
-    <h4 class="nam">Email:</h4>
+    <h4><b>Email:</b></h4>
     <h3>{{model.email}}</h3>
   </ion-item>
 
   <ion-item>
     <ion-icon name="contacts" item-start></ion-icon>
-    <h4 class="nam">Numero de pacientes:</h4>
+    <h4><b>Número de pacientes:</b></h4>
     <h3>{{model.pacientsNum}}</h3>
   </ion-item>
 
-  <div style="text-align: center;">
-    <button ion-button medium round (click)="updateUser()">Editar informacoes</button>
+  <div style="text-align: center; margin-top: 15px;">
+    <button ion-button class="customButton" block round (click)="updateUser()">Editar Informações</button>
   </div>
 
 </ion-content>

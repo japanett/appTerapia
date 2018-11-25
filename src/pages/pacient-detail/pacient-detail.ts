@@ -12,7 +12,7 @@ import { GameListPage } from './../game-list/game-list';
 })
 export class PacientDetailPage {
   model: Pacient;
-  // public avatar = '';
+
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new Pacient();
     this.getPacient(navParams.get('identifier'));
@@ -22,7 +22,6 @@ export class PacientDetailPage {
     this.userProvider.getPacient(identifier)
       .then((result: any) => {
         this.model = result.data[0];
-        console.log(this.model);
         this.model.gamesNum = result.data[0].games.length;
         if (result.data[0].sexo.toLowerCase().trim() == 'feminino') {
           this.model.avatar = './assets/imgs/woman.png';
@@ -44,8 +43,7 @@ export class PacientDetailPage {
     var _identifier = identifier;
     var gameListModal = this.modalCtrl.create(GameListPage, { identifier: _identifier, name: name, games: games, sexo: sexo, id: id }, { enableBackdropDismiss: false });
     gameListModal.onDidDismiss(() => {
-      this.viewCtrl.dismiss();
-      // gameListModal.present();
+      this.getPacient(_identifier);
     });
     gameListModal.present();
   }
@@ -55,21 +53,13 @@ export class PacientDetailPage {
   }
 
   getStylee(pacient: any) {
-    // console.log(pacient);
     if (pacient.sexo == 'masculino') {
-      return "rgba(64, 67, 240, 0.801)";
+      return "#ACCDD4";
     } else {
-      return "#eb2d2d";
+      return "#DB7F67";
     }
-  };
-  getStylee2(pacient: any) {
-    // console.log(pacient);
-    if (pacient.sexo == 'masculino') {
-      return "boy";
-    } else {
-      return "girl";
-    }
-  };
+  }
+
   ionViewDidLoad() {
     // console.log('ionViewDidLoad PacientDetailPage');
   }

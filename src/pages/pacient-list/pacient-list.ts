@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ModalController, ItemSliding, AlertController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from './../../providers/users/users';
-import { Storage } from '@ionic/storage';
 import { PacientDetailPage } from './../pacient-detail/pacient-detail';
+import { PacientEditPage } from './../pacient-edit/pacient-edit';
 
 @IonicPage()
 @Component({
@@ -15,7 +15,7 @@ export class PacientListPage {
   public woman = './assets/imgs/woman.png';
 
   model: Pacient;
-  constructor(public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
+  constructor(public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new Pacient();
     this.getPacients();
   }
@@ -24,6 +24,9 @@ export class PacientListPage {
   getPacients() {
     this.userProvider.getPacients()
       .then((result: any) => {
+        if (this.data.length > 0) {
+          this.data = [];
+        }
         if (result.success === true) {
           for (let i = 0; i < result.data.length; i++) {
             if (result.data[i].sexo.toLowerCase().trim() == 'feminino') {
@@ -32,7 +35,10 @@ export class PacientListPage {
                 identifier: result.data[i].identifier,
                 avatar: this.woman,
                 sexo: result.data[i].sexo,
-                id: result.data[i].id
+                id: result.data[i].id,
+                age: result.data[i].age,
+                objetivo: result.data[i].objetivo,
+                patologia: result.data[i].patologia
               });
             } else {
               this.data.push({
@@ -40,11 +46,13 @@ export class PacientListPage {
                 identifier: result.data[i].identifier,
                 avatar: this.man,
                 sexo: result.data[i].sexo,
-                id: result.data[i].id
+                id: result.data[i].id,
+                age: result.data[i].age,
+                objetivo: result.data[i].objetivo,
+                patologia: result.data[i].patologia
               });
             }
           }
-          console.log(this.data);
         }
       })
       .catch((error: any) => {
@@ -52,23 +60,6 @@ export class PacientListPage {
       });
   }
 
-  getPacient(identifier: string) {
-    return new Promise((resolve, reject) => {
-      this.userProvider.getPacient(identifier)
-        .then((result: any) => {
-          if (result.success === true) {
-            // this.model = result.data[0];
-            resolve(result.data[0]);
-          } else {
-            resolve(false);
-          }
-        })
-        .catch((error: any) => {
-          reject(error);
-          this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
-        });
-    });
-  }
   deletePacient(identifier: string, name: string, slidingItem: ItemSliding) {
     const confirm = this.alertCtrl.create({
       title: 'Remover paciente ?',
@@ -103,8 +94,12 @@ export class PacientListPage {
     confirm.present();
   }
 
-  editPacient(identifier: string, name: string) {
-    this.toast.create({ message: 'A fazer', position: 'botton', duration: 5000 }).present();
+  editPacient(pacient: any) {
+    var pacientEditModal = this.modalCtrl.create(PacientEditPage, { pacient: pacient }, { enableBackdropDismiss: false });
+    pacientEditModal.onDidDismiss(() => {
+      this.getPacients();
+    })
+    pacientEditModal.present();
   }
   createPacient() {
     this.navCtrl.push('CreatePacientPage');
@@ -112,54 +107,17 @@ export class PacientListPage {
 
   selectPacient(identifier: string, id: string) {
     var pacientModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier, id: id }, { enableBackdropDismiss: false });
-    pacientModal.onDidDismiss(() => {
-      // pacientModal.present();
-      //fazer esquema de refresh===true
-      // gameListModal.present();
-    });
-    pacientModal.present();
-
-    // pacientModal.onDidDismiss((data) => {
-    //   console.log("I have dismissed.");
-    //   console.log(data);
-    // });
-
-    // pacientModal.onWillDismiss((data) => {
-    //   console.log("I'm about to dismiss");
-    //   console.log(data);
-    // });
-    // this.getPacient(identifier)
-    //   .then((result) => {
-    //     if (result) {
-    //       console.log('=== result ===');
-    //       console.log(result);
-    //       this.model = result[0];
-    //       console.log('=== model ===');
-    //       console.log(this.model);
-    // this.model = result;
-    // }
-    // });
-    // this.toast.create({ message: this.model.name, position: 'botton', duration: 5000 }).present();
-  }
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad PacientListPage');
-  // }
-  refresh(identifier: string, id: string) {
-    var pacientModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier, id: id }, { enableBackdropDismiss: false });
-    pacientModal.onDidDismiss(() => {
-      pacientModal.present();
-      // gameListModal.present();
-    });
     pacientModal.present();
   }
-  getStyleSexoo(pacient: any) {
-    // console.log(pacient);
+
+
+  getStylee(pacient: any) {
     if (pacient.sexo == 'masculino') {
-      return "rgba(64, 67, 240, 0.801)";
+      return "#ACCDD4";
     } else {
-      return "#eb2d2d";
+      return "#DB7F67";
     }
-  };
+  }
 }
 
 export class Pacient {

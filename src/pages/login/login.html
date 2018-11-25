@@ -1,15 +1,16 @@
 <ion-header>
-  <ion-navbar color="primary" (click)="goBack()"> 
+  <ion-navbar (click)="goBack()"> 
     <ion-title>
+      Login
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding >
 
   <ion-list>
     <ion-item>
-      <ion-label stacked>Login</ion-label>
+      <ion-label stacked>Usuário</ion-label>
       <ion-input type="text" name="login" [(ngModel)]="model.login"></ion-input>
     </ion-item>
 
@@ -20,7 +21,7 @@
   </ion-list>
 
   <div style="text-align: center;">
-      <button ion-button block round (click)="login()">Entrar</button>
+      <button ion-button class="customButton" block round (click)="login()">Entrar</button>
   </div>
   
 </ion-content>

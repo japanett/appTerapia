@@ -34,24 +34,21 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #2bad3e,
-  girl:  rgba(240, 137, 137, 0.801),
-  boy:  rgba(64, 67, 240, 0.801),
-  secondary:  rgba(22, 66, 34, 0.801),
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222,
-  green: rgb(144, 230, 82)
+  primary:    #464242,
+  danger:     #F0C808,
+	light:      #f4f4f4,
 );
-ion-title {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0 90px 1px;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
+
+$app-background: linear-gradient(
+	45deg,
+	rgb(57, 110, 65), 
+	rgb(46, 102, 69) 5%,
+	#1f1e1e 90%);
+$navheader-background: radial-gradient(#201e1e 0%, #000000 100%);
+$toolbar-background: transparent;
+$text-color: #fafafa;
+$background-color: transparent;
+
 
 // App iOS Variables
 // --------------------------------------------------

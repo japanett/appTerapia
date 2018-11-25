@@ -12,9 +12,12 @@ import { GameDetailPage } from '../pages/game-detail/game-detail';
 import { GameConfigEditPage } from '../pages/game-config-edit/game-config-edit';
 import { GameListPage } from '../pages/game-list/game-list';
 import { ActivateGamePage } from '../pages/activate-game/activate-game';
+import { PacientEditPage } from '../pages/pacient-edit/pacient-edit';
 import { UsersProvider } from '../providers/users/users';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
+import { ValidatorsModule } from '../validators/validators.module';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -24,12 +27,14 @@ import { HttpClientModule } from '@angular/common/http';
     GameDetailPage,
     GameListPage,
     ActivateGamePage,
-    GameConfigEditPage
+    GameConfigEditPage,
+    PacientEditPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
+    ValidatorsModule,
     IonicStorageModule.forRoot({
       name: '__mydb',
          driverOrder: ['indexeddb', 'sqlite', 'websql']
@@ -44,7 +49,8 @@ import { HttpClientModule } from '@angular/common/http';
     GameListPage,
     GameDetailPage,
     ActivateGamePage,
-    GameConfigEditPage
+    GameConfigEditPage,
+    PacientEditPage
   ],
   providers: [
     StatusBar,
