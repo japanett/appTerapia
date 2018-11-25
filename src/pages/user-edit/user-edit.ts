@@ -20,7 +20,7 @@ export class UserEditPage {
       .then((result: any) => {
         if (result.success === true) {
           this.toast.create({ message: 'Informações atualizadas', position: 'botton', duration: 3000 }).present();
-          this.navCtrl.setRoot('MenuPage');
+          this.navCtrl.popToRoot();
         } else {
           this.toast.create({ message: 'Erro ao atualizar...', position: 'botton', duration: 5000 }).present();
         }
