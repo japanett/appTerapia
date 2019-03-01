@@ -16,6 +16,7 @@ export class GameConfigEditPage {
   public secondGame: string;
   public thirdGame: string;
   public fourthGame: string;
+  public imersiveMode: string;
   public time: string;
 
   constructor(public app: App, public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
@@ -27,6 +28,7 @@ export class GameConfigEditPage {
     this.thirdGame = this.game.config.split(',')[2] || this.game.config;
     this.fourthGame = this.game.config.split(',')[3] || this.game.config;
     this.time = this.game.time;
+    this.imersiveMode = this.game.imersiveMode === true ? 'T' : 'F';
   }
 
   setConfigMercearia(firstGame: string, secondGame: string, thirdGame: string, fourthGame: string) {
@@ -60,7 +62,7 @@ export class GameConfigEditPage {
       }
       this.checkNumber(_time, game.title)
         .then(() => {
-          this.userProvider.updateGameConfig(id, config, game.gameID, _time)
+          this.userProvider.updateGameConfig(id, config, game.gameID, _time, this.imersiveMode)
             .then((result: any) => {
               if (result.success === true) {
                 this.viewCtrl.dismiss()
@@ -89,7 +91,7 @@ export class GameConfigEditPage {
       //if string is a number and not empty, return true
       var isFixedString = (s: string) => !isNaN(+s) && isFinite(+s) && !/e/i.test(s) && s.length > 0;
       if (!isFixedString(time) && gameTitle === 'Jogo da Mercearia') {
-        reject('Insira um número válido !')
+        reject('Defina um tempo em segundos !')
       }
       else {
         resolve();

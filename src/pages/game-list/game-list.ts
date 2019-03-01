@@ -38,7 +38,7 @@ export class GameListPage {
     this.space = new Game();
     this.bola = new Game();
     this.mercearia.title = 'Jogo da Mercearia';
-    this.mercearia.gameID = '1';
+    this.mercearia.gameID = '1';Game
     this.space.title = 'Invasão Espacial';
     this.space.gameID = '2';
     this.bola.title = 'Bola na Caixa';
@@ -52,6 +52,7 @@ export class GameListPage {
           game.config = x.config;
           game.gameID = x.gameID;
           game.time = x.time;
+          game.imersiveMode = x.imersiveMode;
         }
       });
     });
@@ -111,4 +112,5 @@ export class Game {
   config: string;
   title: string;
   time:string;
+  imersiveMode: string;
 };

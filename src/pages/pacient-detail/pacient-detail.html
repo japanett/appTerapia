@@ -20,7 +20,7 @@
       <h2 [style.color]="getStylee(model)">
         <b>{{model.name}}</b>
       </h2>
-      <p>
+      <p style="color: #000000;">
         <b>{{model.identifier}}</b>
       </p>
     </ion-label>
@@ -56,20 +56,21 @@
     </ion-label>
   </ion-item>
 
- <div style="margin-top: 25px;">
-  <ion-row text-center>
-    <ion-col col-4></ion-col>
-    <ion-col col-3>
-      <button ion-fab fab-fixed color="light" (click)="getGames(model.identifier, model.name)">
-        <ion-icon name="archive"></ion-icon>
-      </button>
-    </ion-col>
-    <ion-col col-3>
-      <button ion-fab fab-fixed color="danger" (click)="addGame(model.name, model.identifier,model.games,model.sexo, model._id)">
-        <ion-icon name="cog"></ion-icon>
-      </button>
-    </ion-col>
-    <ion-col col-4></ion-col>
-  </ion-row>
- </div>
+  <div style="margin-top: 25px;">
+    <ion-row text-center>
+      <ion-col col-4></ion-col>
+      <ion-col col-3>
+        <button ion-fab fab-fixed color="light" (click)="getGames(model.identifier, model.name)">
+          <ion-icon name="archive"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-fab fab-fixed color="danger"
+          (click)="addGame(model.name, model.identifier,model.games,model.sexo, model._id)">
+          <ion-icon name="cog"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-4></ion-col>
+    </ion-row>
+  </div>
 </ion-content>

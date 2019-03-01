@@ -72,7 +72,7 @@ export class UsersProvider {
     });
   }
 
-  getPacients(identifier?: string) { 
+  getPacients(identifier?: string) {
     return new Promise((resolve, reject) => {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients';
@@ -216,13 +216,15 @@ export class UsersProvider {
     });
   }
 
-  addGames(identifier: string, config: string, gameID: number,  time: string) {
+  addGames(identifier: string, config: string, gameID: number, time: string, imersiveMode: string) {
     return new Promise((resolve, reject) => {
+      let _imersiveMode = imersiveMode === 'T' ? true : false;
       let data = {
         "toPlay": gameID,
         "config": config,
-        "time": time
-      }
+        "time": time,
+        "imersiveMode": _imersiveMode
+      };
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients/games/' + identifier;
         let headers = new HttpHeaders().set('x-access-token', token);
@@ -231,20 +233,22 @@ export class UsersProvider {
             resolve(result);
           },
             (error) => {
-              console.log(error);
               reject(error);
             });
       });
     });
   }
 
-  updateGameConfig(pacientId: string, config: string, gameID: number, time:string) {
+  updateGameConfig(pacientId: string, config: string, gameID: number, time: string, imersiveMode: string) {
     return new Promise((resolve, reject) => {
+      let _imersiveMode = imersiveMode === 'T' ? true : false;
       let data = {
         "gameID": gameID,
         "config": config,
-        "time": time
-      }
+        "time": time,
+        "imersiveMode": _imersiveMode
+      };
+
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/games/' + pacientId;
         let headers = new HttpHeaders().set('x-access-token', token);
@@ -264,7 +268,7 @@ export class UsersProvider {
       let url = (this.apiURL + 'user/' + id + '/games/' + gameID).toString();
       this.storage.get('token').then((token) => {
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.put(url, {},{ headers })
+        this.http.put(url, {}, { headers })
           .subscribe((result: any) => {
             resolve(result);
           },
@@ -274,6 +278,45 @@ export class UsersProvider {
       });
     });
   }
+
+  // Two new endpoints that need to be implemented
+  deleteGameReport(identifier: string, gameId: string) {
+    return new Promise((resolve, reject) => {
+      this.storage.get('token').then((token) => {
+        let url = this.apiURL + 'user/' + identifier + '/games/' + gameId;
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.delete(url, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
+      });
+    });
+  }
+
+  setGameReportObservation(identifier: string, gameId: string, observation: string) {
+    return new Promise((resolve, reject) => {
+
+      let data = {
+        "observation": observation
+      };
+
+      this.storage.get('token').then((token) => {
+        let url = this.apiURL + 'user/' + identifier + '/games/' + gameId;
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.patch(url, data, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
+      });
+    });
+  }
+
 }
 
 

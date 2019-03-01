@@ -16,6 +16,7 @@ export class ActivateGamePage {
   public thirdGame: string = '3';
   public fourthGame: string = 'F';
   public time: string = "";
+  public imersiveMode: string = 'T';
 
   constructor(public app: App, public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.identifier = navParams.get('identifier');
@@ -53,7 +54,7 @@ export class ActivateGamePage {
       }
       this.checkNumber(_time, game.title)
         .then(() => {
-          this.userProvider.addGames(identifier, config, game.gameID, _time)
+          this.userProvider.addGames(identifier, config, game.gameID, _time, this.imersiveMode)
             .then((result: any) => {
               if (result.success === true) {
                 this.viewCtrl.dismiss()

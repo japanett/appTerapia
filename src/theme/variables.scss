@@ -43,11 +43,16 @@ $app-background: linear-gradient(
 	45deg,
 	rgb(57, 110, 65), 
 	rgb(46, 102, 69) 5%,
-	#1f1e1e 90%);
+	#758f43 80%);
 $navheader-background: radial-gradient(#201e1e 0%, #000000 100%);
 $toolbar-background: transparent;
 $text-color: #fafafa;
 $background-color: transparent;
+
+// Overwriting ionic default css to skip line in the case below
+.item h3 {
+	white-space: normal !important;
+  }
 
 
 // App iOS Variables

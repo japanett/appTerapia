@@ -101,6 +101,7 @@ export class PacientListPage {
     })
     pacientEditModal.present();
   }
+
   createPacient() {
     this.navCtrl.push('CreatePacientPage');
   }
