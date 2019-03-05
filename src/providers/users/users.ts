@@ -12,6 +12,42 @@ export class UsersProvider {
 
   constructor(public http: HttpClient, public storage: Storage) { }
 
+  recoverPassword(email: string) {
+    return new Promise((resolve, reject) => {
+      let url = this.apiURL + 'user/' + email + '/recover-password';
+      this.storage.get('token').then((token) => {
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.get(url, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
+      });
+    });
+  }
+
+  changePassword(password: string) {
+    return new Promise((resolve, reject) => {
+      let data = {
+        "password": password
+      };
+      this.storage.get('token').then((token) => {
+        let url = this.apiURL + 'user/change-password';
+        let headers = new HttpHeaders().set('x-access-token', token);
+        this.http.patch(url, data, { headers })
+          .subscribe((result: any) => {
+            resolve(result);
+          },
+            (error) => {
+              reject(error);
+            });
+      });
+    });
+  }
+
+
   createAccount(name: string, login: string, password: string, email: string) {
     return new Promise((resolve, reject) => {
       var data = {
@@ -42,7 +78,7 @@ export class UsersProvider {
       };
       this.storage.get('token').then((token) => {
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.put(this.apiURL + 'user/pacients', data, { headers })
+        this.http.post(this.apiURL + 'user/pacients', data, { headers })
           .subscribe((result: any) => {
             resolve(result);
           },
@@ -203,7 +239,7 @@ export class UsersProvider {
   getGames(identifier: string) {
     return new Promise((resolve, reject) => {
       this.storage.get('token').then((token) => {
-        let url = this.apiURL + 'user/' + identifier + '/games/';
+        let url = this.apiURL + 'user/pacients/' + identifier + '/games/';
         let headers = new HttpHeaders().set('x-access-token', token);
         this.http.get(url, { headers })
           .subscribe((result: any) => {

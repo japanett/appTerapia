@@ -1,6 +1,6 @@
 import { UsersProvider } from './../../providers/users/users';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 
@@ -14,7 +14,7 @@ export class LoginPage {
 
   model: User;
 
-  constructor(public navCtrl: NavController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new User();
     this.model.login = '';
     this.model.password = '';
@@ -41,7 +41,42 @@ export class LoginPage {
     })
   }
 
-  goBack(){
+  recover() {
+    const confirm = this.alertCtrl.create({
+      title: 'Digite seu email cadastrado:',
+      inputs: [
+        {
+          name: 'email',
+          placeholder: 'exemplo@gmail.com',
+        }
+      ],
+      buttons: [
+        {
+          text: 'Recuperar',
+          handler: dataInput => {
+            this.userProvider.recoverPassword(dataInput.email)
+              .then((result: any) => {
+                if (result.success === true) {
+                  this.toast.create({ message: 'Informações enviadas para o email!', position: 'botton', duration: 5000 }).present();
+                }
+              })
+              .catch((error: any) => {
+                this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
+              });
+          }
+        },
+        {
+          text: 'Cancelar',
+          handler: () => {
+          }
+        }
+
+      ]
+    });
+    confirm.present();
+  }
+
+  goBack() {
     this.navCtrl.pop();
   }
 }
