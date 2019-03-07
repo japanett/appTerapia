@@ -11,9 +11,12 @@ export class LoadingProvider {
     this.loading = this.loadingCtrl.create({
       spinner: 'hide',
       content: `
-          <div>
-            <img src="./assets/imgs/load.gif" />
-          </div>`,
+      <div class="loader">
+        <div class="inner one"></div>
+        <div class="inner two"></div>
+        <div class="inner three"></div>
+      </div>
+          `,
       cssClass: 'my-loading-class'
     });
 

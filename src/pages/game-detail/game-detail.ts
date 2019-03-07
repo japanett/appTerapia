@@ -14,8 +14,7 @@ export class GameDetailPage {
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams) {
     this.game = navParams.get('game');
     this.translatedConfig = this.translateConfig(this.game.config);
-    this.translatedMode = this.translateMode(this.game.imersiveMode)
-    console.log(this.game);
+    this.translatedMode = this.translateMode(this.game.imersiveMode);
   }
 
   dismiss() {
