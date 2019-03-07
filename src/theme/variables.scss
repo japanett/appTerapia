@@ -52,9 +52,14 @@ $background-color: transparent;
 // Overwriting ionic default css to skip line in the case below
 .item h3 {
 	white-space: normal !important;
-  }
+}
 
-
+ion-loading.my-loading-class {
+	.loading-wrapper {
+	  background: transparent;
+	  box-shadow: none;
+	}
+}
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here

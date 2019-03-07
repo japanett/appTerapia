@@ -17,6 +17,7 @@ import { UsersProvider } from '../providers/users/users';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
 import { ValidatorsModule } from '../validators/validators.module';
+import { LoadingProvider } from '../providers/loading/loading';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ValidatorsModule } from '../validators/validators.module';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UsersProvider
+    UsersProvider,
+    LoadingProvider
   ]
 })
 export class AppModule {}

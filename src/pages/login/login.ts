@@ -11,7 +11,6 @@ import { Storage } from '@ionic/storage';
 })
 export class LoginPage {
   public token: any;
-
   model: User;
 
   constructor(public navCtrl: NavController, private alertCtrl: AlertController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
@@ -19,6 +18,7 @@ export class LoginPage {
     this.model.login = '';
     this.model.password = '';
   }
+
 
   login() {
     this.storage.clear().then(() => {
@@ -32,11 +32,12 @@ export class LoginPage {
           this.navCtrl.setRoot('MenuPage');
         })
         .catch((error: any) => {
-          if (error.status === 401) {
-            this.toast.create({ message: 'Usuário ou senha incorretos', position: 'botton', duration: 5000 }).present();
-          } else {
-            this.toast.create({ message: 'Server Error. Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
-          }
+            if (error.status === 401) {
+              this.toast.create({ message: 'Usuário ou senha incorretos', position: 'botton', duration: 5000 }).present();
+            } else {
+              this.toast.create({ message: 'Server Error. Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
+            }
+          // });
         });
     })
   }
@@ -54,15 +55,17 @@ export class LoginPage {
         {
           text: 'Recuperar',
           handler: dataInput => {
-            this.userProvider.recoverPassword(dataInput.email)
-              .then((result: any) => {
-                if (result.success === true) {
-                  this.toast.create({ message: 'Informações enviadas para o email!', position: 'botton', duration: 5000 }).present();
-                }
-              })
-              .catch((error: any) => {
-                this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
-              });
+            if (dataInput.email.length > 1) {
+              this.userProvider.recoverPassword(dataInput.email)
+                .then((result: any) => {
+                  if (result.success === true) {
+                    this.toast.create({ message: 'Informações enviadas para o email!', position: 'botton', duration: 5000 }).present();
+                  }
+                })
+                .catch((error: any) => {
+                  this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
+                });
+            }
           }
         },
         {
