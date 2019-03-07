@@ -22,6 +22,7 @@ export class GameListPage {
   public _games: any = [];
   mercearia: Game;
   space: Game;
+  bloquinho: Game;
   bola: Game;
   public ordemJogos: any = [];
 
@@ -37,15 +38,19 @@ export class GameListPage {
     this.mercearia = new Game();
     this.space = new Game();
     this.bola = new Game();
+    this.bloquinho = new Game();
     this.mercearia.title = 'Jogo da Mercearia';
-    this.mercearia.gameID = '1';Game
+    this.mercearia.gameID = '1';
     this.space.title = 'Invasão Espacial';
     this.space.gameID = '2';
     this.bola.title = 'Bola na Caixa';
     this.bola.gameID = '3';
+    this.bloquinho.title = 'Bloquinho';
+    this.bloquinho.gameID = '4';
     this._games.push(this.mercearia);
     this._games.push(this.bola);
     this._games.push(this.space);
+    this._games.push(this.bloquinho);
     this._games.forEach((game) => {
       games.forEach((x) => {
         if (game.title == x.title) {

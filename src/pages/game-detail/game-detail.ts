@@ -8,17 +8,26 @@ import { ViewController, IonicPage, NavController, NavParams } from 'ionic-angul
 })
 export class GameDetailPage {
   public translatedConfig: string;
+  public translatedMode: string;
   public game: any;
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams) {
     this.game = navParams.get('game');
     this.translatedConfig = this.translateConfig(this.game.config);
+    this.translatedMode = this.translateMode(this.game.imersiveMode)
+    console.log(this.game);
   }
 
   dismiss() {
     this.viewCtrl.dismiss();
   }
 
+  translateMode(imersiveMode: boolean) {
+    if (imersiveMode === undefined) {
+      return 'Ativado';
+    }
+    return imersiveMode ? 'Ativado' : 'Desativado';
+  }
   translateConfig(config: string) {
     return config
       .replace('1', 'Mão Esquerda')

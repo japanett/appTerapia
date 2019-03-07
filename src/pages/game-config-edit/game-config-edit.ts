@@ -35,6 +35,10 @@ export class GameConfigEditPage {
     let _config = firstGame + ',' + secondGame + ',' + thirdGame + ',' + fourthGame;
     return _config;
   }
+  setConfigBloquinho(firstGame: string, secondGame: string, thirdGame: string) {
+    let _config = firstGame + ',' + secondGame + ',' + thirdGame;
+    return _config;
+  }
   setConfigBola(firstGame: string) {
     let _config = firstGame;
     return _config;
@@ -54,6 +58,10 @@ export class GameConfigEditPage {
       }
       if (game.title == 'Jogo da Mercearia') {
         config = this.setConfigMercearia(this.firstGame, this.secondGame, this.thirdGame, this.fourthGame);
+        _time = this.time;
+      }
+      if (game.title == 'Bloquinho') {
+        config = this.setConfigBloquinho(this.firstGame, this.secondGame, this.thirdGame);
         _time = this.time;
       }
       if (game.title == 'Invasão Espacial') {

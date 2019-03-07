@@ -46,7 +46,8 @@ export class GamesPage {
               time: result.data[i].time,
               config: result.data[i].config,
               identifier: result.data[i].pacient,
-              observation: result.data[i].observation
+              observation: result.data[i].observation,
+              imersiveMode: result.data[i].imersiveMode
             });
           }
         }
@@ -178,4 +179,5 @@ export class Game {
   medic: string;
   idToPlay: string;
   observation: string;
+  imersiveMode: boolean;
 }

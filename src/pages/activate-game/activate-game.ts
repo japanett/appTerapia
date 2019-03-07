@@ -27,6 +27,10 @@ export class ActivateGamePage {
     let _config = firstGame + ',' + secondGame + ',' + thirdGame + ',' + fourthGame;
     return _config;
   }
+  setConfigBloquinho(firstGame: string, secondGame: string, thirdGame: string) {
+    let _config = firstGame + ',' + secondGame + ',' + thirdGame;
+    return _config;
+  }
   setConfigBola(firstGame: string) {
     let _config = firstGame;
     return _config;
@@ -51,6 +55,10 @@ export class ActivateGamePage {
       if (game.title == 'Invasão Espacial') {
         config = this.setConfigNave(this.firstGame);
         _time = "";
+      }
+      if (game.title == 'Bloquinho') {
+        config = this.setConfigBloquinho(this.firstGame, this.secondGame, this.thirdGame);
+        _time = this.time;
       }
       this.checkNumber(_time, game.title)
         .then(() => {
