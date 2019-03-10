@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/japanett/clashAPI/master/app.png">
+  <img src="https://raw.githubusercontent.com/japanett/clashAPI/master/app_v2.png">
 </p>
 
 This is a web application made with Ionic 3.

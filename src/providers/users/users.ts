@@ -6,9 +6,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class UsersProvider {
 
-  // private apiURL = 'http://localhost:3000/api/';
+  private apiURL = 'http://localhost:3000/api/';
   // private apiURL = 'http://192.168.0.158:3000/api/';
-  private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
+  // private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
   // private apiURL = 'https://damp-anchorage-23115.herokuapp.com/api/';
 
   constructor(public http: HttpClient, public storage: Storage, public loadingCtrl: LoadingProvider) { }
@@ -83,7 +83,7 @@ export class UsersProvider {
     });
   }
 
-  createPacient(name: string, age: number, sexo: string, patologia: string, objetivo: string) {
+  createPacient(name: string, age: number, sexo: string, patologia: string, objetivo: string,  mao_dominante: string, gmfcs: number) {
     return new Promise((resolve, reject) => {
       this.loadingCtrl.presentWithGif1();
       let data = {
@@ -91,7 +91,9 @@ export class UsersProvider {
         age: age,
         sexo: sexo,
         patologia: patologia,
-        objetivo: objetivo
+        objetivo: objetivo,
+        mao_dominante: mao_dominante,
+        gmfcs: gmfcs
       };
       this.storage.get('token').then((token) => {
         let headers = new HttpHeaders().set('x-access-token', token);
@@ -179,7 +181,7 @@ export class UsersProvider {
     });
   }
 
-  updatePacient(identifier: string, name: string, age: number, sexo: string, patologia: string, objetivo: string) {
+  updatePacient(identifier: string, name: string, age: number, sexo: string, patologia: string, objetivo: string, mao_dominante: string, gmfcs: number) {
     return new Promise((resolve, reject) => {
       this.loadingCtrl.presentWithGif1();
       let url = this.apiURL + 'user/pacients/' + identifier;
@@ -189,8 +191,10 @@ export class UsersProvider {
         "sexo": sexo,
         "patologia": patologia,
         "objetivo": objetivo,
-        "active": true
-      }
+        "active": true,
+        "mao_dominante": mao_dominante,
+        "gmfcs": gmfcs
+      };
       this.storage.get('token').then((token) => {
         let headers = new HttpHeaders().set('x-access-token', token);
         this.http.put(url, data, { headers })

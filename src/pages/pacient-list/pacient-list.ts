@@ -29,29 +29,18 @@ export class PacientListPage {
         }
         if (result.success === true) {
           for (let i = 0; i < result.data.length; i++) {
-            if (result.data[i].sexo.toLowerCase().trim() == 'feminino') {
-              this.data.push({
-                name: result.data[i].name,
-                identifier: result.data[i].identifier,
-                avatar: this.woman,
-                sexo: result.data[i].sexo,
-                id: result.data[i].id,
-                age: result.data[i].age,
-                objetivo: result.data[i].objetivo,
-                patologia: result.data[i].patologia
-              });
-            } else {
-              this.data.push({
-                name: result.data[i].name,
-                identifier: result.data[i].identifier,
-                avatar: this.man,
-                sexo: result.data[i].sexo,
-                id: result.data[i].id,
-                age: result.data[i].age,
-                objetivo: result.data[i].objetivo,
-                patologia: result.data[i].patologia
-              });
-            }
+            this.data.push({
+              name: result.data[i].name,
+              identifier: result.data[i].identifier,
+              avatar: result.data[i].sexo.toLowerCase().trim() == 'feminino' ? this.woman : this.man,
+              sexo: result.data[i].sexo,
+              id: result.data[i].id,
+              age: result.data[i].age,
+              objetivo: result.data[i].objetivo,
+              patologia: result.data[i].patologia,
+              mao_dominante: result.data[i].mao_dominante,
+              gmfcs: result.data[i].gmfcs
+            });
           }
         }
       })
@@ -131,4 +120,6 @@ export class Pacient {
   identifier: string;
   medic: string;
   games: any;
+  mao_dominante: string;
+  gmfcs: number;
 }
