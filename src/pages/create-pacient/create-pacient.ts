@@ -17,6 +17,8 @@ export class CreatePacientPage {
     this.model.sexo = '';
     this.model.patologia = '';
     this.model.objetivo = '';
+    this.model.mao_dominante = '';
+    this.model.gmfcs;
   }
 
   ionViewDidLoad() {
@@ -26,7 +28,7 @@ export class CreatePacientPage {
     this.viewCtrl.dismiss();
   }
   createPacient() {
-    this.userProvider.createPacient(this.model.name, this.model.age, this.model.sexo, this.model.patologia, this.model.objetivo)
+    this.userProvider.createPacient(this.model.name, this.model.age, this.model.sexo, this.model.patologia, this.model.objetivo, this.model.mao_dominante, this.model.gmfcs)
       .then((result: any) => {
         if (result.success) {
           this.toast.create({ message: 'Paciente cadastrado com sucesso', position: 'botton', duration: 5000 }).present();
@@ -46,4 +48,6 @@ export class Pacient {
   sexo: string;
   patologia: string;
   objetivo: string;
+  mao_dominante: string;
+  gmfcs: number;
 }

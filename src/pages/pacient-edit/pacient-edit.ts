@@ -15,6 +15,8 @@ export class PacientEditPage {
   public patologia: string;
   public objetivo: string;
   public identifier: string;
+  public mao_dominante: string;
+  public gmfcs: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private toast: ToastController, private userProvider: UsersProvider) {
     this.getPacient(navParams.get('pacient'));
@@ -25,7 +27,7 @@ export class PacientEditPage {
   }
 
   editPacient() {
-    this.userProvider.updatePacient(this.identifier, this.name, this.age, this.sexo, this.patologia, this.objetivo)
+    this.userProvider.updatePacient(this.identifier, this.name, this.age, this.sexo, this.patologia, this.objetivo, this.mao_dominante, this.gmfcs)
       .then((result: any) => {
         if (result.success) {
           this.viewCtrl.dismiss()
@@ -48,6 +50,8 @@ export class PacientEditPage {
     this.patologia = pacient.patologia;
     this.objetivo = pacient.objetivo;
     this.identifier = pacient.identifier;
+    this.mao_dominante = pacient.mao_dominante;
+    this.gmfcs = pacient.gmfcs;
   }
 
   dismiss() {

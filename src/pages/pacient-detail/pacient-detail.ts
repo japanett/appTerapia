@@ -72,6 +72,8 @@ export class Pacient {
   name: string;
   age: number;
   sexo: string;
+  mao_dominante: string;
+  gmfcs: number;
   patologia: string;
   objetivo: string;
   identifier: string;
