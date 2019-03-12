@@ -39,6 +39,18 @@
   </ion-item>
   <ion-item>
     <ion-label>
+      <h4 [style.color]="getStylee(model)"><b>Mão Dominante:</b></h4>
+      <h3 class="sub">{{model.mao_dominante}}</h3>
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      <h4 [style.color]="getStylee(model)"><b>Nível GMFCS:</b></h4>
+      <h3 class="sub">{{model.gmfcs}}</h3>
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
       <h4 [style.color]="getStylee(model)"><b>Patologia:</b></h4>
       <h3 class="sub">{{model.patologia}}</h3>
     </ion-label>
