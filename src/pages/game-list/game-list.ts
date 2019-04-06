@@ -40,6 +40,7 @@ export class GameListPage {
     this.space = new Game();
     this.bola = new Game();
     this.bloquinho = new Game();
+    this.pontes = new Game();
     this.mercearia.title = 'Jogo da Mercearia';
     this.mercearia.gameID = '1';
     this.space.title = 'Invasão Espacial';
