@@ -60,6 +60,10 @@ export class GameConfigEditPage {
         config = this.setConfigMercearia(this.firstGame, this.secondGame, this.thirdGame, this.fourthGame);
         _time = this.time;
       }
+      if (game.title == 'Pontes') {
+        config = this.setConfigMercearia(this.firstGame, this.secondGame, this.thirdGame, this.fourthGame);
+        _time = this.time;
+      }
       if (game.title == 'Bloquinho') {
         config = this.setConfigBloquinho(this.firstGame, this.secondGame, this.thirdGame);
         _time = this.time;
