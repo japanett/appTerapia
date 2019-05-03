@@ -31,6 +31,10 @@ export class ActivateGamePage {
     let _config = firstGame + ',' + secondGame + ',' + thirdGame;
     return _config;
   }
+  setConfigPontes(firstGame: string, secondGame: string) {
+    let _config = firstGame + ',' + secondGame;
+    return _config;
+  }
   setConfigBola(firstGame: string) {
     let _config = firstGame;
     return _config;
@@ -60,6 +64,11 @@ export class ActivateGamePage {
         config = this.setConfigBloquinho(this.firstGame, this.secondGame, this.thirdGame);
         _time = this.time;
       }
+      if (game.title == 'Pontes') {
+        config = this.setConfigPontes(this.firstGame, this.secondGame);
+        _time = this.time;
+      }
+
       this.checkNumber(_time, game.title)
         .then(() => {
           this.userProvider.addGames(identifier, config, game.gameID, _time, this.imersiveMode)

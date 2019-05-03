@@ -63,6 +63,11 @@ ion-loading.my-loading-class {
 	}
 }
 
+.titleGameEdit {
+	font-size: 7px;
+	text-overflow: unset;
+	white-space: unset;
+}
 	.loader {
 		position: absolute;
 		top: calc(50% - 32px);

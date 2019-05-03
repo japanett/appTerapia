@@ -39,6 +39,10 @@ export class GameConfigEditPage {
     let _config = firstGame + ',' + secondGame + ',' + thirdGame;
     return _config;
   }
+  setConfigPontes(firstGame: string, secondGame: string) {
+    let _config = firstGame + ',' + secondGame;
+    return _config;
+  }
   setConfigBola(firstGame: string) {
     let _config = firstGame;
     return _config;
@@ -58,6 +62,10 @@ export class GameConfigEditPage {
       }
       if (game.title == 'Jogo da Mercearia') {
         config = this.setConfigMercearia(this.firstGame, this.secondGame, this.thirdGame, this.fourthGame);
+        _time = this.time;
+      }
+      if (game.title == 'Pontes') {
+        config = this.setConfigPontes(this.firstGame, this.secondGame);
         _time = this.time;
       }
       if (game.title == 'Bloquinho') {

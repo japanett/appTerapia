@@ -24,6 +24,7 @@ export class GameListPage {
   space: Game;
   bloquinho: Game;
   bola: Game;
+  pontes: Game;
   public ordemJogos: any = [];
 
   constructor(public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public storage: Storage, private toast: ToastController, private userProvider: UsersProvider) {
@@ -39,6 +40,7 @@ export class GameListPage {
     this.space = new Game();
     this.bola = new Game();
     this.bloquinho = new Game();
+    this.pontes = new Game();
     this.mercearia.title = 'Jogo da Mercearia';
     this.mercearia.gameID = '1';
     this.space.title = 'Invasão Espacial';
@@ -47,10 +49,13 @@ export class GameListPage {
     this.bola.gameID = '3';
     this.bloquinho.title = 'Bloquinho';
     this.bloquinho.gameID = '4';
+    this.pontes.title = 'Pontes';
+    this.pontes.gameID = '5';
     this._games.push(this.mercearia);
     this._games.push(this.bola);
     this._games.push(this.space);
     this._games.push(this.bloquinho);
+    this._games.push(this.pontes);
     this._games.forEach((game) => {
       games.forEach((x) => {
         if (game.title == x.title) {

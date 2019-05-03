@@ -38,7 +38,7 @@
     "cordova-sqlite-storage": "^2.3.3",
     "cors": "^2.8.4",
     "express": "^4.16.4",
-    "ionic": "^4.10.3",
+    "ionic": "^4.12.0",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
     "morgan": "^1.9.1",
