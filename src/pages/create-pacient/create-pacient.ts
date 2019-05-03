@@ -18,7 +18,7 @@ export class CreatePacientPage {
     this.model.patologia = '';
     this.model.objetivo = '';
     this.model.mao_dominante = '';
-    this.model.gmfcs;
+    this.model.gmfcs = 0;
   }
 
   ionViewDidLoad() {
