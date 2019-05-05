@@ -16,7 +16,7 @@
       <ion-item>
           <ion-label>Primeira Etapa</ion-label>
           <ion-select [(ngModel)]="firstGame">
-            <ion-option value="2" checked>Mão Direita</ion-option>
+            <ion-option value="2">Mão Direita</ion-option>
             <ion-option value="1">Mão Esquerda</ion-option>
             <ion-option value="3">Mãos Cruzadas</ion-option>
           </ion-select>
@@ -36,14 +36,14 @@
           <ion-select [(ngModel)]="thirdGame">
             <ion-option value="2">Mão Direita</ion-option>
             <ion-option value="1">Mão Esquerda</ion-option>
-            <ion-option value="3" checked>Mãos Cruzadas</ion-option>
+            <ion-option value="3">Mãos Cruzadas</ion-option>
           </ion-select>
         </ion-item>
 
         <ion-item>
           <ion-label>Quarta Etapa</ion-label>
           <ion-select [(ngModel)]="fourthGame">
-            <ion-option value="F" checked>Não</ion-option>
+            <ion-option value="F">Não</ion-option>
             <ion-option value="T">Sim</ion-option>
           </ion-select>
         </ion-item>
@@ -52,7 +52,7 @@
           <ion-label>Modo Imersivo</ion-label>
           <ion-select [(ngModel)]="imersiveMode">
             <ion-option value="F">Não</ion-option>
-            <ion-option value="T" checked>Sim</ion-option>
+            <ion-option value="T">Sim</ion-option>
           </ion-select>
         </ion-item>
 
@@ -66,7 +66,7 @@
     <ion-item>
         <ion-label>Primeira Etapa</ion-label>
         <ion-select [(ngModel)]="firstGame">
-          <ion-option value="2" checked>Mão Direita</ion-option>
+          <ion-option value="2">Mão Direita</ion-option>
           <ion-option value="1">Mão Esquerda</ion-option>
           <ion-option value="3">Mãos Cruzadas</ion-option>
         </ion-select>
@@ -76,7 +76,7 @@
         <ion-label>Segunda Etapa</ion-label>
         <ion-select [(ngModel)]="secondGame">
           <ion-option value="2">Mão Direita</ion-option>
-          <ion-option value="1" checked>Mão Esquerda</ion-option>
+          <ion-option value="1">Mão Esquerda</ion-option>
         </ion-select>
       </ion-item>
 
@@ -90,7 +90,7 @@
     <ion-item>
         <ion-label>Primeira Etapa</ion-label>
         <ion-select [(ngModel)]="firstGame">
-          <ion-option value="2" checked>Mão Direita</ion-option>
+          <ion-option value="2">Mão Direita</ion-option>
           <ion-option value="1">Mão Esquerda</ion-option>
           <ion-option value="3">Mãos Cruzadas</ion-option>
         </ion-select>
@@ -100,7 +100,7 @@
         <ion-label>Segunda Etapa</ion-label>
         <ion-select [(ngModel)]="secondGame">
           <ion-option value="2">Mão Direita</ion-option>
-          <ion-option value="1" checked>Mão Esquerda</ion-option>
+          <ion-option value="1">Mão Esquerda</ion-option>
           <ion-option value="3">Mãos Cruzadas</ion-option>
         </ion-select>
       </ion-item>
@@ -110,7 +110,7 @@
         <ion-select [(ngModel)]="thirdGame">
           <ion-option value="2">Mão Direita</ion-option>
           <ion-option value="1">Mão Esquerda</ion-option>
-          <ion-option value="3" checked>Mãos Cruzadas</ion-option>
+          <ion-option value="3">Mãos Cruzadas</ion-option>
         </ion-select>
       </ion-item>
 
@@ -118,7 +118,7 @@
         <ion-label>Modo Imersivo</ion-label>
         <ion-select [(ngModel)]="imersiveMode">
           <ion-option value="F">Não</ion-option>
-          <ion-option value="T" checked>Sim</ion-option>
+          <ion-option value="T">Sim</ion-option>
         </ion-select>
       </ion-item>
 
@@ -132,7 +132,7 @@
       <ion-item>
           <ion-label>Selecione a mão</ion-label>
           <ion-select [(ngModel)]="firstGame">
-            <ion-option value="2" checked>Mão Direita</ion-option>
+            <ion-option value="2">Mão Direita</ion-option>
             <ion-option value="1">Mão Esquerda</ion-option>
           </ion-select>
         </ion-item>
@@ -141,12 +141,12 @@
       <ion-item>
           <ion-label>Selecione a mão</ion-label>
           <ion-select [(ngModel)]="firstGame">
-            <ion-option value="2" checked>Mão Direita</ion-option>
+            <ion-option value="2">Mão Direita</ion-option>
           </ion-select>
         </ion-item>
   </div>
   <div style="text-align: center;margin-top: 15px;">
-    <button ion-button class="backButton" ion-button block round (click)="dismiss()">Cancelar</button>
-    <button ion-button class="customButton" ion-button block round (click)="activate(identifier, game)">Ativar</button>
+    <button ion-button class="backButton" block round (click)="dismiss()">Cancelar</button>
+    <button ion-button class="customButton" block round (click)="activate(identifier, game)">Ativar</button>
   </div>
 </ion-content>

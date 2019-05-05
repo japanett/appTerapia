@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ViewController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {ViewController, IonicPage, NavController, NavParams} from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -27,6 +27,7 @@ export class GameDetailPage {
     }
     return imersiveMode ? 'Ativado' : 'Desativado';
   }
+
   translateConfig(config: string) {
     return config
       .replace('1', 'Mão Esquerda')
