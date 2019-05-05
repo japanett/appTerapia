@@ -36,7 +36,7 @@ export class GameConfigEditPage {
     this.thirdGame = this.game.config.split(',')[2] || this.game.config;
     this.fourthGame = this.game.config.split(',')[3] || this.game.config;
     this.time = this.game.time;
-    this.imersiveMode = 'F';
+    this.imersiveMode = this.game.imersiveMode === true ? 'T' : 'F';
   }
 
   static setConfigMercearia(firstGame: string, secondGame: string, thirdGame: string, fourthGame: string) {
