@@ -144,6 +144,15 @@
         <ion-option value="1">Mão Esquerda</ion-option>
       </ion-select>
     </ion-item>
+
+    <ion-item>
+      <ion-label>Modo Imersivo</ion-label>
+      <ion-select [(ngModel)]="imersiveMode">
+        <ion-option value="F">Não</ion-option>
+        <ion-option value="T">Sim</ion-option>
+      </ion-select>
+    </ion-item>
+    
   </div>
   <div *ngIf="game.title == 'Bola na Caixa'">
     <ion-item>
