@@ -47,10 +47,6 @@ export class GameConfigEditPage {
     let _config = firstGame;
     return _config;
   }
-  setConfigNave(firstGame: string) {
-    let _config = firstGame;
-    return _config;
-  }
 
   editGame(id: string, game: any) {
     return new Promise((resolve, reject) => {
@@ -73,7 +69,7 @@ export class GameConfigEditPage {
         _time = this.time;
       }
       if (game.title == 'Invasão Espacial') {
-        config = this.setConfigNave(this.firstGame);
+        config = this.setConfigBloquinho(this.firstGame, this.secondGame, this.thirdGame);
         _time = "";
       }
       this.checkNumber(_time, game.title)
