@@ -1,8 +1,16 @@
-import { Component } from '@angular/core';
-import { ModalController, ItemSliding, AlertController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { UsersProvider } from './../../providers/users/users';
-import { PacientDetailPage } from './../pacient-detail/pacient-detail';
-import { PacientEditPage } from './../pacient-edit/pacient-edit';
+import {Component} from '@angular/core';
+import {
+  AlertController,
+  IonicPage,
+  ItemSliding,
+  ModalController,
+  NavController,
+  NavParams,
+  ToastController
+} from 'ionic-angular';
+import {UsersProvider} from './../../providers/users/users';
+import {PacientDetailPage} from './../pacient-detail/pacient-detail';
+import {PacientEditPage} from './../pacient-edit/pacient-edit';
 
 @IonicPage()
 @Component({
@@ -15,6 +23,7 @@ export class PacientListPage {
   public woman = './assets/imgs/woman.png';
 
   model: Pacient;
+
   constructor(public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new Pacient();
     this.getPacients();
@@ -45,7 +54,7 @@ export class PacientListPage {
         }
       })
       .catch((error: any) => {
-        this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
+        this.toast.create({message: 'Erro: ' + error.error, position: 'botton', duration: 5000}).present();
       });
   }
 
@@ -68,12 +77,12 @@ export class PacientListPage {
                 .then((result: any) => {
                   if (result.success === true) {
                     this.navCtrl.setRoot(this.navCtrl.getActive().component);
-                    this.toast.create({ message: name + ' removido !!', position: 'botton', duration: 5000 }).present();
+                    this.toast.create({message: name + ' removido !!', position: 'botton', duration: 5000}).present();
                   }
                 })
                 .catch((error: any) => {
                   reject(error);
-                  this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
+                  this.toast.create({message: 'Erro: ' + error.error, position: 'botton', duration: 5000}).present();
                 });
             });
           }
@@ -84,7 +93,7 @@ export class PacientListPage {
   }
 
   editPacient(pacient: any) {
-    var pacientEditModal = this.modalCtrl.create(PacientEditPage, { pacient: pacient }, { enableBackdropDismiss: false });
+    var pacientEditModal = this.modalCtrl.create(PacientEditPage, {pacient: pacient}, {enableBackdropDismiss: false});
     pacientEditModal.onDidDismiss(() => {
       this.getPacients();
     })
@@ -96,7 +105,10 @@ export class PacientListPage {
   }
 
   selectPacient(identifier: string, id: string) {
-    var pacientModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier, id: id }, { enableBackdropDismiss: false });
+    var pacientModal = this.modalCtrl.create(PacientDetailPage, {
+      identifier: identifier,
+      id: id
+    }, {enableBackdropDismiss: false});
     pacientModal.present();
   }
 

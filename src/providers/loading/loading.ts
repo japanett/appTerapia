@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Loading, LoadingController } from 'ionic-angular';
+import {Injectable} from '@angular/core';
+import {Loading, LoadingController} from 'ionic-angular';
 
 @Injectable()
 export class LoadingProvider {
   loading: Loading;
+
   constructor(public loadingCtrl: LoadingController) {
   }
 

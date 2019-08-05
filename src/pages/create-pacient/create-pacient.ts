@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, ViewController, NavController, NavParams, ToastController } from 'ionic-angular';
-import { UsersProvider } from './../../providers/users/users';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams, ToastController, ViewController} from 'ionic-angular';
+import {UsersProvider} from './../../providers/users/users';
 
 @IonicPage()
 @Component({
@@ -24,24 +24,35 @@ export class CreatePacientPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreatePacientPage');
   }
+
   dismiss() {
     this.viewCtrl.dismiss();
   }
+
   createPacient() {
     this.userProvider.createPacient(this.model.name, this.model.age, this.model.sexo, this.model.patologia, this.model.objetivo, this.model.mao_dominante, this.model.gmfcs)
       .then((result: any) => {
         if (result.success) {
-          this.toast.create({ message: 'Paciente cadastrado com sucesso', position: 'botton', duration: 5000 }).present();
+          this.toast.create({message: 'Paciente cadastrado com sucesso', position: 'botton', duration: 5000}).present();
           this.navCtrl.setRoot('PacientListPage');
         } else {
-          this.toast.create({ message: 'Preencha todos os campos corretamente', position: 'botton', duration: 5000 }).present();
+          this.toast.create({
+            message: 'Preencha todos os campos corretamente',
+            position: 'botton',
+            duration: 5000
+          }).present();
         }
       })
       .catch((error: any) => {
-        this.toast.create({ message: 'Preencha todos os campos corretamente', position: 'botton', duration: 5000 }).present();
+        this.toast.create({
+          message: 'Preencha todos os campos corretamente',
+          position: 'botton',
+          duration: 5000
+        }).present();
       })
   }
 }
+
 export class Pacient {
   name: string;
   age: number;

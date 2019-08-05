@@ -3,7 +3,7 @@
   <ion-navbar>
     <ion-title></ion-title>
     <ion-buttons left>
-      <button ion-button icon-only (click)="dismiss()">
+      <button (click)="dismiss()" icon-only ion-button>
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
@@ -72,13 +72,13 @@
     <ion-row text-center>
       <ion-col col-4></ion-col>
       <ion-col col-3>
-        <button ion-fab fab-fixed color="light" (click)="getGames(model.identifier, model.name)">
+        <button (click)="getGames(model.identifier, model.name)" color="light" fab-fixed ion-fab>
           <ion-icon name="archive"></ion-icon>
         </button>
       </ion-col>
       <ion-col col-3>
-        <button ion-fab fab-fixed color="danger"
-          (click)="addGame(model.name, model.identifier,model.games,model.sexo, model._id)">
+        <button (click)="addGame(model.name, model.identifier,model.games,model.sexo, model._id)" color="danger" fab-fixed
+                ion-fab>
           <ion-icon name="cog"></ion-icon>
         </button>
       </ion-col>

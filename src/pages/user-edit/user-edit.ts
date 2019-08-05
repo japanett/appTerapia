@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { UsersProvider } from './../../providers/users/users';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {UsersProvider} from './../../providers/users/users';
 
 @IonicPage()
 @Component({
@@ -19,19 +19,20 @@ export class UserEditPage {
     this.userProvider.updateUser(this.model.name, this.model.email)
       .then((result: any) => {
         if (result.success === true) {
-          this.toast.create({ message: 'Informações atualizadas', position: 'botton', duration: 3000 }).present();
+          this.toast.create({message: 'Informações atualizadas', position: 'botton', duration: 3000}).present();
           this.navCtrl.popToRoot();
         } else {
-          this.toast.create({ message: 'Erro ao atualizar...', position: 'botton', duration: 5000 }).present();
+          this.toast.create({message: 'Erro ao atualizar...', position: 'botton', duration: 5000}).present();
         }
       });
   }
 
-  goBack(){
+  goBack() {
     this.navCtrl.pop();
   }
 
 }
+
 export class User {
   name: string;
   login: string;

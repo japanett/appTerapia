@@ -12,7 +12,7 @@
 </ion-header>
 <ion-content padding>
   <ion-list>
-    <ion-item-sliding *ngFor="let pacient of data" #slidingItem>
+    <ion-item-sliding #slidingItem *ngFor="let pacient of data">
       <ion-item (click)="selectPacient(pacient.identifier, pacient.id)">
         <ion-avatar item-start><img src={{pacient.avatar}}></ion-avatar>
         <h2 [style.color]="getStylee(pacient)"><b>{{pacient.name}}</b></h2>
@@ -20,11 +20,11 @@
       </ion-item>
 
       <ion-item-options side="right">
-        <button ion-button icon-only outline (click)="editPacient(pacient);$event.stopPropagation();">
+        <button (click)="editPacient(pacient);$event.stopPropagation();" icon-only ion-button outline>
           <ion-icon color="light" name="hammer"></ion-icon>
         </button>
-        <button ion-button icon-only outline
-          (click)="deletePacient(pacient.identifier, pacient.name, slidingItem);$event.stopPropagation();">
+        <button (click)="deletePacient(pacient.identifier, pacient.name, slidingItem);$event.stopPropagation();" icon-only ion-button
+                outline>
           <ion-icon color="danger" name="trash"></ion-icon>
         </button>
       </ion-item-options>
@@ -32,7 +32,7 @@
   </ion-list>
 
   <ion-fab bottom right>
-    <button ion-fab (click)="createPacient()">
+    <button (click)="createPacient()" ion-fab>
       <ion-icon name="person-add"></ion-icon>
     </button>
   </ion-fab>

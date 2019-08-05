@@ -3,13 +3,13 @@
 ion-content {
   background: $app-background;
   color: #fafafa;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 ion-navbar {
   background: $navheader-background;
   border-bottom: 1px color($colors, light) ridge;
-  font-family:'Courier New', Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .menu {
@@ -18,55 +18,55 @@ ion-navbar {
 }
 
 .backButton {
-  -moz-box-shadow:inset 0px 1px 20px -50px #a6e0bd;
-	-webkit-box-shadow:inset 0px 1px 20px -50px #a6e0bd;
-	box-shadow:inset 0px 1px 20px -50px #a6e0bd;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c5bcbc), color-stop(1, #000000));
-	background:-moz-linear-gradient(top, #c5bcbc 5%, #eedddd 100%);
-	background:-webkit-linear-gradient(top, #c5bcbc 5%, #eedddd 100%);
-	background:-o-linear-gradient(top, #c5bcbc 5%, #eedddd 100%);
-	background:-ms-linear-gradient(top, #c5bcbc 5%, #eedddd 100%);
-	background:linear-gradient(to bottom, #c5bcbc 5%, #eedddd 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c5bcbc', endColorstr='#eedddd',GradientType=0);
-	background-color:#eedddd;
-	color:#000000;
-	font-family:'Courier New', Courier, monospace;
-	font-size:16px;
-	font-weight:bold;
-	padding:8px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #141312;
+  -moz-box-shadow: inset 0px 1px 20px -50px #a6e0bd;
+  -webkit-box-shadow: inset 0px 1px 20px -50px #a6e0bd;
+  box-shadow: inset 0px 1px 20px -50px #a6e0bd;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c5bcbc), color-stop(1, #000000));
+  background: -moz-linear-gradient(top, #c5bcbc 5%, #eedddd 100%);
+  background: -webkit-linear-gradient(top, #c5bcbc 5%, #eedddd 100%);
+  background: -o-linear-gradient(top, #c5bcbc 5%, #eedddd 100%);
+  background: -ms-linear-gradient(top, #c5bcbc 5%, #eedddd 100%);
+  background: linear-gradient(to bottom, #c5bcbc 5%, #eedddd 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c5bcbc', endColorstr='#eedddd', GradientType=0);
+  background-color: #eedddd;
+  color: #000000;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #141312;
 }
 
 .backButton:active {
-	position:relative;
-	top:2px;
+  position: relative;
+  top: 2px;
 }
 
 .customButton {
-  -moz-box-shadow:inset 0px 1px 20px -50px #a6e0bd;
-	-webkit-box-shadow:inset 0px 1px 20px -50px #a6e0bd;
-	box-shadow:inset 0px 1px 20px -50px #a6e0bd;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #1a1717), color-stop(1, #000000));
-	background:-moz-linear-gradient(top, #1a1717 5%, #000000 100%);
-	background:-webkit-linear-gradient(top, #1a1717 5%, #000000 100%);
-	background:-o-linear-gradient(top, #1a1717 5%, #000000 100%);
-	background:-ms-linear-gradient(top, #1a1717 5%, #000000 100%);
-	background:linear-gradient(to bottom, #1a1717 5%, #000000 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1a1717', endColorstr='#000000',GradientType=0);
-	background-color:#1a1717;
-	color:#ffffff;
-	font-family:'Courier New', Courier, monospace;
-	font-size:16px;
-	font-weight:bold;
-	padding:8px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #141312;
+  -moz-box-shadow: inset 0px 1px 20px -50px #a6e0bd;
+  -webkit-box-shadow: inset 0px 1px 20px -50px #a6e0bd;
+  box-shadow: inset 0px 1px 20px -50px #a6e0bd;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #1a1717), color-stop(1, #000000));
+  background: -moz-linear-gradient(top, #1a1717 5%, #000000 100%);
+  background: -webkit-linear-gradient(top, #1a1717 5%, #000000 100%);
+  background: -o-linear-gradient(top, #1a1717 5%, #000000 100%);
+  background: -ms-linear-gradient(top, #1a1717 5%, #000000 100%);
+  background: linear-gradient(to bottom, #1a1717 5%, #000000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1a1717', endColorstr='#000000', GradientType=0);
+  background-color: #1a1717;
+  color: #ffffff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #141312;
 }
 
 .customButton:active {
-	position:relative;
-	top:2px;
+  position: relative;
+  top: 2px;
 }
 
 ion-title {
@@ -78,6 +78,7 @@ ion-title {
   height: 100%;
   text-align: center;
 }
+
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These

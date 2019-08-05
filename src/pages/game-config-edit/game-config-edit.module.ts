@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { GameConfigEditPage } from './game-config-edit';
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {GameConfigEditPage} from './game-config-edit';
 
 @NgModule({
   declarations: [
@@ -10,4 +10,5 @@ import { GameConfigEditPage } from './game-config-edit';
     IonicPageModule.forChild(GameConfigEditPage),
   ],
 })
-export class GameConfigEditPageModule {}
+export class GameConfigEditPageModule {
+}

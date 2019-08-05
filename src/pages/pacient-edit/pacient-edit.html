@@ -3,7 +3,7 @@
   <ion-navbar>
     <ion-title>Editar</ion-title>
     <ion-buttons left>
-      <button ion-button icon-only (click)="dismiss()">
+      <button (click)="dismiss()" icon-only ion-button>
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
@@ -15,17 +15,17 @@
   <ion-list>
     <ion-item>
       <ion-label stacked>Nome:</ion-label>
-      <ion-input type="text" name="name" [(ngModel)]="name"></ion-input>
+      <ion-input [(ngModel)]="name" name="name" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Idade:</ion-label>
-      <ion-input type="text" name="age" [(ngModel)]="age"></ion-input>
+      <ion-input [(ngModel)]="age" name="age" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Sexo:</ion-label>
-      <ion-select name="sexo" [(ngModel)]="sexo">
+      <ion-select [(ngModel)]="sexo" name="sexo">
         <ion-option value="masculino">Masculino</ion-option>
         <ion-option value="feminino">Feminino</ion-option>
       </ion-select>
@@ -33,7 +33,7 @@
 
     <ion-item>
       <ion-label stacked>Mao Dominante:</ion-label>
-      <ion-select name="mao_dominante" [(ngModel)]="mao_dominante">
+      <ion-select [(ngModel)]="mao_dominante" name="mao_dominante">
         <ion-option value="Esquerda">Esquerda</ion-option>
         <ion-option value="Direita">Direita</ion-option>
       </ion-select>
@@ -41,7 +41,7 @@
 
     <ion-item>
       <ion-label stacked>Nível GMFCS:</ion-label>
-      <ion-select name="gmfcs" [(ngModel)]="gmfcs">
+      <ion-select [(ngModel)]="gmfcs" name="gmfcs">
         <ion-option value=0>0</ion-option>
         <ion-option value=1>1</ion-option>
         <ion-option value=2>2</ion-option>
@@ -53,17 +53,17 @@
 
     <ion-item>
       <ion-label stacked>Patologia:</ion-label>
-      <ion-input type="text" name="patologia" [(ngModel)]="patologia"></ion-input>
+      <ion-input [(ngModel)]="patologia" name="patologia" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Objetivo:</ion-label>
-      <ion-input type="text" name="objetivo" [(ngModel)]="objetivo"></ion-input>
+      <ion-input [(ngModel)]="objetivo" name="objetivo" type="text"></ion-input>
     </ion-item>
   </ion-list>
 
   <div style="text-align: center;">
-    <button ion-button class="customButton" ion-button medium round (click)="editPacient()">Confirmar</button>
-    <button ion-button class="backButton" ion-button medium round (click)="dismiss()">Cancelar</button>
+    <button (click)="editPacient()" class="customButton" ion-button ion-button medium round>Confirmar</button>
+    <button (click)="dismiss()" class="backButton" ion-button ion-button medium round>Cancelar</button>
   </div>
 </ion-content>

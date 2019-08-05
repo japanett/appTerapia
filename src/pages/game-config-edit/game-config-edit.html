@@ -3,7 +3,7 @@
   <ion-navbar>
     <ion-title class="titleGameEdit">{{game.title}}</ion-title>
     <ion-buttons left>
-      <button ion-button icon-only (click)="dismiss()">
+      <button (click)="dismiss()" icon-only ion-button>
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
@@ -61,7 +61,7 @@
       <ion-label stacked>
         <h2>Tempo/Etapa em segundos. EX: 60</h2>
       </ion-label>
-      <ion-input type="text" name="time" [(ngModel)]="time"></ion-input>
+      <ion-input [(ngModel)]="time" name="time" type="text"></ion-input>
     </ion-item>
   </div>
 
@@ -88,11 +88,11 @@
       <ion-label stacked>
         <h2>Tempo/Etapa em segundos. EX: 60</h2>
       </ion-label>
-      <ion-input type="text" name="time" [(ngModel)]="time"></ion-input>
+      <ion-input [(ngModel)]="time" name="time" type="text"></ion-input>
     </ion-item>
   </div>
 
-  <div *ngIf="game.title == 'Bloquinho'">
+  <div *ngIf="game.title == 'Bloquinho' || game.title == 'Jogo do Labirinto' || game.title == 'Fruit Jump'">
     <ion-item>
       <ion-label>Primeira Etapa</ion-label>
       <ion-select [(ngModel)]="firstGame">
@@ -132,7 +132,7 @@
       <ion-label stacked>
         <h2>Tempo/Etapa em segundos. EX: 60</h2>
       </ion-label>
-      <ion-input type="text" name="time" [(ngModel)]="time"></ion-input>
+      <ion-input [(ngModel)]="time" name="time" type="text"></ion-input>
     </ion-item>
   </div>
 
@@ -171,7 +171,7 @@
         <ion-option value="T">Sim</ion-option>
       </ion-select>
     </ion-item>
-    
+
   </div>
   <div *ngIf="game.title == 'Bola na Caixa'">
     <ion-item>
@@ -183,7 +183,7 @@
   </div>
 
   <div style="text-align: center;margin-top: 15px;">
-    <button ion-button class="customButton" block round (click)="editGame(id, game)">Confirmar</button>
-    <button ion-button class="backButton" block round (click)="dismiss()">Cancelar</button>
+    <button (click)="editGame(id, game)" block class="customButton" ion-button round>Confirmar</button>
+    <button (click)="dismiss()" block class="backButton" ion-button round>Cancelar</button>
   </div>
 </ion-content>

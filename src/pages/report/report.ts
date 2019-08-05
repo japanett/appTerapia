@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
-import { UsersProvider } from './../../providers/users/users';
+import {Component} from '@angular/core';
+import {AlertController, IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {UsersProvider} from './../../providers/users/users';
 
 @IonicPage()
 @Component({
@@ -9,7 +9,7 @@ import { UsersProvider } from './../../providers/users/users';
 })
 export class ReportPage {
 
-  constructor(public alertCtrl: AlertController, private toast: ToastController, public navCtrl: NavController, public navParams: NavParams,  private userProvider: UsersProvider) {
+  constructor(public alertCtrl: AlertController, private toast: ToastController, public navCtrl: NavController, public navParams: NavParams, private userProvider: UsersProvider) {
   }
 
 
@@ -21,7 +21,7 @@ export class ReportPage {
         {
           text: 'Não',
           handler: () => {
-            
+
           }
         },
         {
@@ -31,12 +31,12 @@ export class ReportPage {
               this.userProvider.sendReport()
                 .then((result: any) => {
                   if (result.success === true) {
-                    this.toast.create({ message: 'Relatório enviado !', position: 'botton', duration: 5000 }).present();
+                    this.toast.create({message: 'Relatório enviado !', position: 'botton', duration: 5000}).present();
                   }
                 })
                 .catch((error: any) => {
                   reject(error);
-                  this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
+                  this.toast.create({message: 'Erro: ' + error.error, position: 'botton', duration: 5000}).present();
                 });
             });
           }

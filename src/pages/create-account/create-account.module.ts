@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { CreateAccountPage } from './create-account';
-import { TextMaskModule } from 'angular2-text-mask';
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {CreateAccountPage} from './create-account';
+import {TextMaskModule} from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -12,4 +12,5 @@ import { TextMaskModule } from 'angular2-text-mask';
     TextMaskModule
   ],
 })
-export class CreateAccountPageModule {}
+export class CreateAccountPageModule {
+}

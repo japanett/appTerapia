@@ -1,30 +1,30 @@
 <ion-header>
-  <ion-navbar (click)="goBack()"> 
+  <ion-navbar (click)="goBack()">
     <ion-title>
       Login
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding >
+<ion-content padding>
 
   <ion-list>
     <ion-item>
       <ion-label stacked>Usuário</ion-label>
-      <ion-input type="text" name="login" [(ngModel)]="model.login"></ion-input>
+      <ion-input [(ngModel)]="model.login" name="login" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Senha</ion-label>
-      <ion-input type="password" name="password" [(ngModel)]="model.password"></ion-input>
+      <ion-input [(ngModel)]="model.password" name="password" type="password"></ion-input>
     </ion-item>
   </ion-list>
 
   <div style="text-align: center;">
-      <button ion-button class="customButton" block round (click)="login()">Entrar</button>
+    <button (click)="login()" block class="customButton" ion-button round>Entrar</button>
   </div>
   <div style="text-align: center;">
-    <button ion-button class="customButton" block round (click)="recover()">Recuperar Senha</button>
-</div>
-  
+    <button (click)="recover()" block class="customButton" ion-button round>Recuperar Senha</button>
+  </div>
+
 </ion-content>

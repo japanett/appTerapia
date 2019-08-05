@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { ModalController, ViewController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { UsersProvider } from './../../providers/users/users';
-import { Storage } from '@ionic/storage';
-import { GamesPage } from './../games/games';
-import { GameListPage } from './../game-list/game-list';
+import {Component} from '@angular/core';
+import {IonicPage, ModalController, NavController, NavParams, ToastController, ViewController} from 'ionic-angular';
+import {UsersProvider} from './../../providers/users/users';
+import {Storage} from '@ionic/storage';
+import {GamesPage} from './../games/games';
+import {GameListPage} from './../game-list/game-list';
 
 @IonicPage()
 @Component({
@@ -30,18 +30,27 @@ export class PacientDetailPage {
         }
       })
       .catch((error: any) => {
-        this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
+        this.toast.create({message: 'Erro: ' + error.error, position: 'botton', duration: 5000}).present();
       });
   }
 
   getGames(identifier: string, name: string, id: string) {
-    var gamesModal = this.modalCtrl.create(GamesPage, { identifier: identifier, name: name }, { enableBackdropDismiss: false });
+    var gamesModal = this.modalCtrl.create(GamesPage, {
+      identifier: identifier,
+      name: name
+    }, {enableBackdropDismiss: false});
     gamesModal.present();
   }
 
   addGame(name: string, identifier: string, games: any, sexo: string, id: string) {
     var _identifier = identifier;
-    var gameListModal = this.modalCtrl.create(GameListPage, { identifier: _identifier, name: name, games: games, sexo: sexo, id: id }, { enableBackdropDismiss: false });
+    var gameListModal = this.modalCtrl.create(GameListPage, {
+      identifier: _identifier,
+      name: name,
+      games: games,
+      sexo: sexo,
+      id: id
+    }, {enableBackdropDismiss: false});
     gameListModal.onDidDismiss(() => {
       this.getPacient(_identifier);
     });

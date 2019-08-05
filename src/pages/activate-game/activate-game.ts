@@ -1,7 +1,15 @@
-import { Component } from '@angular/core';
-import { ModalController, App, ViewController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { UsersProvider } from './../../providers/users/users';
-import { Storage } from '@ionic/storage';
+import {Component} from '@angular/core';
+import {
+  App,
+  IonicPage,
+  ModalController,
+  NavController,
+  NavParams,
+  ToastController,
+  ViewController
+} from 'ionic-angular';
+import {UsersProvider} from '../../providers/users/users';
+import {Storage} from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -23,45 +31,45 @@ export class ActivateGamePage {
     this.game = navParams.get('game');
   }
 
-  setConfigMercearia(firstGame: string, secondGame: string, thirdGame: string, fourthGame: string) {
-    let _config = firstGame + ',' + secondGame + ',' + thirdGame + ',' + fourthGame;
-    return _config;
+  static setConfigFour(firstGame: string, secondGame: string, thirdGame: string, fourthGame: string) {
+    return firstGame + ',' + secondGame + ',' + thirdGame + ',' + fourthGame;
   }
-  setConfigBloquinho(firstGame: string, secondGame: string, thirdGame: string) {
-    let _config = firstGame + ',' + secondGame + ',' + thirdGame;
-    return _config;
+
+  static setConfigThree(firstGame: string, secondGame: string, thirdGame: string) {
+    return firstGame + ',' + secondGame + ',' + thirdGame;
   }
-  setConfigPontes(firstGame: string, secondGame: string) {
-    let _config = firstGame + ',' + secondGame;
-    return _config;
+
+  static setConfigTwo(firstGame: string, secondGame: string) {
+    return firstGame + ',' + secondGame;
   }
-  setConfigBola(firstGame: string) {
-    let _config = firstGame;
-    return _config;
+
+  static setConfigOne(firstGame: string) {
+    return firstGame;
   }
+
   activate(identifier: string, game: any) {
     return new Promise((resolve, reject) => {
-      var config,
+      let config,
         _time;
 
       if (game.title == 'Bola na Caixa') {
-        config = this.setConfigBola(this.firstGame);
+        config = ActivateGamePage.setConfigOne(this.firstGame);
         _time = "";
       }
-      if (game.title == 'Jogo da Mercearia') {
-        config = this.setConfigMercearia(this.firstGame, this.secondGame, this.thirdGame, this.fourthGame);
+      if (game.title == 'Pontes') {
+        config = ActivateGamePage.setConfigTwo(this.firstGame, this.secondGame);
         _time = this.time;
       }
       if (game.title == 'Invasão Espacial') {
-        config = this.setConfigBloquinho(this.firstGame, this.secondGame, this.thirdGame);
+        config = ActivateGamePage.setConfigThree(this.firstGame, this.secondGame, this.thirdGame);
         _time = "";
       }
-      if (game.title == 'Bloquinho') {
-        config = this.setConfigBloquinho(this.firstGame, this.secondGame, this.thirdGame);
+      if (game.title == 'Bloquinho' || game.title == 'Jogo do Labirinto' || game.title == 'Fruit Jump') {
+        config = ActivateGamePage.setConfigThree(this.firstGame, this.secondGame, this.thirdGame);
         _time = this.time;
       }
-      if (game.title == 'Pontes') {
-        config = this.setConfigPontes(this.firstGame, this.secondGame);
+      if (game.title == 'Jogo da Mercearia') {
+        config = ActivateGamePage.setConfigFour(this.firstGame, this.secondGame, this.thirdGame, this.fourthGame);
         _time = this.time;
       }
 
@@ -73,23 +81,28 @@ export class ActivateGamePage {
                 this.viewCtrl.dismiss()
                   .then(() => {
                     this.navCtrl.popToRoot();
-                    this.toast.create({ message: 'Jogo Ativado !', position: 'botton', duration: 2000 }).present();
+                    this.toast.create({message: 'Jogo Ativado !', position: 'botton', duration: 2000}).present();
                     resolve();
                   })
               }
               if (result.success === false) {
                 this.navCtrl.popToRoot();
-                this.toast.create({ message: 'Jogo já foi ativado para o paciente !', position: 'botton', duration: 5000 }).present();
+                this.toast.create({
+                  message: 'Jogo já foi ativado para o paciente !',
+                  position: 'botton',
+                  duration: 5000
+                }).present();
               }
             })
             .catch((error: any) => {
               reject(error);
-              this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
+              this.toast.create({message: 'Erro: ' + error.error, position: 'botton', duration: 5000}).present();
             });
         })
-        .catch(e => this.toast.create({ message: e, position: 'botton', duration: 5000 }).present());
+        .catch(e => this.toast.create({message: e, position: 'botton', duration: 5000}).present());
     });
   }
+
   dismiss() {
     this.viewCtrl.dismiss();
   }
@@ -97,11 +110,10 @@ export class ActivateGamePage {
   checkNumber(time: string, gameTitle: string) {
     return new Promise((resolve, reject) => {
       //if string is a number and not empty, return true
-      var isFixedString = (s: string) => !isNaN(+s) && isFinite(+s) && !/e/i.test(s) && s.length > 0;
+      let isFixedString = (s: string) => !isNaN(+s) && isFinite(+s) && !/e/i.test(s) && s.length > 0;
       if (!isFixedString(time) && gameTitle === 'Jogo da Mercearia') {
         reject('Insira um número válido !')
-      }
-      else {
+      } else {
         resolve();
       }
     })

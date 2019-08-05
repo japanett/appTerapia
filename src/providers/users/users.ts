@@ -1,17 +1,18 @@
-import { Injectable } from '@angular/core';
-import { LoadingProvider } from '../loading/loading';
-import { Storage } from '@ionic/storage';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {LoadingProvider} from '../loading/loading';
+import {Storage} from '@ionic/storage';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class UsersProvider {
 
-  // private apiURL = 'http://localhost:3000/api/';
-  private apiURL = 'http://ec2-52-45-196-107.compute-1.amazonaws.com:3000/api/';
+   private apiURL = 'http://localhost:3000/api/';
+  // private apiURL = 'http://ec2-52-45-196-107.compute-1.amazonaws.com:3000/api/';
   // private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
   // private apiURL = 'https://damp-anchorage-23115.herokuapp.com/api/';
 
-  constructor(public http: HttpClient, public storage: Storage, public loadingCtrl: LoadingProvider) { }
+  constructor(public http: HttpClient, public storage: Storage, public loadingCtrl: LoadingProvider) {
+  }
 
   recoverPassword(email: string) {
     return new Promise((resolve, reject) => {
@@ -19,12 +20,12 @@ export class UsersProvider {
       let url = this.apiURL + 'user/' + email + '/recover-password';
       this.storage.get('token').then((token) => {
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.get(url, { headers })
+        this.http.get(url, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -43,12 +44,12 @@ export class UsersProvider {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/change-password';
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.patch(url, data, { headers })
+        this.http.patch(url, data, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -71,10 +72,10 @@ export class UsersProvider {
 
       this.http.post(this.apiURL + 'user/create', data)
         .subscribe((result: any) => {
-          this.loadingCtrl.dismiss().then(() => {
-            resolve(result);
-          });
-        },
+            this.loadingCtrl.dismiss().then(() => {
+              resolve(result);
+            });
+          },
           (error) => {
             this.loadingCtrl.dismiss().then(() => {
               reject(error);
@@ -83,7 +84,7 @@ export class UsersProvider {
     });
   }
 
-  createPacient(name: string, age: number, sexo: string, patologia: string, objetivo: string,  mao_dominante: string, gmfcs: number) {
+  createPacient(name: string, age: number, sexo: string, patologia: string, objetivo: string, mao_dominante: string, gmfcs: number) {
     return new Promise((resolve, reject) => {
       this.loadingCtrl.presentWithGif1();
       let data = {
@@ -97,12 +98,12 @@ export class UsersProvider {
       };
       this.storage.get('token').then((token) => {
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.post(this.apiURL + 'user/pacients', data, { headers })
+        this.http.post(this.apiURL + 'user/pacients', data, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -124,10 +125,10 @@ export class UsersProvider {
 
       this.http.post(this.apiURL + 'auth', data)
         .subscribe((result: any) => {
-          this.loadingCtrl.dismiss().then(() => {
-            resolve(result);
-          });
-        },
+            this.loadingCtrl.dismiss().then(() => {
+              resolve(result);
+            });
+          },
           (error) => {
             this.loadingCtrl.dismiss().then(() => {
               reject(error);
@@ -142,12 +143,12 @@ export class UsersProvider {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients';
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.get(url, { headers })
+        this.http.get(url, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -164,12 +165,12 @@ export class UsersProvider {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients/' + identifier;
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.get(url, { headers })
+        this.http.get(url, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -197,12 +198,12 @@ export class UsersProvider {
       };
       this.storage.get('token').then((token) => {
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.put(url, data, { headers })
+        this.http.put(url, data, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -218,12 +219,12 @@ export class UsersProvider {
       let url = this.apiURL + 'user';
       this.storage.get('token').then((token) => {
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.get(url, { headers })
+        this.http.get(url, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -239,12 +240,12 @@ export class UsersProvider {
       let url = this.apiURL + 'user/report';
       this.storage.get('token').then((token) => {
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.get(url, { headers })
+        this.http.get(url, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -265,12 +266,12 @@ export class UsersProvider {
       this.storage.get('token').then((token) => {
 
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.put(url, data, { headers })
+        this.http.put(url, data, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -286,12 +287,12 @@ export class UsersProvider {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients/' + identifier;
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.delete(url, { headers })
+        this.http.delete(url, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -307,12 +308,12 @@ export class UsersProvider {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients/' + identifier + '/games/';
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.get(url, { headers })
+        this.http.get(url, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -335,12 +336,12 @@ export class UsersProvider {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/pacients/games/' + identifier;
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.put(url, data, { headers })
+        this.http.put(url, data, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -364,12 +365,12 @@ export class UsersProvider {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/games/' + pacientId;
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.put(url, data, { headers })
+        this.http.put(url, data, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -385,12 +386,12 @@ export class UsersProvider {
       let url = (this.apiURL + 'user/' + id + '/games/' + gameID).toString();
       this.storage.get('token').then((token) => {
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.put(url, {}, { headers })
+        this.http.put(url, {}, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -407,12 +408,12 @@ export class UsersProvider {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/' + identifier + '/games/' + gameId;
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.delete(url, { headers })
+        this.http.delete(url, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);
@@ -433,12 +434,12 @@ export class UsersProvider {
       this.storage.get('token').then((token) => {
         let url = this.apiURL + 'user/' + identifier + '/games/' + gameId;
         let headers = new HttpHeaders().set('x-access-token', token);
-        this.http.patch(url, data, { headers })
+        this.http.patch(url, data, {headers})
           .subscribe((result: any) => {
-            this.loadingCtrl.dismiss().then(() => {
-              resolve(result);
-            });
-          },
+              this.loadingCtrl.dismiss().then(() => {
+                resolve(result);
+              });
+            },
             (error) => {
               this.loadingCtrl.dismiss().then(() => {
                 reject(error);

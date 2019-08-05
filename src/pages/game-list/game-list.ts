@@ -1,14 +1,14 @@
 import {Component, ViewChild} from '@angular/core';
 import {
-  Content,
-  ModalController,
-  ItemSliding,
   AlertController,
+  Content,
   IonicPage,
-  ViewController,
+  ItemSliding,
+  ModalController,
   NavController,
   NavParams,
-  ToastController
+  ToastController,
+  ViewController
 } from 'ionic-angular';
 import {UsersProvider} from '../../providers/users/users';
 import {Storage} from '@ionic/storage';
@@ -23,8 +23,6 @@ import {GameConfigEditPage} from '../game-config-edit/game-config-edit';
 export class GameListPage {
   @ViewChild(Content) content: Content;
 
-  testCheckboxOpen: boolean;
-  testCheckboxResult;
   public name: string;
   public id: string;
   public sexo: string;
@@ -36,8 +34,8 @@ export class GameListPage {
   bloquinho: Game;
   bola: Game;
   pontes: Game;
-
-  public ordemJogos: any = [];
+  labirinto: Game;
+  fruitJump: Game;
 
   constructor(public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public storage: Storage, private toast: ToastController, private userProvider: UsersProvider) {
     this.name = navParams.get('name');
@@ -73,6 +71,16 @@ export class GameListPage {
     this.pontes.title = 'Pontes';
     this._games.push(this.pontes);
 
+    this.labirinto = new Game();
+    this.labirinto.gameID = '6';
+    this.labirinto.title = 'Jogo do Labirinto';
+    this._games.push(this.labirinto);
+
+    this.fruitJump = new Game();
+    this.fruitJump.gameID = '7';
+    this.fruitJump.title = 'Fruit Jump';
+    this._games.push(this.fruitJump);
+
     this._games.forEach((game) => {
       games.forEach((x) => {
         if (game.title == x.title) {
@@ -86,7 +94,7 @@ export class GameListPage {
   };
 
   activateGame(game: any, id: string) {
-    var activateGameModal = this.modalCtrl.create(ActivateGamePage, {
+    let activateGameModal = this.modalCtrl.create(ActivateGamePage, {
       game: game,
       identifier: this.identifier
     }, {enableBackdropDismiss: false});
@@ -94,7 +102,7 @@ export class GameListPage {
   };
 
   editGame(game: any) {
-    var gameEditModal = this.modalCtrl.create(GameConfigEditPage, {
+    let gameEditModal = this.modalCtrl.create(GameConfigEditPage, {
       game: game,
       identifier: this.identifier,
       id: this.id
@@ -148,4 +156,4 @@ export class Game {
   title: string;
   time: string;
   imersiveMode: string;
-};
+}

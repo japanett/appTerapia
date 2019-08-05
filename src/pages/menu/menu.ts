@@ -1,7 +1,6 @@
-import { HomePage } from './../home/home';
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, Nav } from 'ionic-angular';
-import { App } from 'ionic-angular';
+import {HomePage} from './../home/home';
+import {Component, ViewChild} from '@angular/core';
+import {App, IonicPage, Nav, NavController} from 'ionic-angular';
 
 
 export interface PageInterface {
@@ -25,13 +24,14 @@ export class MenuPage {
   @ViewChild(Nav) nav: Nav;
 
   pages: PageInterface[] = [
-    { title: 'Perfil', pageName: 'UserDetailPage',  index: 0, icon: 'contact' },
-    { title: 'Pacientes', pageName: 'PacientListPage', index: 1, icon: 'people' },
-    { title: 'Relatório', pageName: 'ReportPage', icon: 'paper' },
-    { title: 'Logout', pageName: 'HomePage', icon: 'log-out' }
+    {title: 'Perfil', pageName: 'UserDetailPage', index: 0, icon: 'contact'},
+    {title: 'Pacientes', pageName: 'PacientListPage', index: 1, icon: 'people'},
+    {title: 'Relatório', pageName: 'ReportPage', icon: 'paper'},
+    {title: 'Logout', pageName: 'HomePage', icon: 'log-out'}
   ];
 
-  constructor(public navCtrl: NavController, public app: App) { }
+  constructor(public navCtrl: NavController, public app: App) {
+  }
 
   openPage(page: PageInterface) {
     let params = {};
@@ -42,8 +42,7 @@ export class MenuPage {
     // Logout
     else if (page.pageName == 'HomePage') {
       this.app.getRootNav().setRoot(HomePage);
-    }
-    else {
+    } else {
       this.nav.setRoot(page.pageName, params);
     }
   }
