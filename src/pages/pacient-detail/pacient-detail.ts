@@ -4,6 +4,7 @@ import {UsersProvider} from './../../providers/users/users';
 import {Storage} from '@ionic/storage';
 import {GamesPage} from './../games/games';
 import {GameListPage} from './../game-list/game-list';
+import {Pacient} from "../../model/pacient";
 
 @IonicPage()
 @Component({
@@ -69,25 +70,4 @@ export class PacientDetailPage {
     }
   }
 
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad PacientDetailPage');
-  }
-
-}
-
-export class Pacient {
-  id: string;
-  active: boolean;
-  name: string;
-  age: number;
-  sexo: string;
-  mao_dominante: string;
-  gmfcs: number;
-  patologia: string;
-  objetivo: string;
-  identifier: string;
-  medic: string;
-  games: any;
-  gamesNum: number;
-  avatar: string;
 }

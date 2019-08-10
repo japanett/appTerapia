@@ -14,6 +14,7 @@ import {UsersProvider} from '../../providers/users/users';
 import {Storage} from '@ionic/storage';
 import {ActivateGamePage} from '../activate-game/activate-game';
 import {GameConfigEditPage} from '../game-config-edit/game-config-edit';
+import {Game} from "../../model/games";
 
 @IonicPage()
 @Component({
@@ -29,14 +30,6 @@ export class GameListPage {
   public identifier: string;
   public _games: any = [];
 
-  mercearia: Game;
-  space: Game;
-  bloquinho: Game;
-  bola: Game;
-  pontes: Game;
-  labirinto: Game;
-  fruitJump: Game;
-
   constructor(public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public storage: Storage, private toast: ToastController, private userProvider: UsersProvider) {
     this.name = navParams.get('name');
     this.sexo = navParams.get('sexo');
@@ -46,40 +39,7 @@ export class GameListPage {
   }
 
   fillGames(games: any) {
-    this.mercearia = new Game();
-    this.mercearia.gameID = '1';
-    this.mercearia.title = 'Jogo da Mercearia';
-    this._games.push(this.mercearia);
-
-    this.space = new Game();
-    this.space.gameID = '2';
-    this.space.title = 'Invasão Espacial';
-    this._games.push(this.space);
-
-    this.bola = new Game();
-    this.bola.gameID = '3';
-    this.bola.title = 'Bola na Caixa';
-    this._games.push(this.bola);
-
-    this.bloquinho = new Game();
-    this.bloquinho.gameID = '4';
-    this.bloquinho.title = 'Bloquinho';
-    this._games.push(this.bloquinho);
-
-    this.pontes = new Game();
-    this.pontes.gameID = '5';
-    this.pontes.title = 'Pontes';
-    this._games.push(this.pontes);
-
-    this.labirinto = new Game();
-    this.labirinto.gameID = '6';
-    this.labirinto.title = 'Jogo do Labirinto';
-    this._games.push(this.labirinto);
-
-    this.fruitJump = new Game();
-    this.fruitJump.gameID = '7';
-    this.fruitJump.title = 'Fruit Jump';
-    this._games.push(this.fruitJump);
+    this.generateGames();
 
     this._games.forEach((game) => {
       games.forEach((x) => {
@@ -148,12 +108,42 @@ export class GameListPage {
     this.viewCtrl.dismiss();
   }
 
-}
+  private generateGames() {
+    // TODO - refactor to get list of games from server
+    let mercearia = new Game();
+    mercearia.gameID = 1;
+    mercearia.title = 'Jogo da Mercearia';
+    this._games.push(mercearia);
 
-export class Game {
-  gameID: string;
-  config: string;
-  title: string;
-  time: string;
-  imersiveMode: string;
+    let space = new Game();
+    space.gameID = 2;
+    space.title = 'Invasão Espacial';
+    this._games.push(space);
+
+    let bola = new Game();
+    bola.gameID = 3;
+    bola.title = 'Bola na Caixa';
+    this._games.push(bola);
+
+    let bloquinho = new Game();
+    bloquinho.gameID = 4;
+    bloquinho.title = 'Bloquinho';
+    this._games.push(bloquinho);
+
+    let pontes = new Game();
+    pontes.gameID = 5;
+    pontes.title = 'Pontes';
+    this._games.push(pontes);
+
+    let labirinto = new Game();
+    labirinto.gameID = 6;
+    labirinto.title = 'Jogo do Labirinto';
+    this._games.push(labirinto);
+
+    let fruitJump = new Game();
+    fruitJump.gameID = 7;
+    fruitJump.title = 'Fruit Jump';
+    this._games.push(fruitJump);
+  }
+
 }

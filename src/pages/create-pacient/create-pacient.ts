@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController, ViewController} from 'ionic-angular';
 import {UsersProvider} from './../../providers/users/users';
+import {Pacient} from "../../model/pacient";
 
 @IonicPage()
 @Component({
@@ -51,14 +52,4 @@ export class CreatePacientPage {
         }).present();
       })
   }
-}
-
-export class Pacient {
-  name: string;
-  age: number;
-  sexo: string;
-  patologia: string;
-  objetivo: string;
-  mao_dominante: string;
-  gmfcs: number;
 }

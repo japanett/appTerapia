@@ -12,6 +12,7 @@ import {
 import {UsersProvider} from '../../providers/users/users';
 import {Storage} from '@ionic/storage';
 import {GameDetailPage} from '../game-detail/game-detail';
+import {Game} from "../../model/games";
 
 @IonicPage()
 @Component({
@@ -64,10 +65,6 @@ export class GamesPage {
       .catch((error: any) => {
         this.toast.create({message: 'Erro: ' + error.error, position: 'botton', duration: 5000}).present();
       });
-  }
-
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad GamesPage');
   }
 
   selectGame(game: any) {
@@ -161,31 +158,4 @@ export class GamesPage {
     confirm.present();
   }
 
-}
-
-
-export class Game {
-  date: string;
-  score: {
-    esquerda: number,
-    direita: number,
-    cruzada: number
-  };
-  error: {
-    esquerda: number,
-    direita: number,
-    cruzada: number
-
-  };
-  time: string;
-  played: boolean;
-  id: string;
-  pacient: string;
-  title: string;
-  gameID: number;
-  config: string;
-  medic: string;
-  idToPlay: string;
-  observation: string;
-  imersiveMode: boolean;
 }

@@ -82,6 +82,14 @@
     </ion-item>
 
     <ion-item>
+      <ion-label>Modo Imersivo</ion-label>
+      <ion-select [(ngModel)]="imersiveMode">
+        <ion-option value="F">Não</ion-option>
+        <ion-option checked value="T">Sim</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
       <ion-label stacked><h2>Tempo/Etapa em segundos. EX: 60</h2></ion-label>
       <ion-input [(ngModel)]="time" name="time" type="text"></ion-input>
     </ion-item>
@@ -112,6 +120,14 @@
         <ion-option value="2">Mão Direita</ion-option>
         <ion-option value="1">Mão Esquerda</ion-option>
         <ion-option checked value="3">Mãos Alternadas</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Modo Imersivo</ion-label>
+      <ion-select [(ngModel)]="imersiveMode">
+        <ion-option value="F">Não</ion-option>
+        <ion-option checked value="T">Sim</ion-option>
       </ion-select>
     </ion-item>
 
@@ -163,6 +179,14 @@
       <ion-label>Selecione a mão</ion-label>
       <ion-select [(ngModel)]="firstGame">
         <ion-option checked value="2">Mão Direita</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Modo Imersivo</ion-label>
+      <ion-select [(ngModel)]="imersiveMode">
+        <ion-option value="F">Não</ion-option>
+        <ion-option checked value="T">Sim</ion-option>
       </ion-select>
     </ion-item>
   </div>

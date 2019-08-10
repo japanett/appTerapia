@@ -27,11 +27,14 @@
         </ion-item>
 
         <ion-item-options side="right">
-          <button (click)="setObservation(game.identifier, game.id, game.observation, slidingItem);$event.stopPropagation();" icon-only ion-button
-                  outline>
+          <button
+            (click)="setObservation(game.identifier, game.id, game.observation, slidingItem);$event.stopPropagation();"
+            icon-only ion-button
+            outline>
             <ion-icon color="light" name="create"></ion-icon>
           </button>
-          <button (click)="deleteGameReport(game.identifier, game.id, slidingItem);$event.stopPropagation();" icon-only ion-button
+          <button (click)="deleteGameReport(game.identifier, game.id, slidingItem);$event.stopPropagation();" icon-only
+                  ion-button
                   outline>
             <ion-icon color="danger" name="trash"></ion-icon>
           </button>

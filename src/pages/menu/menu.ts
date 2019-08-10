@@ -1,4 +1,4 @@
-import {HomePage} from './../home/home';
+import {HomePage} from '../home/home';
 import {Component, ViewChild} from '@angular/core';
 import {App, IonicPage, Nav, NavController} from 'ionic-angular';
 

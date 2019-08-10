@@ -14,7 +14,7 @@
 <ion-content padding>
   <ion-item>
     <ion-avatar item-start>
-      <img src={{model.avatar}}>
+      <img src={{model.avatar}} alt="avatar">
     </ion-avatar>
     <ion-label>
       <h2 [style.color]="getStylee(model)">
@@ -77,7 +77,8 @@
         </button>
       </ion-col>
       <ion-col col-3>
-        <button (click)="addGame(model.name, model.identifier,model.games,model.sexo, model._id)" color="danger" fab-fixed
+        <button (click)="addGame(model.name, model.identifier,model.games,model.sexo, model._id)" color="danger"
+                fab-fixed
                 ion-fab>
           <ion-icon name="cog"></ion-icon>
         </button>

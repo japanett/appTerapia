@@ -17,8 +17,9 @@
     </ion-item>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.login">
-        <div *ngIf="validations_form.get('login').hasError(validation.type) && (validations_form.get('login').dirty || validations_form.get('login').touched)"
-             class="error-message">
+        <div
+          *ngIf="validations_form.get('login').hasError(validation.type) && (validations_form.get('login').dirty || validations_form.get('login').touched)"
+          class="error-message">
           {{ validation.message }}
         </div>
       </ng-container>
@@ -30,8 +31,9 @@
     </ion-item>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.name">
-        <div *ngIf="validations_form.get('name').hasError(validation.type) && (validations_form.get('name').dirty || validations_form.get('name').touched)"
-             class="error-message">
+        <div
+          *ngIf="validations_form.get('name').hasError(validation.type) && (validations_form.get('name').dirty || validations_form.get('name').touched)"
+          class="error-message">
           {{ validation.message }}
         </div>
       </ng-container>
@@ -43,8 +45,9 @@
     </ion-item>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.email">
-        <div *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)"
-             class="error-message">
+        <div
+          *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)"
+          class="error-message">
           {{ validation.message }}
         </div>
       </ng-container>
@@ -57,8 +60,9 @@
       </ion-item>
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages.password">
-          <div *ngIf="validations_form.get('matching_passwords').get('password').hasError(validation.type) && (validations_form.get('matching_passwords').get('password').dirty || validations_form.get('matching_passwords').get('password').touched)"
-               class="error-message">
+          <div
+            *ngIf="validations_form.get('matching_passwords').get('password').hasError(validation.type) && (validations_form.get('matching_passwords').get('password').dirty || validations_form.get('matching_passwords').get('password').touched)"
+            class="error-message">
             {{ validation.message }}
           </div>
         </ng-container>
@@ -70,8 +74,9 @@
       </ion-item>
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages.confirm_password">
-          <div *ngIf="validations_form.get('matching_passwords').get('confirm_password').hasError(validation.type) && (validations_form.get('matching_passwords').get('confirm_password').dirty || validations_form.get('matching_passwords').get('confirm_password').touched)"
-               class="error-message">
+          <div
+            *ngIf="validations_form.get('matching_passwords').get('confirm_password').hasError(validation.type) && (validations_form.get('matching_passwords').get('confirm_password').dirty || validations_form.get('matching_passwords').get('confirm_password').touched)"
+            class="error-message">
             {{ validation.message }}
           </div>
         </ng-container>
@@ -79,8 +84,9 @@
     </div>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.matching_passwords">
-        <div *ngIf="validations_form.get('matching_passwords').hasError(validation.type) && (validations_form.get('matching_passwords').get('confirm_password').dirty || validations_form.get('matching_passwords').get('confirm_password').touched)"
-             class="error-message">
+        <div
+          *ngIf="validations_form.get('matching_passwords').hasError(validation.type) && (validations_form.get('matching_passwords').get('confirm_password').dirty || validations_form.get('matching_passwords').get('confirm_password').touched)"
+          class="error-message">
           {{ validation.message }}
         </div>
       </ng-container>

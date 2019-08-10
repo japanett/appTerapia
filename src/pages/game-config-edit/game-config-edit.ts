@@ -19,7 +19,7 @@ import {Storage} from '@ionic/storage';
 export class GameConfigEditPage {
   public id: string;
   public game: any;
-  public identifier: any
+  public identifier: any;
   public firstGame: string;
   public secondGame: string;
   public thirdGame: string;

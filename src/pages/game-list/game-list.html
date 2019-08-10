@@ -22,7 +22,8 @@
       </ion-item>
 
       <ion-item-options side="right">
-        <button (click)="deactivateGame(game,id,slidingItem);$event.stopPropagation();" *ngIf="game.config" icon-only ion-button
+        <button (click)="deactivateGame(game,id,slidingItem);$event.stopPropagation();" *ngIf="game.config" icon-only
+                ion-button
                 outline>
           <ion-icon color="danger" name="close"></ion-icon>
         </button>

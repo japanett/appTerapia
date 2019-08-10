@@ -8,9 +8,10 @@ import {
   NavParams,
   ToastController
 } from 'ionic-angular';
-import {UsersProvider} from './../../providers/users/users';
-import {PacientDetailPage} from './../pacient-detail/pacient-detail';
-import {PacientEditPage} from './../pacient-edit/pacient-edit';
+import {UsersProvider} from '../../providers/users/users';
+import {PacientDetailPage} from '../pacient-detail/pacient-detail';
+import {PacientEditPage} from '../pacient-edit/pacient-edit';
+import {Pacient} from "../../model/pacient";
 
 @IonicPage()
 @Component({
@@ -93,10 +94,10 @@ export class PacientListPage {
   }
 
   editPacient(pacient: any) {
-    var pacientEditModal = this.modalCtrl.create(PacientEditPage, {pacient: pacient}, {enableBackdropDismiss: false});
+    let pacientEditModal = this.modalCtrl.create(PacientEditPage, {pacient: pacient}, {enableBackdropDismiss: false});
     pacientEditModal.onDidDismiss(() => {
       this.getPacients();
-    })
+    });
     pacientEditModal.present();
   }
 
@@ -105,7 +106,7 @@ export class PacientListPage {
   }
 
   selectPacient(identifier: string, id: string) {
-    var pacientModal = this.modalCtrl.create(PacientDetailPage, {
+    let pacientModal = this.modalCtrl.create(PacientDetailPage, {
       identifier: identifier,
       id: id
     }, {enableBackdropDismiss: false});
@@ -120,18 +121,4 @@ export class PacientListPage {
       return "#DB7F67";
     }
   }
-}
-
-export class Pacient {
-  active: boolean;
-  name: string;
-  age: number;
-  sexo: string;
-  patologia: string;
-  objetivo: string;
-  identifier: string;
-  medic: string;
-  games: any;
-  mao_dominante: string;
-  gmfcs: number;
 }

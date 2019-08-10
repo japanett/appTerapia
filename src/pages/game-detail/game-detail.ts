@@ -17,10 +17,6 @@ export class GameDetailPage {
     this.translatedMode = GameDetailPage.translateMode(this.game.imersiveMode);
   }
 
-  dismiss() {
-    this.viewCtrl.dismiss();
-  }
-
   static translateMode(imersiveMode: boolean) {
     if (imersiveMode === undefined) {
       return 'Ativado';
@@ -36,6 +32,10 @@ export class GameDetailPage {
       .replace('T', 'Quarta etapa Ativada')
       .replace('F', 'Quarta etapa Desativada')
   };
+
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
 
   ionViewDidLoad() {
   }
