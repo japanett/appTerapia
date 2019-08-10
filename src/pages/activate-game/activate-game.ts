@@ -24,7 +24,7 @@ export class ActivateGamePage {
   public thirdGame: string = '3';
   public fourthGame: string = 'F';
   public time: string = "";
-  public imersiveMode: string = 'T';
+  public imersiveMode: string = 'F';
 
   constructor(public app: App, public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public storage: Storage, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.identifier = navParams.get('identifier');
