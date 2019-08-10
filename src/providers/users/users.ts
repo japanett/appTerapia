@@ -326,7 +326,7 @@ export class UsersProvider {
   addGames(identifier: string, config: string, gameID: number, time: string, imersiveMode: string) {
     return new Promise((resolve, reject) => {
       this.loadingCtrl.presentWithGif1();
-      let _imersiveMode = imersiveMode === 'T' ? true : false;
+      let _imersiveMode = imersiveMode === 'T';
       let data = {
         "toPlay": gameID,
         "config": config,
@@ -354,7 +354,7 @@ export class UsersProvider {
   updateGameConfig(pacientId: string, config: string, gameID: number, time: string, imersiveMode: string) {
     return new Promise((resolve, reject) => {
       this.loadingCtrl.presentWithGif1();
-      let _imersiveMode = imersiveMode === 'T' ? true : false;
+      let _imersiveMode = imersiveMode === 'T';
       let data = {
         "gameID": gameID,
         "config": config,
