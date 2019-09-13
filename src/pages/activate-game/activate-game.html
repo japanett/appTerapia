@@ -21,7 +21,7 @@
             <ion-option value="3">Mãos Cruzadas</ion-option>
           </ion-select>
         </ion-item>
-      
+
         <ion-item>
           <ion-label>Segunda Etapa</ion-label>
           <ion-select [(ngModel)]="secondGame">
@@ -30,7 +30,7 @@
             <ion-option value="3">Mãos Cruzadas</ion-option>
           </ion-select>
         </ion-item>
-      
+
         <ion-item>
           <ion-label>Terceira Etapa</ion-label>
           <ion-select [(ngModel)]="thirdGame">
@@ -71,7 +71,7 @@
           <ion-option value="3">Mãos Cruzadas</ion-option>
         </ion-select>
       </ion-item>
-    
+
       <ion-item>
         <ion-label>Segunda Etapa</ion-label>
         <ion-select [(ngModel)]="secondGame">
@@ -95,7 +95,7 @@
           <ion-option value="3">Mãos Cruzadas</ion-option>
         </ion-select>
       </ion-item>
-    
+
       <ion-item>
         <ion-label>Segunda Etapa</ion-label>
         <ion-select [(ngModel)]="secondGame">
@@ -104,7 +104,7 @@
           <ion-option value="3">Mãos Cruzadas</ion-option>
         </ion-select>
       </ion-item>
-    
+
       <ion-item>
         <ion-label>Terceira Etapa</ion-label>
         <ion-select [(ngModel)]="thirdGame">
@@ -146,7 +146,7 @@
         </ion-item>
   </div>
   <div style="text-align: center;margin-top: 15px;">
-    <button ion-button class="backButton" ion-button block round (click)="dismiss()">Cancelar</button>
-    <button ion-button class="customButton" ion-button block round (click)="activate(identifier, game)">Ativar</button>
+    <button ion-button class="backButton" ion-button block (click)="dismiss()">Cancelar</button>
+    <button ion-button class="customButton" ion-button block (click)="activate(identifier, game)">Ativar</button>
   </div>
 </ion-content>

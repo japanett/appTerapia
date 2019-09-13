@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar (click)="goBack()">
     <ion-title>
-      Cadastro
+      <b>Cadastro</b>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -81,7 +81,7 @@
     </div>
 
     <div style="text-align: center; padding-top: 30px">
-      <button ion-button full type="submit" round [disabled]="!validations_form.valid" class="customButton">Confirmar</button>
+      <button ion-button full type="submit" [disabled]="!validations_form.valid" class="customButton">Confirmar</button>
     </div>
   </form>
 
