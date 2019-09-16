@@ -200,7 +200,7 @@
   </div>
 
   <div style="text-align: center;margin-top: 15px;">
-    <button (click)="editGame(id, game)" block class="customButton" ion-button round>Confirmar</button>
-    <button (click)="dismiss()" block class="backButton" ion-button round>Cancelar</button>
+    <button ion-button class="customButton" ion-button block (click)="editGame(id, game)">Confirmar</button>
+    <button ion-button class="backButton" ion-button block (click)="dismiss()">Cancelar</button>
   </div>
 </ion-content>

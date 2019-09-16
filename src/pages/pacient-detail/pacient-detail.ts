@@ -64,9 +64,9 @@ export class PacientDetailPage {
 
   getStylee(pacient: any) {
     if (pacient.sexo == 'masculino') {
-      return "#ACCDD4";
+      return "#02077d";
     } else {
-      return "#DB7F67";
+      return "#b33479";
     }
   }
 

@@ -1,12 +1,12 @@
 <ion-header>
-  <ion-navbar (click)="goBack()">
+  <ion-navbar (click)="goBack()"> 
     <ion-title>
       Login
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding >
 
   <ion-list>
     <ion-item>
@@ -21,10 +21,10 @@
   </ion-list>
 
   <div style="text-align: center;">
-    <button (click)="login()" block class="customButton" ion-button round>Entrar</button>
+      <button ion-button class="customButton" block (click)="login()">Entrar</button>
   </div>
   <div style="text-align: center;">
-    <button (click)="recover()" block class="customButton" ion-button round>Recuperar Senha</button>
-  </div>
-
+    <button ion-button class="customButton" block (click)="recover()">Recuperar Senha</button>
+</div>
+  
 </ion-content>

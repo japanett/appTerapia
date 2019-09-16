@@ -11,71 +11,71 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content padding >
   <div *ngIf="game.title == 'Jogo da Mercearia'">
-    <ion-item>
-      <ion-label>Primeira Etapa</ion-label>
-      <ion-select [(ngModel)]="firstGame">
+      <ion-item>
+          <ion-label>Primeira Etapa</ion-label>
+          <ion-select [(ngModel)]="firstGame">
         <ion-option checked value="2">Mão Direita</ion-option>
-        <ion-option value="1">Mão Esquerda</ion-option>
+            <ion-option value="1">Mão Esquerda</ion-option>
         <ion-option value="3">Mãos Alternadas</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Segunda Etapa</ion-label>
-      <ion-select [(ngModel)]="secondGame">
-        <ion-option value="2">Mão Direita</ion-option>
+          </ion-select>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>Segunda Etapa</ion-label>
+          <ion-select [(ngModel)]="secondGame">
+            <ion-option value="2">Mão Direita</ion-option>
         <ion-option checked value="1">Mão Esquerda</ion-option>
         <ion-option value="3">Mãos Alternadas</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Terceira Etapa</ion-label>
-      <ion-select [(ngModel)]="thirdGame">
-        <ion-option value="2">Mão Direita</ion-option>
-        <ion-option value="1">Mão Esquerda</ion-option>
+          </ion-select>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>Terceira Etapa</ion-label>
+          <ion-select [(ngModel)]="thirdGame">
+            <ion-option value="2">Mão Direita</ion-option>
+            <ion-option value="1">Mão Esquerda</ion-option>
         <ion-option checked value="3">Mãos Alternadas</ion-option>
-      </ion-select>
-    </ion-item>
+          </ion-select>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>Quarta Etapa</ion-label>
-      <ion-select [(ngModel)]="fourthGame">
+        <ion-item>
+          <ion-label>Quarta Etapa</ion-label>
+          <ion-select [(ngModel)]="fourthGame">
         <ion-option checked value="F">Não</ion-option>
-        <ion-option value="T">Sim</ion-option>
-      </ion-select>
-    </ion-item>
+            <ion-option value="T">Sim</ion-option>
+          </ion-select>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>Modo Imersivo</ion-label>
-      <ion-select [(ngModel)]="imersiveMode">
-        <ion-option value="F">Não</ion-option>
+        <ion-item>
+          <ion-label>Modo Imersivo</ion-label>
+          <ion-select [(ngModel)]="imersiveMode">
+            <ion-option value="F">Não</ion-option>
         <ion-option checked value="T">Sim</ion-option>
-      </ion-select>
-    </ion-item>
+          </ion-select>
+        </ion-item>
 
-    <ion-item>
-      <ion-label stacked><h2>Tempo/Etapa em segundos. EX: 60</h2></ion-label>
+        <ion-item>
+          <ion-label stacked><h2>Tempo/Etapa em segundos. EX: 60</h2></ion-label>
       <ion-input [(ngModel)]="time" name="time" type="text"></ion-input>
-    </ion-item>
+        </ion-item>
   </div>
 
   <div *ngIf="game.title == 'Pontes'">
     <ion-item>
-      <ion-label>Primeira Etapa</ion-label>
-      <ion-select [(ngModel)]="firstGame">
+        <ion-label>Primeira Etapa</ion-label>
+        <ion-select [(ngModel)]="firstGame">
         <ion-option checked value="2">Mão Direita</ion-option>
-        <ion-option value="1">Mão Esquerda</ion-option>
+          <ion-option value="1">Mão Esquerda</ion-option>
         <ion-option value="3">Mãos Alternadas</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Segunda Etapa</ion-label>
-      <ion-select [(ngModel)]="secondGame">
-        <ion-option value="2">Mão Direita</ion-option>
+        </ion-select>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Segunda Etapa</ion-label>
+        <ion-select [(ngModel)]="secondGame">
+          <ion-option value="2">Mão Direita</ion-option>
         <ion-option checked value="1">Mão Esquerda</ion-option>
         <ion-option value="3">Mãos Alternadas</ion-option>
       </ion-select>
@@ -86,63 +86,63 @@
       <ion-select [(ngModel)]="imersiveMode">
         <ion-option value="F">Não</ion-option>
         <ion-option checked value="T">Sim</ion-option>
-      </ion-select>
-    </ion-item>
+        </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked><h2>Tempo/Etapa em segundos. EX: 60</h2></ion-label>
+      <ion-item>
+        <ion-label stacked><h2>Tempo/Etapa em segundos. EX: 60</h2></ion-label>
       <ion-input [(ngModel)]="time" name="time" type="text"></ion-input>
-    </ion-item>
-  </div>
+      </ion-item>
+</div>
 
   <div *ngIf="game.title == 'Bloquinho' || game.title == 'Jogo do Labirinto' || game.title == 'Fruit Jump'">
     <ion-item>
-      <ion-label>Primeira Etapa</ion-label>
-      <ion-select [(ngModel)]="firstGame">
+        <ion-label>Primeira Etapa</ion-label>
+        <ion-select [(ngModel)]="firstGame">
         <ion-option checked value="2">Mão Direita</ion-option>
-        <ion-option value="1">Mão Esquerda</ion-option>
+          <ion-option value="1">Mão Esquerda</ion-option>
         <ion-option value="3">Mãos Alternadas</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Segunda Etapa</ion-label>
-      <ion-select [(ngModel)]="secondGame">
-        <ion-option value="2">Mão Direita</ion-option>
+        </ion-select>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Segunda Etapa</ion-label>
+        <ion-select [(ngModel)]="secondGame">
+          <ion-option value="2">Mão Direita</ion-option>
         <ion-option checked value="1">Mão Esquerda</ion-option>
         <ion-option value="3">Mãos Alternadas</ion-option>
-      </ion-select>
-    </ion-item>
+        </ion-select>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Terceira Etapa</ion-label>
+        <ion-select [(ngModel)]="thirdGame">
+          <ion-option value="2">Mão Direita</ion-option>
+          <ion-option value="1">Mão Esquerda</ion-option>
+          <ion-option value="3" checked>Mãos Cruzadas</ion-option>
+        </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Terceira Etapa</ion-label>
-      <ion-select [(ngModel)]="thirdGame">
-        <ion-option value="2">Mão Direita</ion-option>
-        <ion-option value="1">Mão Esquerda</ion-option>
-        <ion-option checked value="3">Mãos Alternadas</ion-option>
-      </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-label>Modo Imersivo</ion-label>
+        <ion-select [(ngModel)]="imersiveMode">
+          <ion-option value="F">Não</ion-option>
+          <ion-option value="T" checked>Sim</ion-option>
+        </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Modo Imersivo</ion-label>
-      <ion-select [(ngModel)]="imersiveMode">
-        <ion-option value="F">Não</ion-option>
-        <ion-option checked value="T">Sim</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked><h2>Tempo/Etapa em segundos. EX: 60</h2></ion-label>
+      <ion-item>
+        <ion-label stacked><h2>Tempo/Etapa em segundos. EX: 60</h2></ion-label>
       <ion-input [(ngModel)]="time" name="time" type="text"></ion-input>
-    </ion-item>
-  </div>
+      </ion-item>
+</div>
 
   <div *ngIf="game.title == 'Invasão Espacial'">
-    <ion-item>
+      <ion-item>
       <ion-label>Primeira Etapa</ion-label>
-      <ion-select [(ngModel)]="firstGame">
+          <ion-select [(ngModel)]="firstGame">
         <ion-option value="2">Mão Direita</ion-option>
-        <ion-option value="1">Mão Esquerda</ion-option>
+            <ion-option value="1">Mão Esquerda</ion-option>
         <ion-option value="3">Mãos Alternadas</ion-option>
       </ion-select>
     </ion-item>
@@ -170,14 +170,14 @@
       <ion-select [(ngModel)]="imersiveMode">
         <ion-option value="F">Não</ion-option>
         <ion-option value="T">Sim</ion-option>
-      </ion-select>
-    </ion-item>
+          </ion-select>
+        </ion-item>
   </div>
 
   <div *ngIf="game.title == 'Bola na Caixa'">
-    <ion-item>
-      <ion-label>Selecione a mão</ion-label>
-      <ion-select [(ngModel)]="firstGame">
+      <ion-item>
+          <ion-label>Selecione a mão</ion-label>
+          <ion-select [(ngModel)]="firstGame">
         <ion-option checked value="2">Mão Direita</ion-option>
       </ion-select>
     </ion-item>
@@ -187,12 +187,12 @@
       <ion-select [(ngModel)]="imersiveMode">
         <ion-option checked value="F">Não</ion-option>
         <ion-option value="T">Sim</ion-option>
-      </ion-select>
-    </ion-item>
+          </ion-select>
+        </ion-item>
   </div>
 
   <div style="text-align: center;margin-top: 15px;">
-    <button (click)="dismiss()" block class="backButton" ion-button round>Cancelar</button>
-    <button (click)="activate(identifier, game)" block class="customButton" ion-button round>Ativar</button>
+    <button ion-button class="backButton" ion-button block (click)="dismiss()">Cancelar</button>
+    <button ion-button class="customButton" ion-button block (click)="activate(identifier, game)">Ativar</button>
   </div>
 </ion-content>

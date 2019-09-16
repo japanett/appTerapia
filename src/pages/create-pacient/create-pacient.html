@@ -31,7 +31,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Mao Dominante:</ion-label>
+      <ion-label stacked>Mão Dominante:</ion-label>
       <ion-select [(ngModel)]="model.mao_dominante" name="mao_dominante">
         <ion-option value="Esquerda">Esquerda</ion-option>
         <ion-option value="Direita">Direita</ion-option>
@@ -40,7 +40,7 @@
 
     <ion-item>
       <ion-label stacked>Nível GMFCS:</ion-label>
-      <ion-select [(ngModel)]="model.gmfcs" name="gmfcs">
+      <ion-select name="gmfcs" [(ngModel)]="model.gmfcs">
         <ion-option value=0>0</ion-option>
         <ion-option value=1>1</ion-option>
         <ion-option value=2>2</ion-option>
@@ -62,7 +62,7 @@
   </ion-list>
 
   <div style="text-align: center;">
-    <button (click)="createPacient()" block class="customButton" ion-button ion-button round>Confirmar</button>
-    <button (click)="dismiss()" block class="backButton" ion-button ion-button round>Cancelar</button>
+    <button ion-button class="customButton" ion-button block (click)="createPacient()">Confirmar</button>
+    <button ion-button class="backButton" ion-button block (click)="dismiss()">Cancelar</button>
   </div>
 </ion-content>

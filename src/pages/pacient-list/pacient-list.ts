@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {
   AlertController,
   IonicPage,
@@ -55,7 +55,7 @@ export class PacientListPage {
         }
       })
       .catch((error: any) => {
-        this.toast.create({message: 'Erro: ' + error.error, position: 'botton', duration: 5000}).present();
+        this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
       });
   }
 
@@ -78,12 +78,12 @@ export class PacientListPage {
                 .then((result: any) => {
                   if (result.success === true) {
                     this.navCtrl.setRoot(this.navCtrl.getActive().component);
-                    this.toast.create({message: name + ' removido !!', position: 'botton', duration: 5000}).present();
+                    this.toast.create({ message: name + ' removido !!', position: 'botton', duration: 5000 }).present();
                   }
                 })
                 .catch((error: any) => {
                   reject(error);
-                  this.toast.create({message: 'Erro: ' + error.error, position: 'botton', duration: 5000}).present();
+                  this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
                 });
             });
           }
@@ -116,9 +116,9 @@ export class PacientListPage {
 
   getStylee(pacient: any) {
     if (pacient.sexo == 'masculino') {
-      return "#ACCDD4";
+      return "#02077d";
     } else {
-      return "#DB7F67";
+      return "#b33479";
     }
   }
 }

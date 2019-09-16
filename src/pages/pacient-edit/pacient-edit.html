@@ -32,7 +32,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Mao Dominante:</ion-label>
+      <ion-label stacked>Mão Dominante:</ion-label>
       <ion-select [(ngModel)]="mao_dominante" name="mao_dominante">
         <ion-option value="Esquerda">Esquerda</ion-option>
         <ion-option value="Direita">Direita</ion-option>
@@ -63,7 +63,7 @@
   </ion-list>
 
   <div style="text-align: center;">
-    <button (click)="editPacient()" class="customButton" ion-button ion-button medium round>Confirmar</button>
-    <button (click)="dismiss()" class="backButton" ion-button ion-button medium round>Cancelar</button>
+    <button ion-button class="customButton" ion-button medium (click)="editPacient()">Confirmar</button>
+    <button ion-button class="backButton" ion-button medium (click)="dismiss()">Cancelar</button>
   </div>
 </ion-content>
