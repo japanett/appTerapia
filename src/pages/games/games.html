@@ -19,7 +19,7 @@
       <ion-item-sliding #slidingItem *ngFor="let game of data">
 
         <ion-item (click)="selectGame(game)">
-          <h2 style="color: #cedacf;">{{game.title}}</h2>
+          <h2>{{game.title}}</h2>
           <p style="color: #f4f4f4;"><b>{{game.observation}}</b></p>
           <ion-note item-end>
             {{game.date | date: "dd/MM/yyyy HH:mm"}}
