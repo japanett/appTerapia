@@ -1,8 +1,13 @@
 <ion-header>
-  <ion-navbar (click)="goBack()">
+  <ion-navbar>
     <ion-title>
       <b>Cadastro</b>
     </ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -34,6 +39,23 @@
         </div>
       </ng-container>
     </div>
+
+    <ion-item>
+      <ion-label floating>sobrenome</ion-label>
+      <ion-input type="text" formControlName="surname" required></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.surname">
+        <div class="error-message" *ngIf="validations_form.get('surname').hasError(validation.type) && (validations_form.get('surname').dirty || validations_form.get('surname').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label floating>Data de nascimento</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01"></ion-datetime>
+    </ion-item>
 
     <ion-item>
       <ion-label floating>Email</ion-label>
@@ -75,6 +97,30 @@
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.matching_passwords">
         <div class="error-message" *ngIf="validations_form.get('matching_passwords').hasError(validation.type) && (validations_form.get('matching_passwords').get('confirm_password').dirty || validations_form.get('matching_passwords').get('confirm_password').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label floating>Cidade</ion-label>
+      <ion-input type="text" formControlName="city" required></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.city">
+        <div class="error-message" *ngIf="validations_form.get('city').hasError(validation.type) && (validations_form.get('city').dirty || validations_form.get('city').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label floating>Estado</ion-label>
+      <ion-input type="text" formControlName="state" required></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.state">
+        <div class="error-message" *ngIf="validations_form.get('state').hasError(validation.type) && (validations_form.get('state').dirty || validations_form.get('state').touched)">
           {{ validation.message }}
         </div>
       </ng-container>
