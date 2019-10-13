@@ -14,7 +14,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item-sliding #slidingItem *ngFor="let game of _games">
+    <ion-item-sliding #slidingItem *ngFor="let game of sortGames('title')">
       <ion-item (click)="game.config || activateGame(game, id)">
         <ion-icon *ngIf="game.config" color="light" item-left name="checkmark"></ion-icon>
         <ion-icon *ngIf="!game.config" color="danger" item-left name="close"></ion-icon>

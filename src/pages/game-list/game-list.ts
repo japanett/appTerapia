@@ -146,4 +146,12 @@ export class GameListPage {
     this._games.push(fruitJump);
   }
 
+  sortGames(prop: string) {
+    const sorted = this._games.sort((a, b) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
+    // asc/desc
+    if (prop.charAt(0) === '-') {
+       sorted.reverse();
+    }
+    return sorted;
+}
 }
