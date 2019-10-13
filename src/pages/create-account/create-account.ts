@@ -34,9 +34,6 @@ export class CreateAccountPage {
     this.validations_form = this.formBuilder.group({
       login: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
-      surname: new FormControl('', Validators.required),
-      city: new FormControl('', Validators.required),
-      state: new FormControl('', Validators.required),
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
@@ -48,7 +45,7 @@ export class CreateAccountPage {
 
 
   createAccount(data) {
-    this.userProvider.createAccount(data.name, data.login, data.matching_passwords.password, data.email, data.surname, data.city, data.state)
+    this.userProvider.createAccount(data.name, data.login, data.matching_passwords.password, data.email)
       .then((result: any) => {
         if (result.success) {
           this.toast.create({ message: 'Usuario cadastrado com sucesso', position: 'botton', duration: 5000 }).present();
@@ -64,22 +61,13 @@ export class CreateAccountPage {
         this.toast.create({ message: 'Erro ao cadastrar usuário.', position: 'botton', duration: 5000 }).present();
       })
   }
-
+  
   validation_messages = {
     'login': [
       { type: 'required', message: 'Login é obrigatório !' }
     ],
     'name': [
       { type: 'required', message: 'Nome é obrigatório !' }
-    ],
-    'surname': [
-      { type: 'required', message: 'Sobrenome é obrigatório !' }
-    ],
-    'city': [
-      { type: 'required', message: 'Cidade é obrigatório !' }
-    ],
-    'state': [
-      { type: 'required', message: 'Estado é obrigatório !' }
     ],
     'email': [
       { type: 'required', message: 'Email é obrigatório !' },

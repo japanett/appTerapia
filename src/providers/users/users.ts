@@ -60,17 +60,14 @@ export class UsersProvider {
   }
 
 
-  createAccount(name: string, login: string, password: string, email: string, surname: string, city: string, state: string) {
+  createAccount(name: string, login: string, password: string, email: string) {
     return new Promise((resolve, reject) => {
       this.loadingCtrl.presentWithGif1();
       var data = {
         name: name,
         login: login,
         password: password,
-        email: email,
-        surname: surname,
-        city: city,
-        state: state
+        email: email
       };
 
       this.http.post(this.apiURL + 'user/create', data)
