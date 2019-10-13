@@ -6,13 +6,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class UsersProvider {
 
-  // private apiURL = 'http://localhost:3000/api/';
-   private apiURL = 'http://ec2-52-45-196-107.compute-1.amazonaws.com:3000/api/';
-  // private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
+  private apiURL = 'http://localhost:3000/api/';
+  // private apiURL = 'http://192.168.0.158:3000/api/';
+  private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
   // private apiURL = 'https://damp-anchorage-23115.herokuapp.com/api/';
 
-  constructor(public http: HttpClient, public storage: Storage, public loadingCtrl: LoadingProvider) {
-  }
+  constructor(public http: HttpClient, public storage: Storage, public loadingCtrl: LoadingProvider) { }
 
   recoverPassword(email: string) {
     return new Promise((resolve, reject) => {
@@ -262,7 +261,7 @@ export class UsersProvider {
       let data = {
         "name": name,
         "email": email
-      };
+      }
       this.storage.get('token').then((token) => {
 
         let headers = new HttpHeaders().set('x-access-token', token);
@@ -326,7 +325,7 @@ export class UsersProvider {
   addGames(identifier: string, config: string, gameID: number, time: string, imersiveMode: string) {
     return new Promise((resolve, reject) => {
       this.loadingCtrl.presentWithGif1();
-      let _imersiveMode = imersiveMode === 'T';
+      let _imersiveMode = imersiveMode === 'T' ? true : false;
       let data = {
         "toPlay": gameID,
         "config": config,
@@ -354,7 +353,7 @@ export class UsersProvider {
   updateGameConfig(pacientId: string, config: string, gameID: number, time: string, imersiveMode: string) {
     return new Promise((resolve, reject) => {
       this.loadingCtrl.presentWithGif1();
-      let _imersiveMode = imersiveMode === 'T';
+      let _imersiveMode = imersiveMode === 'T' ? true : false;
       let data = {
         "gameID": gameID,
         "config": config,
