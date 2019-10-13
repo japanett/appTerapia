@@ -30,6 +30,7 @@ import { LoadingProvider } from '../providers/loading/loading';
     ActivateGamePage,
     GameConfigEditPage,
     PacientEditPage
+   
   ],
   imports: [
     BrowserModule,
