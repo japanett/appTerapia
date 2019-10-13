@@ -8,8 +8,9 @@ export class UsersProvider {
 
   private apiURL = 'http://localhost:3000/api/';
   // private apiURL = 'http://192.168.0.158:3000/api/';
-  private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
+  // private apiURL = 'http://201.6.243.44:3815/api/'; //mackleaps fabrica
   // private apiURL = 'https://damp-anchorage-23115.herokuapp.com/api/';
+  // private apiURL = 'http://ec2-18-228-155-191.sa-east-1.compute.amazonaws.com:3000/api/';
 
   constructor(public http: HttpClient, public storage: Storage, public loadingCtrl: LoadingProvider) { }
 
