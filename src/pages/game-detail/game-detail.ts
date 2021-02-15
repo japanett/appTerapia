@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ViewController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -13,21 +13,18 @@ export class GameDetailPage {
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams) {
     this.game = navParams.get('game');
-    this.translatedConfig = this.translateConfig(this.game.config);
-    this.translatedMode = this.translateMode(this.game.imersiveMode);
+    this.translatedConfig = GameDetailPage.translateConfig(this.game.config);
+    this.translatedMode = GameDetailPage.translateMode(this.game.imersiveMode);
   }
 
-  dismiss() {
-    this.viewCtrl.dismiss();
-  }
-
-  translateMode(imersiveMode: boolean) {
+  static translateMode(imersiveMode: boolean) {
     if (imersiveMode === undefined) {
       return 'Ativado';
     }
     return imersiveMode ? 'Ativado' : 'Desativado';
   }
-  translateConfig(config: string) {
+
+  static translateConfig(config: string) {
     return config
       .replace('1', 'Mão Esquerda')
       .replace('2', 'Mão Direita')
@@ -35,6 +32,10 @@ export class GameDetailPage {
       .replace('T', 'Quarta etapa Ativada')
       .replace('F', 'Quarta etapa Desativada')
   };
+
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
 
   ionViewDidLoad() {
   }

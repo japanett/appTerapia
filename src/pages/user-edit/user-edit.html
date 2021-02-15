@@ -12,18 +12,18 @@
   <ion-list>
     <ion-item>
       <ion-label stacked>Nome</ion-label>
-      <ion-input type="text" name="name" [(ngModel)]="model.name"></ion-input>
+      <ion-input [(ngModel)]="model.name" name="name" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Email</ion-label>
-      <ion-input type="text" name="email" [(ngModel)]="model.email"></ion-input>
+      <ion-input [(ngModel)]="model.email" name="email" type="text"></ion-input>
     </ion-item>
   </ion-list>
 
   <div style="text-align: center;">
-    <button ion-button class="customButton" ion-button block round (click)="updateUser()">Confirmar</button>
-    <button ion-button class="backButton" ion-button block round (click)="goBack()">Cancelar</button>
+    <button ion-button class="customButton" ion-button block (click)="updateUser()">Confirmar</button>
+    <button ion-button class="backButton" ion-button block (click)="goBack()">Cancelar</button>
   </div>
 
 </ion-content>

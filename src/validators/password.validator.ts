@@ -1,7 +1,7 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 
 export class PasswordValidator {
-  
+
   static areEqual(formGroup: FormGroup) {
     let val;
     let valid = true;

@@ -3,7 +3,7 @@
   <ion-navbar>
     <ion-title>{{identifier}}</ion-title>
     <ion-buttons left>
-      <button ion-button icon-only (click)="dismiss()">
+      <button (click)="dismiss()" icon-only ion-button>
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
@@ -16,10 +16,10 @@
 
   <ion-item-group>
     <ion-list>
-      <ion-item-sliding *ngFor="let game of data" #slidingItem>
+      <ion-item-sliding #slidingItem *ngFor="let game of data">
 
         <ion-item (click)="selectGame(game)">
-          <h2 style="color: #cedacf;">{{game.title}}</h2>
+          <h2>{{game.title}}</h2>
           <p style="color: #f4f4f4;"><b>{{game.observation}}</b></p>
           <ion-note item-end>
             {{game.date | date: "dd/MM/yyyy HH:mm"}}
@@ -27,12 +27,15 @@
         </ion-item>
 
         <ion-item-options side="right">
-          <button ion-button icon-only outline
-            (click)="setObservation(game.identifier, game.id, game.observation, slidingItem);$event.stopPropagation();">
+          <button
+            (click)="setObservation(game.identifier, game.id, game.observation, slidingItem);$event.stopPropagation();"
+            icon-only ion-button
+            outline>
             <ion-icon color="light" name="create"></ion-icon>
           </button>
-          <button ion-button icon-only outline
-            (click)="deleteGameReport(game.identifier, game.id, slidingItem);$event.stopPropagation();">
+          <button (click)="deleteGameReport(game.identifier, game.id, slidingItem);$event.stopPropagation();" icon-only
+                  ion-button
+                  outline>
             <ion-icon color="danger" name="trash"></ion-icon>
           </button>
         </ion-item-options>

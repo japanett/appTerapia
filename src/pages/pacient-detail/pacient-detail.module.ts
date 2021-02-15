@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { PacientDetailPage } from './pacient-detail';
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {PacientDetailPage} from './pacient-detail';
 
 @NgModule({
   declarations: [
@@ -13,4 +13,5 @@ import { PacientDetailPage } from './pacient-detail';
     PacientDetailPage
   ]
 })
-export class PacientDetailPageModule { }
+export class PacientDetailPageModule {
+}

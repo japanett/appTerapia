@@ -23,8 +23,6 @@ $app-direction: ltr;
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
 
-
-
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.
@@ -35,22 +33,25 @@ $app-direction: ltr;
 
 $colors: (
   primary:    #464242,
-  danger:     #F0C808,
-  light:      #f4f4f4,
+  secondary: #464242,
+  danger:     #cc141d,
+  light:      #464242,
 );
 
 
-$app-background:radial-gradient(circle farthest-corner at center, #3C4B57 0%, #1C262B 100%);
+$app-background:radial-gradient(circle farthest-corner at center, #ddd 0%, #ddd 100%);
 // $app-background: linear-gradient(
 // 	45deg,
-// 	rgb(57, 110, 65), 
+// 	rgb(57, 110, 65),
 // 	rgb(46, 102, 69) 5%,
 	// #758f43 80%);
-$navheader-background: radial-gradient(#201e1e 0%, #000000 100%);
+$navheader-background: #bdbdbd;
 $toolbar-background: transparent;
-$text-color: #fafafa;
+$toolbar-md-title-text-color: #cc141d;
+$text-color: #464242;
 $background-color: transparent;
-
+$text-input-highlight-color-invalid: #464242;
+$label-md-text-color: #464242;
 // Overwriting ionic default css to skip line in the case below
 .item h3 {
 	white-space: normal !important;
@@ -77,36 +78,36 @@ ion-loading.my-loading-class {
 		border-radius: 50%;
 		perspective: 800px;
 	  }
-	  
+
 	  .inner {
 		position: absolute;
 		box-sizing: border-box;
 		width: 100%;
 		height: 100%;
-		border-radius: 50%;  
+		border-radius: 50%;
 	  }
-	  
+
 	  .inner.one {
 		left: 0%;
 		top: 0%;
 		animation: rotate-one 1s linear infinite;
-		border-bottom: 3px solid #EFEFFA;
+		border-bottom: 3px solid #464242;
 	  }
-	  
+
 	  .inner.two {
 		right: 0%;
 		top: 0%;
 		animation: rotate-two 1s linear infinite;
-		border-right: 3px solid #EFEFFA;
+		border-right: 3px solid #464242;
 	  }
-	  
+
 	  .inner.three {
 		right: 0%;
 		bottom: 0%;
 		animation: rotate-three 1s linear infinite;
-		border-top: 3px solid #EFEFFA;
+		border-top: 3px solid #464242;
 	  }
-	  
+
 	  @keyframes rotate-one {
 		0% {
 		  transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
@@ -115,7 +116,7 @@ ion-loading.my-loading-class {
 		  transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
 		}
 	  }
-	  
+
 	  @keyframes rotate-two {
 		0% {
 		  transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
@@ -124,7 +125,7 @@ ion-loading.my-loading-class {
 		  transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
 		}
 	  }
-	  
+
 	  @keyframes rotate-three {
 		0% {
 		  transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
@@ -139,20 +140,14 @@ ion-loading.my-loading-class {
 // iOS only Sass variables can go here
 
 
-
-
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
 
-
-
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
-
 
 
 // App Theme

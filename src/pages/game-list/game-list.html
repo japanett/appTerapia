@@ -3,7 +3,7 @@
   <ion-navbar>
     <ion-title>Ativar Jogos</ion-title>
     <ion-buttons left>
-      <button ion-button icon-only (click)="dismiss()">
+      <button (click)="dismiss()" icon-only ion-button>
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
@@ -14,19 +14,21 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item-sliding *ngFor="let game of _games" #slidingItem>
+    <ion-item-sliding #slidingItem *ngFor="let game of sortGames('title')">
       <ion-item (click)="game.config || activateGame(game, id)">
-        <ion-icon name="checkmark" color="light" item-left *ngIf="game.config"></ion-icon>
-        <ion-icon name="close" color="danger" item-left *ngIf="!game.config"></ion-icon>
+        <ion-icon *ngIf="game.config" color="light" item-left name="checkmark"></ion-icon>
+        <ion-icon *ngIf="!game.config" color="danger" item-left name="close"></ion-icon>
         <h2><b>{{game.title}}</b></h2>
       </ion-item>
 
       <ion-item-options side="right">
-        <button *ngIf="game.config" ion-button icon-only outline (click)="deactivateGame(game,id,slidingItem);$event.stopPropagation();">
+        <button (click)="deactivateGame(game,id,slidingItem);$event.stopPropagation();" *ngIf="game.config" icon-only
+                ion-button
+                outline>
           <ion-icon color="danger" name="close"></ion-icon>
         </button>
-        <button *ngIf="game.config" ion-button icon-only outline (click)="editGame(game);$event.stopPropagation();">
-          <ion-icon name="hammer" color="light"></ion-icon>
+        <button (click)="editGame(game);$event.stopPropagation();" *ngIf="game.config" icon-only ion-button outline>
+          <ion-icon color="light" name="hammer"></ion-icon>
         </button>
       </ion-item-options>
     </ion-item-sliding>

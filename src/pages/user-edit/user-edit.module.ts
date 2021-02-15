@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { UserEditPage } from './user-edit';
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {UserEditPage} from './user-edit';
 
 @NgModule({
   declarations: [
@@ -10,4 +10,5 @@ import { UserEditPage } from './user-edit';
     IonicPageModule.forChild(UserEditPage),
   ],
 })
-export class UserEditPageModule {}
+export class UserEditPageModule {
+}

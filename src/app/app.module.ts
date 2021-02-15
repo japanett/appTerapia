@@ -1,23 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
+import {BrowserModule} from '@angular/platform-browser';
+import {ErrorHandler, NgModule} from '@angular/core';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {StatusBar} from '@ionic-native/status-bar';
 
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { PacientDetailPage } from '../pages/pacient-detail/pacient-detail';
-import { GamesPage } from '../pages/games/games';
-import { GameDetailPage } from '../pages/game-detail/game-detail';
-import { GameConfigEditPage } from '../pages/game-config-edit/game-config-edit';
-import { GameListPage } from '../pages/game-list/game-list';
-import { ActivateGamePage } from '../pages/activate-game/activate-game';
-import { PacientEditPage } from '../pages/pacient-edit/pacient-edit';
-import { UsersProvider } from '../providers/users/users';
-import { IonicStorageModule } from '@ionic/storage';
-import { HttpClientModule } from '@angular/common/http';
-import { ValidatorsModule } from '../validators/validators.module';
-import { LoadingProvider } from '../providers/loading/loading';
+import {MyApp} from './app.component';
+import {HomePage} from '../pages/home/home';
+import {PacientDetailPage} from '../pages/pacient-detail/pacient-detail';
+import {GamesPage} from '../pages/games/games';
+import {GameDetailPage} from '../pages/game-detail/game-detail';
+import {GameConfigEditPage} from '../pages/game-config-edit/game-config-edit';
+import {GameListPage} from '../pages/game-list/game-list';
+import {ActivateGamePage} from '../pages/activate-game/activate-game';
+import {PacientEditPage} from '../pages/pacient-edit/pacient-edit';
+import {UsersProvider} from '../providers/users/users';
+import {IonicStorageModule} from '@ionic/storage';
+import {HttpClientModule} from '@angular/common/http';
+import {ValidatorsModule} from '../validators/validators.module';
+import {LoadingProvider} from '../providers/loading/loading';
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { LoadingProvider } from '../providers/loading/loading';
     ActivateGamePage,
     GameConfigEditPage,
     PacientEditPage
+   
   ],
   imports: [
     BrowserModule,
@@ -38,7 +39,7 @@ import { LoadingProvider } from '../providers/loading/loading';
     ValidatorsModule,
     IonicStorageModule.forRoot({
       name: '__mydb',
-         driverOrder: ['indexeddb', 'sqlite', 'websql']
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
     })
   ],
   bootstrap: [IonicApp],
@@ -61,4 +62,5 @@ import { LoadingProvider } from '../providers/loading/loading';
     LoadingProvider
   ]
 })
-export class AppModule {}
+export class AppModule {
+}

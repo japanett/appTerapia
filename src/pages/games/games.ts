@@ -1,8 +1,18 @@
-import { Component } from '@angular/core';
-import { ModalController, ItemSliding, AlertController, IonicPage, ViewController, NavController, NavParams, ToastController } from 'ionic-angular';
-import { UsersProvider } from './../../providers/users/users';
-import { Storage } from '@ionic/storage';
-import { GameDetailPage } from './../game-detail/game-detail';
+import {Component} from '@angular/core';
+import {
+  AlertController,
+  IonicPage,
+  ItemSliding,
+  ModalController,
+  NavController,
+  NavParams,
+  ToastController,
+  ViewController
+} from 'ionic-angular';
+import {UsersProvider} from '../../providers/users/users';
+import {Storage} from '@ionic/storage';
+import {GameDetailPage} from '../game-detail/game-detail';
+import {Game} from "../../model/games";
 
 @IonicPage()
 @Component({
@@ -53,16 +63,12 @@ export class GamesPage {
         }
       })
       .catch((error: any) => {
-        this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
+        this.toast.create({message: 'Erro: ' + error.error, position: 'botton', duration: 5000}).present();
       });
   }
 
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad GamesPage');
-  }
-
   selectGame(game: any) {
-    var gamesModal = this.modalCtrl.create(GameDetailPage, { game: game }, { enableBackdropDismiss: false });
+    let gamesModal = this.modalCtrl.create(GameDetailPage, {game: game}, {enableBackdropDismiss: false});
     gamesModal.present();
   }
 
@@ -71,14 +77,13 @@ export class GamesPage {
   }
 
   setObservation(identifier: string, gameId: string, gameObservation: string, slidingItem: ItemSliding) {
-    let observation: string = gameObservation;
     const confirm = this.alertCtrl.create({
       title: 'Digite:',
       inputs: [
         {
           name: 'observation',
           placeholder: 'Observação',
-          value: observation
+          value: gameObservation
         }
       ],
       buttons: [
@@ -95,12 +100,12 @@ export class GamesPage {
                       return x;
                     }
                   });
-                  this.toast.create({ message: 'Observação adicionada!', position: 'botton', duration: 5000 }).present();
+                  this.toast.create({message: 'Observação adicionada!', position: 'botton', duration: 5000}).present();
                 }
                 slidingItem.close();
               })
               .catch((error: any) => {
-                this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
+                this.toast.create({message: 'Erro: ' + error.error, position: 'botton', duration: 5000}).present();
                 slidingItem.close();
               });
           }
@@ -137,12 +142,12 @@ export class GamesPage {
                   if (result.success === true) {
                     // Removes the gameReport without having to update the page
                     this.data = this.data.filter(gameA => gameA.id !== gameId);
-                    this.toast.create({ message: 'Relatório excluído!', position: 'botton', duration: 5000 }).present();
+                    this.toast.create({message: 'Relatório excluído!', position: 'botton', duration: 5000}).present();
                   }
                   resolve();
                 })
                 .catch((error: any) => {
-                  this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
+                  this.toast.create({message: 'Erro: ' + error.error, position: 'botton', duration: 5000}).present();
                   reject(error);
                 });
             });
@@ -153,31 +158,4 @@ export class GamesPage {
     confirm.present();
   }
 
-}
-
-
-export class Game {
-  date: string;
-  score: {
-    esquerda: number,
-    direita: number,
-    cruzada: number
-  };
-  error: {
-    esquerda: number,
-    direita: number,
-    cruzada: number
-
-  };
-  time: string;
-  played: boolean;
-  id: string;
-  pacient: string;
-  title: string;
-  gameID: number;
-  config: string;
-  medic: string;
-  idToPlay: string;
-  observation: string;
-  imersiveMode: boolean;
 }

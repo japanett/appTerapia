@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, ViewController, NavController, NavParams, ToastController } from 'ionic-angular';
-import { UsersProvider } from './../../providers/users/users';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams, ToastController, ViewController} from 'ionic-angular';
+import {UsersProvider} from './../../providers/users/users';
 
 @IonicPage()
 @Component({
@@ -32,14 +32,22 @@ export class PacientEditPage {
         if (result.success) {
           this.viewCtrl.dismiss()
             .then(() => {
-              this.toast.create({ message: 'Paciente Atualizado !', position: 'botton', duration: 5000 }).present();
+              this.toast.create({message: 'Paciente Atualizado !', position: 'botton', duration: 5000}).present();
             })
         } else {
-          this.toast.create({ message: 'Preencha todos os campos corretamente', position: 'botton', duration: 5000 }).present();
+          this.toast.create({
+            message: 'Preencha todos os campos corretamente',
+            position: 'botton',
+            duration: 5000
+          }).present();
         }
       })
       .catch((error: any) => {
-        this.toast.create({ message: 'Preencha todos os campos corretamente', position: 'botton', duration: 5000 }).present();
+        this.toast.create({
+          message: 'Preencha todos os campos corretamente',
+          position: 'botton',
+          duration: 5000
+        }).present();
       })
   }
 

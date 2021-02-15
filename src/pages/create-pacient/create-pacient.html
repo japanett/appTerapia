@@ -2,7 +2,7 @@
   <ion-navbar>
     <ion-title>Registrar</ion-title>
     <ion-buttons left>
-      <button ion-button icon-only (click)="dismiss()">
+      <button (click)="dismiss()" icon-only ion-button>
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
@@ -14,25 +14,25 @@
   <ion-list>
     <ion-item>
       <ion-label stacked>Nome:</ion-label>
-      <ion-input type="text" name="name" [(ngModel)]="model.name"></ion-input>
+      <ion-input [(ngModel)]="model.name" name="name" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Idade:</ion-label>
-      <ion-input type="text" name="age" [(ngModel)]="model.age"></ion-input>
+      <ion-input [(ngModel)]="model.age" name="age" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Sexo:</ion-label>
-      <ion-select name="sexo" [(ngModel)]="model.sexo">
+      <ion-select [(ngModel)]="model.sexo" name="sexo">
         <ion-option value="masculino">Masculino</ion-option>
         <ion-option value="feminino">Feminino</ion-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Mao Dominante:</ion-label>
-      <ion-select name="mao_dominante" [(ngModel)]="model.mao_dominante">
+      <ion-label stacked>Mão Dominante:</ion-label>
+      <ion-select [(ngModel)]="model.mao_dominante" name="mao_dominante">
         <ion-option value="Esquerda">Esquerda</ion-option>
         <ion-option value="Direita">Direita</ion-option>
       </ion-select>
@@ -52,17 +52,17 @@
 
     <ion-item>
       <ion-label stacked>Patologia:</ion-label>
-      <ion-input type="text" name="patologia" [(ngModel)]="model.patologia"></ion-input>
+      <ion-input [(ngModel)]="model.patologia" name="patologia" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Objetivo:</ion-label>
-      <ion-input type="text" name="objetivo" [(ngModel)]="model.objetivo"></ion-input>
+      <ion-input [(ngModel)]="model.objetivo" name="objetivo" type="text"></ion-input>
     </ion-item>
   </ion-list>
 
   <div style="text-align: center;">
-    <button ion-button class="customButton" ion-button block round (click)="createPacient()">Confirmar</button>
-    <button ion-button class="backButton" ion-button block round (click)="dismiss()">Cancelar</button>
+    <button ion-button class="customButton" ion-button block (click)="createPacient()">Confirmar</button>
+    <button ion-button class="backButton" ion-button block (click)="dismiss()">Cancelar</button>
   </div>
 </ion-content>

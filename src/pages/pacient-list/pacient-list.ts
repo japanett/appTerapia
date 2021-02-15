@@ -1,8 +1,17 @@
 import { Component } from '@angular/core';
-import { ModalController, ItemSliding, AlertController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { UsersProvider } from './../../providers/users/users';
-import { PacientDetailPage } from './../pacient-detail/pacient-detail';
-import { PacientEditPage } from './../pacient-edit/pacient-edit';
+import {
+  AlertController,
+  IonicPage,
+  ItemSliding,
+  ModalController,
+  NavController,
+  NavParams,
+  ToastController
+} from 'ionic-angular';
+import {UsersProvider} from '../../providers/users/users';
+import {PacientDetailPage} from '../pacient-detail/pacient-detail';
+import {PacientEditPage} from '../pacient-edit/pacient-edit';
+import {Pacient} from "../../model/pacient";
 
 @IonicPage()
 @Component({
@@ -15,6 +24,7 @@ export class PacientListPage {
   public woman = './assets/imgs/woman.png';
 
   model: Pacient;
+
   constructor(public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
     this.model = new Pacient();
     this.getPacients();
@@ -84,10 +94,10 @@ export class PacientListPage {
   }
 
   editPacient(pacient: any) {
-    var pacientEditModal = this.modalCtrl.create(PacientEditPage, { pacient: pacient }, { enableBackdropDismiss: false });
+    let pacientEditModal = this.modalCtrl.create(PacientEditPage, {pacient: pacient}, {enableBackdropDismiss: false});
     pacientEditModal.onDidDismiss(() => {
       this.getPacients();
-    })
+    });
     pacientEditModal.present();
   }
 
@@ -96,30 +106,19 @@ export class PacientListPage {
   }
 
   selectPacient(identifier: string, id: string) {
-    var pacientModal = this.modalCtrl.create(PacientDetailPage, { identifier: identifier, id: id }, { enableBackdropDismiss: false });
+    let pacientModal = this.modalCtrl.create(PacientDetailPage, {
+      identifier: identifier,
+      id: id
+    }, {enableBackdropDismiss: false});
     pacientModal.present();
   }
 
 
   getStylee(pacient: any) {
     if (pacient.sexo == 'masculino') {
-      return "#ACCDD4";
+      return "#02077d";
     } else {
-      return "#DB7F67";
+      return "#b33479";
     }
   }
-}
-
-export class Pacient {
-  active: boolean;
-  name: string;
-  age: number;
-  sexo: string;
-  patologia: string;
-  objetivo: string;
-  identifier: string;
-  medic: string;
-  games: any;
-  mao_dominante: string;
-  gmfcs: number;
 }

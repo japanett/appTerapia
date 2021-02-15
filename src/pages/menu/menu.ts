@@ -28,7 +28,9 @@ export class MenuPage {
     { title: 'Perfil', pageName: 'UserDetailPage',  index: 0, icon: 'contact' },
     { title: 'Pacientes', pageName: 'PacientListPage', index: 1, icon: 'people' },
     { title: 'Relatório', pageName: 'ReportPage', icon: 'paper' },
+    { title: 'Ajuda', pageName: 'HelpPage', icon: 'help' },
     { title: 'Logout', pageName: 'HomePage', icon: 'log-out' }
+    
   ];
 
   constructor(public navCtrl: NavController, public app: App) { }

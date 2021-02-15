@@ -1,9 +1,20 @@
-import { Component, ViewChild } from '@angular/core';
-import { Content, ModalController, ItemSliding, AlertController, IonicPage, ViewController, NavController, NavParams, ToastController } from 'ionic-angular';
-import { UsersProvider } from './../../providers/users/users';
-import { Storage } from '@ionic/storage';
-import { ActivateGamePage } from './../activate-game/activate-game';
-import { GameConfigEditPage } from './../game-config-edit/game-config-edit';
+import {Component, ViewChild} from '@angular/core';
+import {
+  AlertController,
+  Content,
+  IonicPage,
+  ItemSliding,
+  ModalController,
+  NavController,
+  NavParams,
+  ToastController,
+  ViewController
+} from 'ionic-angular';
+import {UsersProvider} from '../../providers/users/users';
+import {Storage} from '@ionic/storage';
+import {ActivateGamePage} from '../activate-game/activate-game';
+import {GameConfigEditPage} from '../game-config-edit/game-config-edit';
+import {Game} from "../../model/games";
 
 @IonicPage()
 @Component({
@@ -13,19 +24,11 @@ import { GameConfigEditPage } from './../game-config-edit/game-config-edit';
 export class GameListPage {
   @ViewChild(Content) content: Content;
 
-  testCheckboxOpen: boolean;
-  testCheckboxResult;
   public name: string;
   public id: string;
   public sexo: string;
   public identifier: string;
   public _games: any = [];
-  mercearia: Game;
-  space: Game;
-  bloquinho: Game;
-  bola: Game;
-  pontes: Game;
-  public ordemJogos: any = [];
 
   constructor(public alertCtrl: AlertController, public modalCtrl: ModalController, public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public storage: Storage, private toast: ToastController, private userProvider: UsersProvider) {
     this.name = navParams.get('name');
@@ -36,26 +39,8 @@ export class GameListPage {
   }
 
   fillGames(games: any) {
-    this.mercearia = new Game();
-    this.space = new Game();
-    this.bola = new Game();
-    this.bloquinho = new Game();
-    this.pontes = new Game();
-    this.mercearia.title = 'Jogo da Mercearia';
-    this.mercearia.gameID = '1';
-    this.space.title = 'Invasão Espacial';
-    this.space.gameID = '2';
-    this.bola.title = 'Bola na Caixa';
-    this.bola.gameID = '3';
-    this.bloquinho.title = 'Bloquinho';
-    this.bloquinho.gameID = '4';
-    this.pontes.title = 'Pontes';
-    this.pontes.gameID = '5';
-    this._games.push(this.mercearia);
-    this._games.push(this.bola);
-    this._games.push(this.space);
-    this._games.push(this.bloquinho);
-    this._games.push(this.pontes);
+    this.generateGames();
+
     this._games.forEach((game) => {
       games.forEach((x) => {
         if (game.title == x.title) {
@@ -69,12 +54,19 @@ export class GameListPage {
   };
 
   activateGame(game: any, id: string) {
-    var activateGameModal = this.modalCtrl.create(ActivateGamePage, { game: game, identifier: this.identifier }, { enableBackdropDismiss: false });
+    let activateGameModal = this.modalCtrl.create(ActivateGamePage, {
+      game: game,
+      identifier: this.identifier
+    }, {enableBackdropDismiss: false});
     activateGameModal.present();
   };
 
   editGame(game: any) {
-    var gameEditModal = this.modalCtrl.create(GameConfigEditPage, { game: game, identifier: this.identifier, id: this.id }, { enableBackdropDismiss: false });
+    let gameEditModal = this.modalCtrl.create(GameConfigEditPage, {
+      game: game,
+      identifier: this.identifier,
+      id: this.id
+    }, {enableBackdropDismiss: false});
     gameEditModal.present();
   };
 
@@ -97,12 +89,12 @@ export class GameListPage {
                 .then((result: any) => {
                   if (result.success === true) {
                     this.viewCtrl.dismiss();
-                    this.toast.create({ message: 'Jogo Desativado !', position: 'botton', duration: 3000 }).present();
+                    this.toast.create({message: 'Jogo Desativado !', position: 'botton', duration: 3000}).present();
                   }
                 })
                 .catch((error: any) => {
                   reject(error);
-                  this.toast.create({ message: 'Erro: ' + error.error, position: 'botton', duration: 5000 }).present();
+                  this.toast.create({message: 'Erro: ' + error.error, position: 'botton', duration: 5000}).present();
                 });
             });
           }
@@ -116,11 +108,50 @@ export class GameListPage {
     this.viewCtrl.dismiss();
   }
 
+  private generateGames() {
+    // TODO - refactor to get list of games from server
+    let mercearia = new Game();
+    mercearia.gameID = 1;
+    mercearia.title = 'Jogo da Mercearia';
+    this._games.push(mercearia);
+
+    let space = new Game();
+    space.gameID = 2;
+    space.title = 'Invasão Espacial';
+    this._games.push(space);
+
+    let bola = new Game();
+    bola.gameID = 3;
+    bola.title = 'Bola na Caixa';
+    this._games.push(bola);
+
+    let bloquinho = new Game();
+    bloquinho.gameID = 4;
+    bloquinho.title = 'Bloquinho';
+    this._games.push(bloquinho);
+
+    let pontes = new Game();
+    pontes.gameID = 5;
+    pontes.title = 'Pontes';
+    this._games.push(pontes);
+
+    let labirinto = new Game();
+    labirinto.gameID = 6;
+    labirinto.title = 'Jogo do Labirinto';
+    this._games.push(labirinto);
+
+    let fruitJump = new Game();
+    fruitJump.gameID = 7;
+    fruitJump.title = 'Fruit Jump';
+    this._games.push(fruitJump);
+  }
+
+  sortGames(prop: string) {
+    const sorted = this._games.sort((a, b) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
+    // asc/desc
+    if (prop.charAt(0) === '-') {
+       sorted.reverse();
+    }
+    return sorted;
 }
-export class Game {
-  gameID: string;
-  config: string;
-  title: string;
-  time:string;
-  imersiveMode: string;
-};
+}
